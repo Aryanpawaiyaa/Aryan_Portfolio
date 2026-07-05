@@ -46,7 +46,11 @@ export const workExperiences: WorkExperience[] = [
       "Team Collaboration",
       "Technical Documentation",
       "Problem Solving"
-    ]
+    ],
+    link: {
+      label: "View Team Profile",
+      url: "https://yantraiitm.netlify.app/team"
+    }
   },
   {
     company: "DroneX Aerotech Club, MITS",
@@ -100,16 +104,32 @@ export const education: Education[] = [
 
 export const skills: SkillGroup[] = [
   {
-    name: "Engineering",
-    skills: ["React / Next.js", "TypeScript", "Tailwind CSS", "Motion", "Node.js", "D3.js / SVG Animation", "Git / CI-CD"]
+    name: "Software Development",
+    skills: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Responsive Design", "UI/UX", "API Integration", "Performance Optimization"]
   },
   {
-    name: "Design Systems",
-    skills: ["Figma Architecture", "Design Tokens", "Typographic Systems", "Interactive Prototyping", "A11y Standards"]
+    name: "CAD & Product Design",
+    skills: ["CAD Modeling", "3D Product Design", "Parametric Modeling", "Mechanical Design", "Design for Manufacturing (DFM)", "STL Preparation", "3D Printing Workflow", "Rapid Prototyping", "Fusion 360", "AutoCAD", "FreeCAD"]
   },
   {
-    name: "Strategy",
-    skills: ["User Research", "Systems Thinking", "Technical Writing", "Mentoring", "Product Roadmap Planning"]
+    name: "PCB & Electronics",
+    skills: ["Basic PCB Design", "PCB Layout", "Circuit Design", "Electronic Prototyping", "Schematic Design", "Embedded Electronics", "KiCad", "EasyEDA", "Arduino", "ESP32"]
+  },
+  {
+    name: "Robotics & Hardware",
+    skills: ["Robotics", "Automation", "Sensors", "Microcontrollers", "Embedded Systems", "IoT", "CNC Fundamentals"]
+  },
+  {
+    name: "Programming",
+    skills: ["C", "C++", "Python", "JavaScript", "Data Structures", "Algorithms", "Object-Oriented Programming"]
+  },
+  {
+    name: "Design & Creativity",
+    skills: ["UI Design", "Portfolio Design", "Graphic Editing", "Motion Graphics", "Documentation", "Technical Writing"]
+  },
+  {
+    name: "Professional Skills",
+    skills: ["Leadership", "Problem Solving", "Innovation", "Research", "Public Speaking", "Presentation", "Project Management", "Team Collaboration", "Rapid Learning", "Time Management", "Critical Thinking"]
   }
 ];
 

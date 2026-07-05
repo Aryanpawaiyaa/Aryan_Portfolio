@@ -54,7 +54,7 @@ export default function GalleryView() {
       <div className="absolute top-1/4 right-10 w-[350px] h-[350px] bg-white/1 rounded-full filter blur-[100px] pointer-events-none" />
       <div className="absolute bottom-10 left-1/3 w-[400px] h-[400px] bg-white/1.5 rounded-full filter blur-[90px] pointer-events-none" />
 
-      <div id="gallery-view-container" className="relative z-10 mx-auto max-w-3xl px-6 py-12">
+      <div id="gallery-view-container" className="relative z-10 mx-auto max-w-5xl px-6 py-12">
         {/* Title */}
         <div className="mb-12">
           <h2 className="font-sans text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Visual Creations</h2>

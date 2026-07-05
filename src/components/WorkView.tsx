@@ -35,7 +35,7 @@ export default function WorkView({ selectedProjectId, onSelectProject }: WorkVie
       <div className="absolute top-10 right-1/4 w-[400px] h-[400px] bg-white/[0.012] rounded-full filter blur-[100px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-white/[0.008] rounded-full filter blur-[80px] pointer-events-none" />
 
-      <div id="work-view-container" className="relative z-10 mx-auto max-w-3xl px-6 py-12">
+      <div id="work-view-container" className="relative z-10 mx-auto max-w-5xl px-6 py-12">
         <AnimatePresence mode="wait">
           {!selectedProjectId ? (
             /* Work Listing Mode */

@@ -69,7 +69,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mx-auto max-w-3xl px-6 py-16 sm:py-24"
+        className="relative z-10 mx-auto max-w-5xl px-6 py-16 sm:py-24"
       >
         {/* Bio / Status Board */}
         <motion.section id="hero-section" variants={itemVariants} className="mb-20">
@@ -180,7 +180,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
               >
                 <div className="flex flex-col gap-6 sm:flex-row">
                   {/* Project Mock Image */}
-                  <div className="relative aspect-16/10 w-full shrink-0 overflow-hidden rounded-lg border border-white/5 sm:w-56 bg-zinc-900 shadow-md">
+                  <div className="relative aspect-16/10 w-full shrink-0 overflow-hidden rounded-lg border border-white/5 sm:w-72 bg-zinc-900 shadow-md">
                     <OptimizedImage
                       src={project.image}
                       alt={project.title}

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Briefcase, GraduationCap, Code, Award, X, Eye, ShieldCheck } from "lucide-react";
+import { Briefcase, GraduationCap, Code, Award, X, Eye, ShieldCheck, ArrowUpRight, Shield, Trophy, Star } from "lucide-react";
 import { personal, workExperiences, education, skills } from "../resources/content";
 import SpotlightCard from "./SpotlightCard";
 import certificateData from "../resources/certificates";
+import CertificateCard from "./CertificateCard";
 import { OptimizedImage } from "./OptimizedImage";
 
 
@@ -47,6 +48,25 @@ const getIssuerBadge = (issuer: string) => {
 export default function AboutView() {
   const [selectedCert, setSelectedCert] = useState<any | null>(null);
   const [viewMode, setViewMode] = useState<"preview" | "pdf" | "details">("preview");
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedCert(null);
+      }
+    };
+    if (selectedCert) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedCert]);
+
+  const nccCerts = certificateData.certificates.filter(c => c.category === "NCC Certificates");
+  const academicCerts = certificateData.certificates.filter(c => c.category === "Academic & Course Certificates");
+  const competitionCerts = certificateData.certificates.filter(c => c.category === "Hackathons, Competitions & Events");
+  const achievementCerts = certificateData.certificates.filter(c => c.category === "Achievements & Recognition");
 
   const getInitials = (name: string) => {
     if (name.includes("IIT")) return "IIT";
@@ -98,7 +118,7 @@ export default function AboutView() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mx-auto max-w-3xl px-6 py-12"
+        className="relative z-10 mx-auto max-w-5xl px-6 py-12"
       >
         {/* Intro section: Photo & Bio */}
         <motion.section id="about-intro" variants={itemVariants} className="mb-20 flex flex-col gap-8 md:flex-row md:items-center">
@@ -173,6 +193,25 @@ export default function AboutView() {
                         <li key={bIdx} className="hover:text-gray-300 transition-colors duration-200">{bullet}</li>
                       ))}
                     </ul>
+
+                    {/* Optional Experience Link */}
+                    {exp.link && (
+                      <div className="mt-4 flex">
+                        <a
+                          href={exp.link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-white/5 bg-white/2 hover:bg-white/5 hover:border-white/20 px-3 py-1.5 font-sans text-[10px] font-semibold text-gray-300 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:text-white cursor-pointer group"
+                        >
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[rgb(var(--accent-rgb,255,255,255))] opacity-75"></span>
+                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb,255,255,255))]"></span>
+                          </span>
+                          {exp.link.label}
+                          <ArrowUpRight className="h-3 w-3 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                        </a>
+                      </div>
+                    )}
 
                     {/* Optional Skill Badges */}
                     {exp.skills && exp.skills.length > 0 && (
@@ -269,111 +308,102 @@ export default function AboutView() {
             </span>
           </div>
 
-          <div className="grid gap-6">
-            {certificateData.certificates.map((cert, idx) => (
-              <SpotlightCard
-                id={`certificate-card-${idx}`}
-                key={idx}
-                className="p-6 relative group flex flex-col md:flex-row gap-6 items-stretch justify-between overflow-hidden border border-white/5 bg-zinc-950/40 backdrop-blur-md rounded-xl"
-              >
-                {/* Left Side: Premium Interactive Certificate Preview Frame */}
-                {cert.image && (
-                  <div
-                    onClick={() => {
-                      setSelectedCert(cert);
-                      setViewMode("preview");
-                    }}
-                    className="relative shrink-0 md:w-52 w-full aspect-[1.414/1] overflow-hidden rounded-lg border border-white/10 bg-zinc-900 cursor-pointer shadow-md group/preview"
-                  >
-                <OptimizedImage
-                  src={cert.image}
-                  alt={cert.title}
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  className="h-full w-full object-cover grayscale brightness-[0.85] contrast-[1.05] group-hover/preview:grayscale-0 group-hover/preview:brightness-100 group-hover/preview:scale-105 group-hover/preview:rotate-0.5 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                />
-                    {/* Glossy Overlay effect on hover */}
-                    <div className="absolute inset-0 bg-linear-to-tr from-white/10 via-transparent to-transparent opacity-0 group-hover/preview:opacity-100 transition-opacity duration-500" />
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/75 opacity-0 group-hover/preview:opacity-100 backdrop-blur-[2px] transition-all duration-300">
-                      <div className="flex flex-col items-center gap-1.5">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedCert(cert);
-                            setViewMode("preview");
-                          }}
-                          className="p-2.5 rounded-full bg-white text-black hover:bg-zinc-200 hover:scale-110 transition-all duration-200 shadow-lg flex items-center justify-center cursor-pointer"
-                          title="View Certificate Details"
-                        >
-                          <Eye className="h-4 w-4" />
-                        </button>
-                        <span className="font-mono text-[8px] text-gray-300 uppercase tracking-widest font-semibold mt-0.5">View Details</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Right Side: Certificate details and skills */}
-                <div className="flex-1 flex flex-col justify-between min-w-0">
-                  <div>
-                    {/* Top Issuer Badge & Status bar */}
-                    <div className="flex flex-wrap items-center gap-2 mb-3">
-                      {getIssuerBadge(cert.issuer)}
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/5 border border-emerald-500/10 text-[9px] font-mono font-semibold text-emerald-400">
-                        <ShieldCheck className="h-3 w-3 text-emerald-400" />
-                        Active
-                      </span>
-                    </div>
-
-                    {/* Title & Issue Date */}
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-                      <h4 className="font-sans text-sm font-bold text-white leading-snug group-hover:text-white/95 transition-colors duration-300">
-                        {cert.title}
-                      </h4>
-                      <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold shrink-0">
-                        {cert.date}
-                      </span>
-                    </div>
-
-                    {/* Description */}
-                    <p className="mt-3.5 font-sans text-xs text-gray-400 leading-relaxed font-light text-justify">
-                      {cert.description}
-                    </p>
-                  </div>
-
-                  {/* Skills Mastered & Actions */}
-                  <div className="mt-6 pt-4 border-t border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    {/* Skills list */}
-                    <div className="flex flex-wrap gap-1.5 max-w-md">
-                      {cert.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="rounded bg-white/2 px-2 py-0.5 font-sans text-[9px] text-gray-400 border border-white/5 shadow-sm hover:border-white/10 hover:text-white transition-all duration-300 cursor-default"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* CTA Button Block */}
-                    <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto">
-                      <button
-                        id={`view-cert-details-${idx}`}
-                        onClick={() => {
-                          setSelectedCert(cert);
-                          setViewMode("preview");
-                        }}
-                        className="cursor-pointer inline-flex items-center gap-1.5 rounded-lg bg-white/2 border border-white/10 px-3.5 py-1.5 font-sans text-[10px] font-semibold text-gray-300 hover:border-white/30 hover:bg-white/5 hover:text-white transition-all duration-300 shadow-sm"
-                      >
-                        View Details
-                        <Eye className="h-3.5 w-3.5 text-gray-400" />
-                      </button>
-                    </div>
-                  </div>
+          <div className="space-y-16">
+            {/* Category: NCC Certificates */}
+            {nccCerts.length > 0 && (
+              <div id="ncc-certificates-group" className="space-y-6">
+                <div className="flex items-center gap-2 border-b border-white/5 pb-3">
+                  <Shield className="h-4 w-4 text-gray-400" />
+                  <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-300">
+                    🏅 NCC Certificates ({nccCerts.length})
+                  </h4>
                 </div>
-              </SpotlightCard>
-            ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {nccCerts.map((cert, idx) => (
+                    <CertificateCard
+                      key={`ncc-${idx}`}
+                      cert={cert}
+                      onClick={() => {
+                        setSelectedCert(cert);
+                        setViewMode("preview");
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Category: Academic & Course Certificates */}
+            {academicCerts.length > 0 && (
+              <div id="academic-certificates-group" className="space-y-6">
+                <div className="flex items-center gap-2 border-b border-white/5 pb-3">
+                  <GraduationCap className="h-4 w-4 text-gray-400" />
+                  <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-300">
+                    🎓 Academic & Course Certificates ({academicCerts.length})
+                  </h4>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {academicCerts.map((cert, idx) => (
+                    <CertificateCard
+                      key={`academic-${idx}`}
+                      cert={cert}
+                      onClick={() => {
+                        setSelectedCert(cert);
+                        setViewMode("preview");
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Category: Hackathons, Competitions & Events */}
+            {competitionCerts.length > 0 && (
+              <div id="competition-certificates-group" className="space-y-6">
+                <div className="flex items-center gap-2 border-b border-white/5 pb-3">
+                  <Trophy className="h-4 w-4 text-gray-400" />
+                  <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-300">
+                    🏆 Hackathons, Competitions & Events ({competitionCerts.length})
+                  </h4>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {competitionCerts.map((cert, idx) => (
+                    <CertificateCard
+                      key={`comp-${idx}`}
+                      cert={cert}
+                      onClick={() => {
+                        setSelectedCert(cert);
+                        setViewMode("preview");
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Category: Achievements & Recognition */}
+            {achievementCerts.length > 0 && (
+              <div id="achievement-certificates-group" className="space-y-6">
+                <div className="flex items-center gap-2 border-b border-white/5 pb-3">
+                  <Star className="h-4 w-4 text-gray-400" />
+                  <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-300">
+                    ⭐ Achievements & Recognition ({achievementCerts.length})
+                  </h4>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {achievementCerts.map((cert, idx) => (
+                    <CertificateCard
+                      key={`achieve-${idx}`}
+                      cert={cert}
+                      onClick={() => {
+                        setSelectedCert(cert);
+                        setViewMode("preview");
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </motion.section>
 
@@ -394,20 +424,25 @@ export default function AboutView() {
       {/* Interactive Certification Modal Viewer */}
       <AnimatePresence>
         {selectedCert && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md cursor-pointer animate-fade-in"
+            onClick={() => setSelectedCert(null)}
+            role="dialog"
+            aria-modal="true"
+          >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="relative w-full max-w-5xl bg-zinc-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row h-[85vh]"
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-5xl bg-zinc-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row h-[90vh] md:h-[80vh] cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
-              <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
+              <div className="absolute top-4 right-4 z-50">
                 <button
                   onClick={() => setSelectedCert(null)}
-                  className="p-2 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors cursor-pointer shadow-md animate-fade-in"
+                  className="p-2 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all duration-200 cursor-pointer shadow-md"
                   aria-label="Close modal"
                 >
                   <X className="h-4 w-4" />
@@ -415,7 +450,7 @@ export default function AboutView() {
               </div>
 
               {/* Left Column: Metadata & Credential Details */}
-              <div className="w-full md:w-[350px] shrink-0 border-r border-white/10 p-6 flex flex-col justify-between h-full bg-zinc-950 overflow-y-auto">
+              <div className="w-full md:w-[380px] shrink-0 border-t md:border-t-0 md:border-r border-white/10 p-6 flex flex-col justify-between h-auto md:h-full bg-zinc-950 overflow-y-auto order-2 md:order-1">
                 <div className="space-y-6">
                   <div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-zinc-900 border border-white/5 text-gray-400 font-mono text-[9px] uppercase tracking-wider">
@@ -431,17 +466,23 @@ export default function AboutView() {
 
                   <div className="space-y-3.5 border-t border-b border-white/5 py-4">
                     <div>
-                      <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold">RECIPIENT</span>
-                      <p className="font-sans text-xs text-white font-medium">{selectedCert.recipient}</p>
+                      <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold">CATEGORY</span>
+                      <p className="font-sans text-xs text-white font-medium">{selectedCert.category}</p>
                     </div>
-                    <div>
-                      <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold">ISSUE DATE</span>
-                      <p className="font-sans text-xs text-white font-medium">{selectedCert.date}</p>
+                    <div className="flex gap-x-8">
+                      <div>
+                        <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold">RECIPIENT</span>
+                        <p className="font-sans text-xs text-white font-medium">{selectedCert.recipient}</p>
+                      </div>
+                      <div>
+                        <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold">COMPLETION YEAR</span>
+                        <p className="font-sans text-xs text-white font-medium">{selectedCert.date}</p>
+                      </div>
                     </div>
                   </div>
 
                   <div>
-                    <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold">ABOUT THE COURSE</span>
+                    <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold">ABOUT THE CREDENTIAL</span>
                     <p className="mt-1 font-sans text-xs text-gray-400 leading-relaxed font-light text-justify">
                       {selectedCert.description}
                     </p>
@@ -460,9 +501,38 @@ export default function AboutView() {
                       ))}
                     </div>
                   </div>
+
+                  {selectedCert.technologies && selectedCert.technologies.length > 0 && (
+                    <div>
+                      <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold">ASSOCIATED TECHNOLOGIES</span>
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {selectedCert.technologies.map((tech: string) => (
+                          <span
+                            key={tech}
+                            className="rounded bg-[rgba(var(--accent-rgb,255,255,255),0.03)] px-2 py-0.5 font-sans text-[9px] text-[rgb(var(--accent-rgb,255,255,255))] border border-[rgba(var(--accent-rgb,255,255,255),0.1)]"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Achievement Status */}
+                  <div>
+                    <span className="font-mono text-[9px] text-gray-500 uppercase tracking-wider font-semibold">ACHIEVEMENT STATUS</span>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[9px] font-mono font-semibold text-emerald-400">
+                        <ShieldCheck className="h-3 w-3 text-emerald-400 animate-pulse" />
+                        Completed & Verified
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[9px] font-mono font-semibold text-indigo-400">
+                        No Sensitive Data Excluded
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Left col bottom actions */}
                 <div className="mt-8 pt-4 border-t border-white/5">
                   <button
                     onClick={() => setSelectedCert(null)}
@@ -474,12 +544,12 @@ export default function AboutView() {
               </div>
 
               {/* Right Column: High-Fidelity Viewer */}
-              <div className="flex-1 bg-black p-6 flex flex-col justify-center items-center relative min-h-[40vh] md:h-full">
+              <div className="flex-1 bg-black p-6 flex flex-col justify-center items-center relative min-h-[40vh] md:h-full order-1 md:order-2 border-b md:border-b-0 border-white/10">
                 <div className="w-full h-full flex items-center justify-center">
                   <OptimizedImage
                     src={selectedCert.image}
                     alt={selectedCert.title}
-                    className="max-w-full max-h-[75vh] rounded-lg shadow-2xl object-contain border border-white/10"
+                    className="max-w-full max-h-[35vh] md:max-h-[70vh] rounded-lg shadow-2xl object-contain border border-white/10"
                     referrerPolicy="no-referrer"
                   />
                 </div>

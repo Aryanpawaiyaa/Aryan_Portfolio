@@ -21,6 +21,10 @@ export interface WorkExperience {
   period: string;
   description: string[];
   skills?: string[];
+  link?: {
+    label: string;
+    url: string;
+  };
 }
 
 export interface Education {
