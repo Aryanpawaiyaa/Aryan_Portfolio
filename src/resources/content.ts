@@ -2,8 +2,8 @@ import avatar from "../assets/images/profile/avatar.webp";
 import { Personal, SocialLink, WorkExperience, Education, SkillGroup, Project, BlogPost, GalleryItem, Newsletter } from "../types";
 
 export const personal: Personal = {
-  name: "Aryan Narwariya",
-  role: "Design Engineer & Systems Architect",
+  name: "Aryan",
+  role: "Front-End, Robotics & Systems Engineer",
   avatar: avatar,
   location: "Gwalior, Madhya Pradesh, India",
   bio: "I craft clean interface systems, build production-grade design tools, and write front-end code that bridges the gap between layout precision and clean architecture.",
@@ -54,7 +54,7 @@ export const workExperiences: WorkExperience[] = [
   },
   {
     company: "DroneX Aerotech Club, MITS",
-    role: "Technical Member",
+    role: "Technical Co-Lead",
     location: "Gwalior, MP",
     period: "2025 — Present",
     description: [
@@ -135,28 +135,45 @@ export const skills: SkillGroup[] = [
 
 export const projects: Project[] = [
   {
-    id: "design-system-v2",
-    title: "Once System Design Kit v2",
-    category: "Design System",
-    tags: ["TypeScript", "Design Tokens", "Tailwind"],
-    description: "A complete, modular design system architecture with fully automated tokens, semantic tokens, dark mode compatibility, and zero-runtime component wrappers.",
-    content: `### Objective
-The goal was to build a multi-brand, highly themeable design system that gives both designers and engineers absolute structural consistency. Designers manage visual styles in Figma, which automatically build and output Tailwind classes and CSS variables via CI pipelines.
+    id: "esp-drone-project",
+    title: "ESP-Drone",
+    category: "Robotics",
+    tags: ["ESP32", "ESP-IDF", "IoT", "C/C++"],
+    description: "An open-source drone project built around the Espressif ESP32 family, designed for control via mobile app or gamepad and ideal for STEAM education.",
+    content: `### Overview
+**ESP-Drone** is an open-source drone project built around the Espressif ESP32, ESP32-S2, and ESP32-S3 Wi-Fi chips. It is designed to be controlled through a mobile application or gamepad over a Wi-Fi connection. With its simple hardware layout and a clean, extensible codebase, this project is well-suited for STEAM education and hobbyist development. The main flight control code is ported from the popular **Crazyflie** open-source project.
 
-### Key Contributions
-- **Semantic Mapping**: Designed a 3-tier token hierarchy (Global -> Semantic -> Component) that allows instantaneous rebranding without changing a single line of component code.
-- **Framer Motion Presets**: Created unified spring physical variables so that modal entries, sidebar transitions, and accordion dropdowns feel perfectly coherent across the suite.
-- **Accessibility Integration**: Built native keyboard focus-traps and ARIA-compliant attributes right into primitive structural containers.
+### Key Technologies & Frameworks
+- **Microcontroller Platform:** Espressif ESP32, ESP32-S2, ESP32-S3
+- **Framework:** ESP-IDF (Espressif IoT Development Framework) release/v5.0
+- **Communication Protocols:** Wi-Fi, ESP-NOW
+- **Core Logic:** Ported from Crazyflie (GPL3.0)
+- **Libraries:** Includes ESP-DSP library (by WhyEngineer) for digital signal processing
 
-### Results
-- Shipping speed increased by approximately **40%** across three independent product teams.
-- Design-to-code drift fell to **0%** due to git-synced Token pipelines.
-- Absolute compliance with **WCAG 2.1 AA** color contrast standards.`,
-    date: "May 2025",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&h=500&q=80",
+### Features
+
+**1. Flight Modes**
+- **Stabilize Mode:** Keeps the drone leveled during flight.
+- **Height-hold Mode:** Maintains a consistent altitude (requires additional hardware extensions).
+- **Position-hold Mode:** Maintains a consistent 3D position in the air (requires additional hardware extensions).
+
+**2. Control Systems**
+- **Mobile App Control:** Dedicated iOS and Android applications are available for piloting over Wi-Fi.
+- **cfclient Support:** Compatible with the Crazyflie Python-based desktop client.
+- **ESP-BOX3 Joystick Control:** Enables direct control using the ESP-BOX3 joystick through the low-latency ESP-NOW protocol.
+
+### Code Architecture
+- Uses a modular, component-based structure typical of ESP-IDF projects.
+- Contains directories such as \`core/\` for flight algorithms, \`drivers/\` for hardware interfacing, \`lib/\` for DSP and other utilities, and \`platform/\`.
+
+### Use Cases
+- **STEAM Education:** A great hands-on platform for learning embedded systems, control theory, and IoT development.
+- **Custom Drone Builds:** The extensible architecture allows developers to add custom sensors or navigation algorithms.`,
+    date: "2026 (Personel interest)",
+    image: "https://images.unsplash.com/photo-1579822989269-e70a1a0f5fc0?auto=format&fit=crop&w=800&h=500&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=600&h=400&q=80",
-      "https://images.unsplash.com/photo-1618005198143-e5283b519a7f?auto=format&fit=crop&w=600&h=400&q=80"
+      "https://images.unsplash.com/photo-1527453303861-1c3f25d978a3?auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1629813257579-2efd02a55ea8?auto=format&fit=crop&w=600&h=400&q=80"
     ]
   },
   {
@@ -185,28 +202,51 @@ Space missions require extremely dense, reliable, and instantaneous feedback. Th
     ]
   },
   {
-    id: "calm-meditation-app",
-    title: "Aura Meditation & Soundscape UX",
-    category: "Design",
-    tags: ["Figma", "User Research", "UX/UI"],
-    description: "User research, branding, motion prototype, and accessible layouts for a screen-minimized mindfulness experience that leverages audio cues over bright visuals.",
-    content: `### Objective
-Most mindfulness apps keep users staring at screens. Aura was built to prioritize tactile gestures, screen-off audio guide loops, and highly localized dark modes that encourage eyes-closed relaxation.
+    id: "mouse-movement-extension",
+    title: "Mouse Movement Extension",
+    category: "Development",
+    tags: ["Python", "Flask", "OpenCV", "MediaPipe"],
+    description: "A computer vision-based web application that allows users to control their computer mouse cursor completely hands-free using hand gestures and eye tracking.",
+    content: `### Overview
+**Mouse Movement Extension** is a computer vision-based web application built with Flask that allows users to control their computer mouse cursor completely hands-free. It utilizes a regular webcam and AI-driven tracking to map human movements directly to screen coordinates.
 
-### Key Contributions
-- **Eyes-Free Interactions**: Created a physical swipe system that allows starting, pausing, and seeking soundscapes completely by touch without looking at buttons.
-- **Ambient Visualizer**: Programmed a fluid SVG concentric ripple animation representing inhalation and exhalation cycles, expanding with a gentle 4-7-8 breathing tempo.
-- **Audio Soundscapes**: Curated cross-faded natural sound modules (rain, wind, analog synthesizer drone) that merge seamlessly in the background.
+### Key Technologies & Tech Stack
+- **Backend / Server:** Python, Flask (Web framework)
+- **Computer Vision & AI:** OpenCV, MediaPipe (Face and Hand Landmark Tracking)
+- **System Automation:** PyAutoGUI (Mouse simulation)
+- **Frontend:** HTML5, CSS3 (Glassmorphism & Cyberpunk-inspired styling), Vanilla JavaScript
 
-### Results
-- Retained **75%** higher engagement over 30 days compared to competing visual-first dashboards.
-- Received outstanding feedback for accessibility from visually impaired focus groups.
-- Selected as "Most Creative Interface Concept" in the Design Engineers Circle.`,
-    date: "Aug 2024",
-    image: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&h=500&q=80",
+### Features
+
+**1. Multi-Modal Tracking**
+- ✋ **Hand Gesture Tracking:** 
+  - Index finger location controls the mouse cursor position.
+  - Pinching thumb and index finger triggers a Left Click (and allows dragging).
+  - Pinching thumb and middle finger triggers a Right Click (and dragging).
+- 👁️ **Iris Tracking:**
+  - Iris position controls the cursor on screen, mapping the eye gaze to screen coordinates.
+  - Eye blinking mechanism triggers a Left Click (includes a cooldown to prevent double clicks).
+
+**2. Live Configuration Dashboard**
+- **Glassmorphic Web UI:** A sleek, modern control panel to manage the system.
+- **Tracking Mode Toggle:** Seamlessly switch between Hand and Iris tracking on the fly.
+- **Dynamic Smoothing Adjuster:** A "Pointer Dynamics" slider allows the user to balance cursor responsiveness (raw) vs. stability (smoothed out).
+- **Live Feed Display:** Provides real-time video feedback of the tracking markers superimposed on the user.
+
+### Project Structure Highlights
+- \`server.py\`: Contains the core Flask server routes, MediaPipe integration logic, mathematical calculations for cursor mapping, and the PyAutoGUI state machine.
+- \`templates/index.html\`: The HTML layout for the Control Dashboard.
+- \`static/css/style.css\` & \`static/js/app.js\`: Frontend logic for UI interactions and API calls to control the backend engine.
+
+### Use Cases
+- Accessibility tool for users with motor impairments.
+- Touchless control system for public kiosks or sterile environments.
+- General ergonomic alternative to traditional hardware mice.`,
+    date: "2025 ( 2nd sem micro project )",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&h=500&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&h=400&q=80",
-      "https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?auto=format&fit=crop&w=600&h=400&q=80"
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&h=400&q=80"
     ]
   }
 ];
