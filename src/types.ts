@@ -6,6 +6,8 @@ export interface Personal {
   bio: string;
   signature: string;
   status: string;
+  email: string;
+  resumeUrl?: string;
 }
 
 export interface SocialLink {

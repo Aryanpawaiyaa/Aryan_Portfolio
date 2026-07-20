@@ -6,9 +6,11 @@ export const personal: Personal = {
   role: "Front-End, Robotics & Systems Engineer",
   avatar: avatar,
   location: "Gwalior, Madhya Pradesh, India",
-  bio: "I craft clean interface systems, build production-grade design tools, and write front-end code that bridges the gap between layout precision and clean architecture.",
+  bio: "Building modular web applications, programming embedded systems for UAVs and robotics, and applying data science to create interconnected platforms.",
   signature: "Aryan Narwariya",
-  status: "Available for contract roles"
+  status: "Available for contract roles",
+  email: "25cb1ar28@mitsgwl.ac.in",
+  resumeUrl: "#", // Replace with hosted resume PDF URL
 };
 
 export const socialLinks: SocialLink[] = [
