@@ -1,20 +1,41 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpRight, ArrowLeft, Calendar, Tag, Layers, Globe } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, Calendar, Tag, Layers, Globe, Clock } from "lucide-react";
 import { projects } from "../resources/content";
 import SpotlightCard from "./SpotlightCard";
 import { OptimizedImage } from "./OptimizedImage";
-
 
 interface WorkViewProps {
   selectedProjectId: string | null;
   onSelectProject: (id: string | null) => void;
 }
 
+function renderFormattedText(text: string) {
+  // Parse inline bold **text** and inline `code`
+  const parts = text.split(/(\*\*.*?\*\*|`.*?`)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={index} className="font-semibold text-white/95">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith("`") && part.endsWith("`")) {
+      return (
+        <code key={index} className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-[10.5px] text-emerald-400 border border-white/5">
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+    return part;
+  });
+}
+
 export default function WorkView({ selectedProjectId, onSelectProject }: WorkViewProps) {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const categories = ["All", "Design System", "Development", "Design"];
+  const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
 
   const filteredProjects = activeFilter === "All"
     ? projects
@@ -32,8 +53,8 @@ export default function WorkView({ selectedProjectId, onSelectProject }: WorkVie
   return (
     <div className="relative overflow-hidden grid-bg min-h-screen py-6">
       {/* Background Ambient Glows */}
-      <div className="absolute top-10 right-1/4 w-[400px] h-[400px] bg-white/[0.012] rounded-full filter blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-white/[0.008] rounded-full filter blur-[80px] pointer-events-none" />
+      <div className="absolute top-10 right-1/4 w-100 h-100 bg-white/[0.012] rounded-full filter blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-75 h-75 bg-white/[0.008] rounded-full filter blur-[80px] pointer-events-none" />
 
       <div id="work-view-container" className="relative z-10 mx-auto max-w-5xl px-6 py-12">
         <AnimatePresence mode="wait">
@@ -111,10 +132,19 @@ export default function WorkView({ selectedProjectId, onSelectProject }: WorkVie
                           </div>
                           {/* Content Meta */}
                           <div className="mt-5 px-0.5">
-                            <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-wider text-gray-500 font-semibold">
+                            <div className="flex flex-wrap items-center gap-2 font-mono text-[9px] uppercase tracking-wider text-gray-500 font-semibold">
                               <span>{project.category}</span>
                               <span className="h-1 w-1 rounded-full bg-zinc-800" />
                               <span>{project.date}</span>
+                              {project.readTime && (
+                                <>
+                                  <span className="h-1 w-1 rounded-full bg-zinc-800" />
+                                  <span className="flex items-center gap-1 text-emerald-400/90 font-medium">
+                                    <Clock className="h-2.5 w-2.5" />
+                                    {project.readTime}
+                                  </span>
+                                </>
+                              )}
                             </div>
                             <h3 className="mt-2.5 font-sans text-sm font-semibold text-white/95 transition-colors duration-300 group-hover:text-white flex items-center justify-between gap-1">
                               {project.title}
@@ -176,6 +206,15 @@ export default function WorkView({ selectedProjectId, onSelectProject }: WorkVie
                     <Calendar className="h-3.5 w-3.5 text-gray-500" />
                     {activeProject?.date.toUpperCase()}
                   </span>
+                  {activeProject?.readTime && (
+                    <>
+                      <span className="h-1.5 w-1.5 rounded-full bg-zinc-800" />
+                      <span className="flex items-center gap-1 text-emerald-400 font-medium">
+                        <Clock className="h-3.5 w-3.5 text-emerald-400" />
+                        {activeProject.readTime}
+                      </span>
+                    </>
+                  )}
                 </div>
                 <h1 className="mt-4 font-sans text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
                   {activeProject?.title}
@@ -207,24 +246,28 @@ export default function WorkView({ selectedProjectId, onSelectProject }: WorkVie
                       if (block.startsWith("###")) {
                         return (
                           <h3 key={i} className="font-sans text-sm font-semibold text-white mt-8 mb-3 border-l-2 border-white/25 pl-3">
-                            {block.replace("###", "").trim()}
+                            {renderFormattedText(block.replace("###", "").trim())}
                           </h3>
                         );
                       }
-                      if (block.startsWith("-")) {
+                      if (block.startsWith("-") || block.split("\n").some(line => line.trim().startsWith("-"))) {
                         return (
                           <ul key={i} className="list-disc pl-5 space-y-2.5 my-4 text-gray-400">
-                            {block.split("\n").map((li, j) => (
-                              <li key={j} className="text-gray-400 font-light leading-relaxed">
-                                {li.replace("-", "").trim()}
-                              </li>
-                            ))}
+                            {block.split("\n").map((li, j) => {
+                              const lineText = li.replace(/^-\s*/, "").trim();
+                              if (!lineText) return null;
+                              return (
+                                <li key={j} className="text-gray-400 font-light leading-relaxed">
+                                  {renderFormattedText(lineText)}
+                                </li>
+                              );
+                            })}
                           </ul>
                         );
                       }
                       return (
                         <p key={i} className="text-gray-400 font-light leading-relaxed text-justify">
-                          {block}
+                          {renderFormattedText(block)}
                         </p>
                       );
                     })}

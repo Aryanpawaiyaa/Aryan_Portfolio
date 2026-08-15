@@ -10,6 +10,27 @@ interface BlogViewProps {
   onSelectPost: (id: string | null) => void;
 }
 
+function renderFormattedText(text: string) {
+  const parts = text.split(/(\*\*.*?\*\*|`.*?`)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={index} className="font-semibold text-white">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith("`") && part.endsWith("`")) {
+      return (
+        <code key={index} className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-[10.5px] text-emerald-400 border border-white/5">
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+    return part;
+  });
+}
+
 export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [copied, setCopied] = useState(false);
@@ -216,7 +237,7 @@ export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps
                     if (trimmed.startsWith("###")) {
                       return (
                         <h3 key={i} className="font-sans text-sm font-semibold text-white mt-10 mb-3 border-l-2 border-white/25 pl-3">
-                          {trimmed.replace("###", "").trim()}
+                          {renderFormattedText(trimmed.replace(/^#{1,6}\s*/, "").trim())}
                         </h3>
                       );
                     }
@@ -227,7 +248,7 @@ export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps
                         <ol key={i} className="list-decimal pl-5 space-y-2.5 my-4 text-gray-400">
                           {trimmed.split("\n").map((item, idx) => (
                             <li key={idx} className="text-gray-400 font-light leading-relaxed">
-                              {item.replace(/^\d+\.\s*/, "").trim()}
+                              {renderFormattedText(item.replace(/^\d+\.\s*/, "").trim())}
                             </li>
                           ))}
                         </ol>
@@ -251,7 +272,7 @@ export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps
                         <ul key={i} className="list-disc pl-5 space-y-2 my-4 text-gray-400">
                           {trimmed.split("\n").map((item, idx) => (
                             <li key={idx} className="text-gray-400 font-light leading-relaxed">
-                              {item.replace("-", "").trim()}
+                              {renderFormattedText(item.replace(/^-\s*/, "").trim())}
                             </li>
                           ))}
                         </ul>
@@ -261,7 +282,7 @@ export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps
                     // Standard Paragraph
                     return (
                       <p key={i} className="text-gray-400 leading-relaxed text-justify font-light">
-                        {trimmed}
+                        {renderFormattedText(trimmed)}
                       </p>
                     );
                   })}

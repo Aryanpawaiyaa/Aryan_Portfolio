@@ -36,6 +36,17 @@ export interface Education {
   description?: string;
 }
 
+export interface NccExperience {
+  campName: string;
+  badge: string;
+  location: string;
+  period: string;
+  headline: string;
+  specialHighlight?: string;
+  description: string[];
+  skills: string[];
+}
+
 export interface SkillGroup {
   name: string;
   skills: string[];
@@ -49,6 +60,7 @@ export interface Project {
   description: string;
   content: string; // detailed markdown text
   date: string;
+  readTime?: string;
   image: string;
   link?: string;
   gallery?: string[];

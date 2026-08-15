@@ -96,8 +96,8 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
   return (
     <div className="relative overflow-hidden grid-bg min-h-screen">
       {/* Background Ambient Glows */}
-      <div className="absolute top-20 left-1/4 -translate-x-1/2 w-[400px] h-[400px] bg-white/1.5 rounded-full filter blur-[120px] pointer-events-none" />
-      <div className="absolute top-[50%] right-10 w-[300px] h-[300px] bg-white/1 rounded-full filter blur-[100px] pointer-events-none" />
+      <div className="absolute top-20 left-1/4 -translate-x-1/2 w-100 h-25 bg-white/1.5 rounded-full filter blur-[120px] pointer-events-none" />
+      <div className="absolute top-[50%] right-10 w-75 h-75 bg-white/1 rounded-full filter blur-[100px] pointer-events-none" />
 
       <motion.div
         id="home-view-container"
@@ -307,6 +307,12 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                       <span className="font-mono text-[9px] uppercase tracking-wider text-gray-500 font-semibold bg-white/3 border border-white/5 px-2 py-0.5 rounded">
                         {project.category}
                       </span>
+                      {project.readTime && (
+                        <span className="font-mono text-[9px] text-emerald-400/90 font-medium flex items-center gap-1">
+                          <Icons.Clock className="h-2.5 w-2.5" />
+                          {project.readTime}
+                        </span>
+                      )}
                     </div>
                     <h4 className="font-sans text-sm font-semibold text-white flex items-center gap-1.5 group-hover:text-white/90 transition-colors">
                       {project.title}
@@ -343,6 +349,12 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                       <span className="font-mono text-[8px] uppercase tracking-wider text-gray-500 font-semibold bg-white/3 border border-white/5 px-1.5 py-px rounded">
                         {project.category}
                       </span>
+                      {project.readTime && (
+                        <span className="font-mono text-[8px] text-emerald-400/90 font-medium flex items-center gap-0.5">
+                          <Icons.Clock className="h-2 w-2" />
+                          {project.readTime}
+                        </span>
+                      )}
                     </div>
                     <h4 className="font-sans text-xs font-semibold text-white leading-tight flex items-center gap-1">
                       {project.title}

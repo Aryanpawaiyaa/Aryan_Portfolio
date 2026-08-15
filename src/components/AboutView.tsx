@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Briefcase, GraduationCap, Code, Award, X, Eye, ShieldCheck, ArrowUpRight, Shield, Trophy, Star } from "lucide-react";
-import { personal, workExperiences, education, skills } from "../resources/content";
+import { Briefcase, GraduationCap, Code, Award, X, Eye, ShieldCheck, ArrowUpRight, Shield, Trophy, Star, Target, Compass, Flame } from "lucide-react";
+import { personal, workExperiences, education, skills, nccExperiences } from "../resources/content";
 import SpotlightCard from "./SpotlightCard";
 import certificateData from "../resources/certificates";
 import CertificateCard from "./CertificateCard";
@@ -48,6 +48,7 @@ const getIssuerBadge = (issuer: string) => {
 export default function AboutView() {
   const [selectedCert, setSelectedCert] = useState<any | null>(null);
   const [viewMode, setViewMode] = useState<"preview" | "pdf" | "details">("preview");
+  const [activeNccIdx, setActiveNccIdx] = useState(0);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -63,10 +64,8 @@ export default function AboutView() {
     };
   }, [selectedCert]);
 
-  const nccCerts = certificateData.certificates.filter(c => c.category === "NCC Certificates");
   const academicCerts = certificateData.certificates.filter(c => c.category === "Academic & Course Certificates");
-  const competitionCerts = certificateData.certificates.filter(c => c.category === "Hackathons, Competitions & Events");
-  const achievementCerts = certificateData.certificates.filter(c => c.category === "Achievements & Recognition");
+  const competitionCerts = certificateData.certificates.filter(c => c.category === "Hackathons, Competitions & Achievements");
 
   const getInitials = (name: string) => {
     if (name.includes("IIT")) return "IIT";
@@ -110,8 +109,8 @@ export default function AboutView() {
   return (
     <div className="relative overflow-hidden grid-bg min-h-screen py-6">
       {/* Ambient background accent glows */}
-      <div className="absolute top-24 left-10 w-[350px] h-[350px] bg-white/1.5 rounded-full filter blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-20 right-10 w-[400px] h-[400px] bg-white/1 rounded-full filter blur-[90px] pointer-events-none" />
+      <div className="absolute top-24 left-10 w-350px h-350px bg-white/1.5 rounded-full filter blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-20 right-10 w-400px h-400px bg-white/1 rounded-full filter blur-[90px] pointer-events-none" />
 
       <motion.div
         id="about-view-container"
@@ -164,7 +163,7 @@ export default function AboutView() {
             {workExperiences.map((exp, idx) => (
               <div id={`experience-block-${idx}`} key={idx} className="relative group">
                 {/* Timeline Connector node with smooth hardware glowing style */}
-                <div className="absolute left-[-31px] top-4 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-black border border-white/15 transition-all duration-300 group-hover:scale-125 group-hover:bg-[rgb(var(--accent-rgb,255,255,255))] group-hover:border-[rgb(var(--accent-rgb,255,255,255))] shadow-[0_0_8px_rgba(var(--accent-rgb,255,255,255),0.4)]" />
+                <div className="absolute -left-7.75 top-4 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-black border border-white/15 transition-all duration-300 group-hover:scale-125 group-hover:bg-[rgb(var(--accent-rgb,255,255,255))] group-hover:border-[rgb(var(--accent-rgb,255,255,255))] shadow-[0_0_8px_rgba(var(--accent-rgb,255,255,255),0.4)]" />
                 
                 <div className="flex gap-4">
                   {/* Elegant Logo Placeholder */}
@@ -271,7 +270,7 @@ export default function AboutView() {
           <div className="relative border-l border-white/5 pl-6 space-y-8">
             {education.map((edu, idx) => (
               <div id={`education-block-${idx}`} key={idx} className="relative group">
-                <div className="absolute left-[-31px] top-1.5 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-black border border-white/15 transition-all duration-300 group-hover:scale-125 group-hover:bg-white group-hover:border-white shadow-[0_0_8px_rgba(255,255,255,0.2)]" />
+                <div className="absolute -left-7.75 top-1.5 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-black border border-white/15 transition-all duration-300 group-hover:scale-125 group-hover:bg-white group-hover:border-white shadow-[0_0_8px_rgba(255,255,255,0.2)]" />
                 
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
                   <div>
@@ -296,6 +295,116 @@ export default function AboutView() {
           </div>
         </motion.section>
 
+        {/* NCC Tactical Camps & Military Immersion Section */}
+        <motion.section id="ncc-section" variants={itemVariants} className="mb-20">
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between border-b border-white/5 pb-3.5 mb-8 gap-2">
+            <h3 className="flex items-center gap-2.5 font-sans text-xs font-bold uppercase tracking-widest text-white/95">
+              <Shield className="h-4 w-4 text-emerald-400" />
+              National Cadet Corps (NCC) — Military Training & Tactical Camps
+            </h3>
+            <span className="font-mono text-[9px] text-emerald-400/90 font-semibold tracking-wider uppercase bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
+              3 Camps Completed • Army Wing
+            </span>
+          </div>
+
+          <div className="relative h-125 sm:h-125 w-full perspective-1000 mt-4">
+            {nccExperiences.map((camp, idx) => {
+              const isTop = activeNccIdx === idx;
+              const isSecond = (activeNccIdx + 1) % nccExperiences.length === idx;
+              
+              let zIndex = 10;
+              let yOffset = 48;
+              let scale = 0.9;
+              let opacity = 0.4;
+              
+              if (isTop) {
+                zIndex = 30;
+                yOffset = 0;
+                scale = 1;
+                opacity = 1;
+              } else if (isSecond) {
+                zIndex = 20;
+                yOffset = 24;
+                scale = 0.95;
+                opacity = 0.7;
+              }
+
+              return (
+                <motion.div
+                  key={idx}
+                  id={`ncc-camp-card-${idx}`}
+                  onClick={() => setActiveNccIdx(isTop ? (activeNccIdx + 1) % nccExperiences.length : idx)}
+                  animate={{ y: yOffset, scale, zIndex, opacity }}
+                  transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                  className={`absolute top-0 left-0 w-full rounded-xl border bg-black/90 p-6 sm:p-7 shadow-[0_8px_30px_rgba(0,0,0,0.4)] backdrop-blur-md cursor-pointer transition-colors ${
+                    isTop ? "border-emerald-500/50 hover:border-emerald-400/80" : "border-white/10 hover:border-emerald-500/30"
+                  }`}
+                >
+                  {/* Header info */}
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 border-b border-white/10 pb-4 mb-4">
+                    <div>
+                      <div className="flex items-center gap-2.5 flex-wrap">
+                        <h4 className="font-sans text-base font-bold text-white transition-colors">
+                          {camp.campName}
+                        </h4>
+                        <span className="inline-flex items-center gap-1 rounded-md bg-emerald-950/40 border border-emerald-500/30 px-2 py-0.5 font-sans text-[10px] font-semibold text-emerald-300">
+                          {camp.badge}
+                        </span>
+                      </div>
+                      <p className="mt-1 font-sans text-xs font-medium text-gray-300">
+                        {camp.headline}
+                      </p>
+                      <div className="mt-1 font-mono text-[10px] text-gray-400 flex items-center gap-2">
+                        <span className="text-gray-400">{camp.location}</span>
+                      </div>
+                    </div>
+                    <span className="font-mono text-[10px] font-bold text-gray-400 uppercase tracking-wider shrink-0 bg-white/5 px-2.5 py-1 rounded border border-white/10">
+                      {camp.period}
+                    </span>
+                  </div>
+
+                  {/* Special Highlight Callout if available */}
+                  {camp.specialHighlight && (
+                    <div className="mb-4 flex items-start gap-3 rounded-lg border border-amber-500/30 bg-amber-950/20 p-3.5 text-amber-200/90 shadow-sm">
+                      <Target className="h-4 w-4 text-amber-400 shrink-0 mt-0.5 animate-pulse" />
+                      <div>
+                        <div className="font-sans text-xs font-bold text-amber-300 uppercase tracking-wide">
+                          Special Military Highlight
+                        </div>
+                        <div className="mt-0.5 font-sans text-xs text-amber-200/90 leading-relaxed font-medium">
+                          {camp.specialHighlight}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Experience Points */}
+                  <ul className="space-y-2.5 mb-5">
+                    {camp.description.map((item, dIdx) => (
+                      <li key={dIdx} className="flex items-start gap-2.5 font-sans text-xs text-gray-300 leading-relaxed font-light">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400/80 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Skills/Competencies Badges */}
+                  <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/10">
+                    {camp.skills.map((skill, sIdx) => (
+                      <span
+                        key={sIdx}
+                        className="font-mono text-[9px] uppercase tracking-wider text-gray-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded transition-colors group-hover:border-emerald-500/20 group-hover:text-emerald-300"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.section>
+
         {/* Certifications & Credentials Section */}
         <motion.section id="certifications-section" variants={itemVariants} className="mb-20">
           <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between border-b border-white/5 pb-3.5 mb-10 gap-2">
@@ -309,29 +418,6 @@ export default function AboutView() {
           </div>
 
           <div className="space-y-16">
-            {/* Category: NCC Certificates */}
-            {nccCerts.length > 0 && (
-              <div id="ncc-certificates-group" className="space-y-6">
-                <div className="flex items-center gap-2 border-b border-white/5 pb-3">
-                  <Shield className="h-4 w-4 text-gray-400" />
-                  <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-300">
-                    🏅 NCC Certificates ({nccCerts.length})
-                  </h4>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {nccCerts.map((cert, idx) => (
-                    <CertificateCard
-                      key={`ncc-${idx}`}
-                      cert={cert}
-                      onClick={() => {
-                        setSelectedCert(cert);
-                        setViewMode("preview");
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Category: Academic & Course Certificates */}
             {academicCerts.length > 0 && (
@@ -357,43 +443,19 @@ export default function AboutView() {
               </div>
             )}
 
-            {/* Category: Hackathons, Competitions & Events */}
+            {/* Category: Hackathons, Competitions & Achievements */}
             {competitionCerts.length > 0 && (
               <div id="competition-certificates-group" className="space-y-6">
                 <div className="flex items-center gap-2 border-b border-white/5 pb-3">
                   <Trophy className="h-4 w-4 text-gray-400" />
                   <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-300">
-                    🏆 Hackathons, Competitions & Events ({competitionCerts.length})
+                    🏆 Hackathons, Competitions & Achievements ({competitionCerts.length})
                   </h4>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {competitionCerts.map((cert, idx) => (
                     <CertificateCard
                       key={`comp-${idx}`}
-                      cert={cert}
-                      onClick={() => {
-                        setSelectedCert(cert);
-                        setViewMode("preview");
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Category: Achievements & Recognition */}
-            {achievementCerts.length > 0 && (
-              <div id="achievement-certificates-group" className="space-y-6">
-                <div className="flex items-center gap-2 border-b border-white/5 pb-3">
-                  <Star className="h-4 w-4 text-gray-400" />
-                  <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-300">
-                    ⭐ Achievements & Recognition ({achievementCerts.length})
-                  </h4>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {achievementCerts.map((cert, idx) => (
-                    <CertificateCard
-                      key={`achieve-${idx}`}
                       cert={cert}
                       onClick={() => {
                         setSelectedCert(cert);
@@ -450,7 +512,7 @@ export default function AboutView() {
               </div>
 
               {/* Left Column: Metadata & Credential Details */}
-              <div className="w-full md:w-[380px] shrink-0 border-t md:border-t-0 md:border-r border-white/10 p-6 flex flex-col justify-between h-auto md:h-full bg-zinc-950 overflow-y-auto order-2 md:order-1">
+              <div className="w-full md:w-95 shrink-0 border-t md:border-t-0 md:border-r border-white/10 p-6 flex flex-col justify-between h-auto md:h-full bg-zinc-950 overflow-y-auto order-2 md:order-1">
                 <div className="space-y-6">
                   <div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-zinc-900 border border-white/5 text-gray-400 font-mono text-[9px] uppercase tracking-wider">
@@ -544,14 +606,26 @@ export default function AboutView() {
               </div>
 
               {/* Right Column: High-Fidelity Viewer */}
-              <div className="flex-1 bg-black p-6 flex flex-col justify-center items-center relative min-h-[40vh] md:h-full order-1 md:order-2 border-b md:border-b-0 border-white/10">
-                <div className="w-full h-full flex items-center justify-center">
-                  <OptimizedImage
-                    src={selectedCert.image}
-                    alt={selectedCert.title}
-                    className="max-w-full max-h-[35vh] md:max-h-[70vh] rounded-lg shadow-2xl object-contain border border-white/10"
-                    referrerPolicy="no-referrer"
-                  />
+              <div className="flex-1 bg-black p-6 flex flex-col relative min-h-[40vh] md:h-full order-1 md:order-2 border-b md:border-b-0 border-white/10 overflow-y-auto">
+                <div className={`w-full min-h-full flex flex-col items-center gap-8 ${selectedCert.images ? 'justify-start py-4' : 'justify-center'}`}>
+                  {selectedCert.images ? (
+                    selectedCert.images.map((img: string, idx: number) => (
+                      <OptimizedImage
+                        key={idx}
+                        src={img}
+                        alt={`${selectedCert.title} - part ${idx + 1}`}
+                        className="max-w-full rounded-lg shadow-2xl object-contain border border-white/10 shrink-0"
+                        referrerPolicy="no-referrer"
+                      />
+                    ))
+                  ) : (
+                    <OptimizedImage
+                      src={selectedCert.image}
+                      alt={selectedCert.title}
+                      className="max-w-full max-h-[35vh] md:max-h-[70vh] rounded-lg shadow-2xl object-contain border border-white/10"
+                      referrerPolicy="no-referrer"
+                    />
+                  )}
                 </div>
               </div>
             </motion.div>
