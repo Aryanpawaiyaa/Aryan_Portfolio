@@ -11,7 +11,7 @@
   --color-brand-border-hover: rgba(255, 255, 255, 0.2);
 }
 
-/* Base custom styles to replicate Once UI and premium SaaS/tech aesthetic */
+/* Base custom styles */
 body {
   background-color: var(--bg-main, #030303);
   color: var(--text-main, #f4f4f5);
@@ -142,7 +142,7 @@ body {
   color: #ffffff !important;
 }
 
-/* Premium Glassmorphism classes */
+/* Glassmorphism classes */
 .glass-header {
   background: var(--glass-header-bg, rgba(3, 3, 3, 0.7));
   backdrop-filter: blur(16px);
@@ -181,12 +181,12 @@ body {
   border-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Custom premium transitions */
-.transition-premium {
+/* Custom transitions */
+.transition-base {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Premium background glow elements */
+/* Background glow elements */
 .ambient-glow {
   position: absolute;
   width: 500px;
@@ -265,7 +265,7 @@ body {
   transform-origin: bottom left;
 }
 
-/* Grid overlay background to resemble high-end developer platforms */
+/* Grid overlay background */
 .grid-bg {
   background-image: var(--grid-bg-image, linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px));
   background-size: 40px 40px;

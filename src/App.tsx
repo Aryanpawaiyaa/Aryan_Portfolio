@@ -22,7 +22,7 @@ export default function App() {
     return (saved === "light" || saved === "dark") ? saved : "dark";
   });
 
-  // High-end live design state
+  // Design configuration state
   const [showGrid, setShowGrid] = useState(true);
   const [showDots, setShowDots] = useState(true);
   const [showParticles, setShowParticles] = useState(true);

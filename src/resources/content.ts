@@ -336,7 +336,7 @@ College professors and academic researchers often struggle with outdated, clunky
 - **Client Satisfaction & Monetization:** Delivered on paid milestones with 100% faculty client satisfaction, providing easy content management workflows so professors can update publications independently.
 
 ### 2. Personal Portfolio & Design System Architecture
-Designed and built a state-of-the-art personal portfolio showcasing robotics, embedded systems, and full-stack software engineering.
+Designed and built a custom personal portfolio showcasing robotics, embedded systems, and full-stack software engineering.
 
 **Core Architectural Features:**
 - **Dark-Mode First Aesthetics:** Engineered an immersive dark UI incorporating subtle grid overlays, glassmorphic cards, and customizable ambient accent themes (Emerald, Amber, Violet, White).

@@ -27,7 +27,7 @@ export default function Footer() {
               &copy; {currentYear} {personal.name.toUpperCase()}
             </p>
             <p className="mt-1.5 font-sans text-[10px] font-light tracking-wide footer-sub">
-              CC BY-NC 4.0 Attribution. Powered by React, Tailwind CSS, and Motion.
+              Designed and built by Aryan Narwariya. Open source on GitHub.
             </p>
           </div>
 
