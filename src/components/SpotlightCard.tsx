@@ -33,7 +33,7 @@ export default function SpotlightCard({ id, children, className = "", onClick }:
       id={id}
       onClick={onClick}
       onMouseMove={handleMouseMove}
-      className={`group relative overflow-hidden rounded-xl border border-white/5 bg-[#08080a]/60 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-white/15 hover:shadow-[0_12px_40px_rgba(0,0,0,0.8)] shadow-[0_4px_30px_rgba(0,0,0,0.4)] ${className}`}
+      className={`spotlight-card group relative overflow-hidden rounded-xl border border-white/5 bg-[#08080a]/60 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-white/15 hover:shadow-[0_12px_40px_rgba(0,0,0,0.8)] shadow-[0_4px_30px_rgba(0,0,0,0.4)] ${className}`}
     >
       {/* Spotlight Ambient Radial Glow */}
       <motion.div

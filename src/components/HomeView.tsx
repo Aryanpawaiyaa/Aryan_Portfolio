@@ -1,11 +1,45 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import * as Icons from "lucide-react";
+import {
+  MapPin,
+  Clock,
+  ArrowRight,
+  FileText,
+  Mail,
+  Cpu,
+  Sparkles,
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Instagram,
+  Link as LinkIcon,
+  Code,
+  Layers,
+  Terminal,
+  Globe,
+  BookOpen,
+  Award,
+  LucideIcon
+} from "lucide-react";
 import { personal, projects, socialLinks } from "../resources/content";
 import certificateData from "../resources/certificates";
 import SpotlightCard from "./SpotlightCard";
 import MagneticEffect from "./MagneticEffect";
 import { OptimizedImage } from "./OptimizedImage";
+
+const ICON_MAP: Record<string, LucideIcon> = {
+  Github,
+  Linkedin,
+  Instagram,
+  Code,
+  Cpu,
+  Layers,
+  Terminal,
+  Sparkles,
+  Globe,
+  BookOpen,
+  Award,
+};
 
 interface HomeViewProps {
   onNavigate: (tabId: string) => void;
@@ -25,6 +59,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
         timeZone: "Asia/Kolkata",
         hour: "2-digit",
         minute: "2-digit",
+        second: "2-digit",
         hour12: true,
       };
       setTime(now.toLocaleTimeString("en-US", options));
@@ -35,7 +70,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
     return () => clearInterval(interval);
   }, []);
 
-  // Accent color utilities
+  // Theme styling helpers
   const textAccent =
     accentColor === "amber" ? "text-amber-400" :
     accentColor === "emerald" ? "text-emerald-400" :
@@ -50,11 +85,8 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
 
   // Dynamic social icon helper
   const renderSocialIcon = (iconName: string) => {
-    const IconComponent = (Icons as any)[iconName];
-    if (IconComponent) {
-      return <IconComponent className="h-4 w-4" />;
-    }
-    return <Icons.Link className="h-4 w-4" />;
+    const IconComponent = ICON_MAP[iconName] || LinkIcon;
+    return <IconComponent className="h-4 w-4" />;
   };
 
   // Animation variants
@@ -120,11 +152,11 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                   {personal.status}
                 </div>
                 <div className="flex items-center gap-1 text-gray-500">
-                  <Icons.MapPin className="h-3 w-3" />
+                  <MapPin className="h-3 w-3" />
                   {personal.location}
                 </div>
                 <div className="flex items-center gap-1 text-gray-500">
-                  <Icons.Clock className="h-3 w-3" />
+                  <Clock className="h-3 w-3" />
                   {time || "..."}
                 </div>
               </div>
@@ -151,7 +183,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                     className={`group flex items-center gap-2 rounded-lg px-5 py-2.5 font-sans text-xs font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg cursor-pointer ${bgAccent}`}
                   >
                     View Projects
-                    <Icons.ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </button>
                 </MagneticEffect>
                 <MagneticEffect>
@@ -162,7 +194,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                     rel="noreferrer noopener"
                     className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/2 px-5 py-2.5 font-sans text-xs font-semibold text-gray-300 transition-all duration-300 hover:border-white/30 hover:bg-white/5 hover:text-white hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                   >
-                    <Icons.FileText className="h-3.5 w-3.5" />
+                    <FileText className="h-3.5 w-3.5" />
                     Resume
                   </a>
                 </MagneticEffect>
@@ -172,7 +204,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                     href={`mailto:${personal.email}`}
                     className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/2 px-5 py-2.5 font-sans text-xs font-semibold text-gray-300 transition-all duration-300 hover:border-white/30 hover:bg-white/5 hover:text-white hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                   >
-                    <Icons.Mail className="h-3.5 w-3.5" />
+                    <Mail className="h-3.5 w-3.5" />
                     Contact
                   </a>
                 </MagneticEffect>
@@ -243,14 +275,14 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
         <motion.section id="core-expertise" variants={itemVariants} className="space-y-5">
           <div className="border-b border-white/5 pb-3">
             <h3 className="flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-widest text-white/80">
-              <Icons.Cpu className="h-3.5 w-3.5 text-gray-400" />
+              <Cpu className="h-3.5 w-3.5 text-gray-400" />
               Core Expertise
             </h3>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {coreExpertise.map((domain) => {
-              const SkillIcon = (Icons as any)[domain.icon] || Icons.Cpu;
+              const SkillIcon = ICON_MAP[domain.icon] || Cpu;
               return (
                 <SpotlightCard key={domain.title} className="p-3.5">
                   <div className="flex items-center gap-2 mb-2">
@@ -270,7 +302,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
         <motion.section id="featured-projects" variants={itemVariants} className="space-y-5">
           <div className="flex items-center justify-between border-b border-white/5 pb-3">
             <h3 className="flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-widest text-white/80">
-              <Icons.Sparkles className="h-3.5 w-3.5 text-gray-400" />
+              <Sparkles className="h-3.5 w-3.5 text-gray-400" />
               Featured Projects
             </h3>
             <button
@@ -279,7 +311,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
               className="group flex items-center gap-1 font-sans text-xs font-medium text-gray-400 transition-colors duration-300 hover:text-white cursor-pointer"
             >
               All Projects
-              <Icons.ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+              <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" />
             </button>
           </div>
 
@@ -309,14 +341,14 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                       </span>
                       {project.readTime && (
                         <span className="font-mono text-[9px] text-emerald-400/90 font-medium flex items-center gap-1">
-                          <Icons.Clock className="h-2.5 w-2.5" />
+                          <Clock className="h-2.5 w-2.5" />
                           {project.readTime}
                         </span>
                       )}
                     </div>
                     <h4 className="font-sans text-sm font-semibold text-white flex items-center gap-1.5 group-hover:text-white/90 transition-colors">
                       {project.title}
-                      <Icons.ArrowUpRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 text-white/60" />
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 text-white/60" />
                     </h4>
                     <p className="font-sans text-[11px] leading-relaxed text-gray-400 font-light line-clamp-2">
                       {project.description}
@@ -351,14 +383,14 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                       </span>
                       {project.readTime && (
                         <span className="font-mono text-[8px] text-emerald-400/90 font-medium flex items-center gap-0.5">
-                          <Icons.Clock className="h-2 w-2" />
+                          <Clock className="h-2 w-2" />
                           {project.readTime}
                         </span>
                       )}
                     </div>
                     <h4 className="font-sans text-xs font-semibold text-white leading-tight flex items-center gap-1">
                       {project.title}
-                      <Icons.ArrowUpRight className="h-3 w-3 text-white/40 shrink-0" />
+                      <ArrowUpRight className="h-3 w-3 text-white/40 shrink-0" />
                     </h4>
                     <div className="flex flex-wrap gap-1">
                       {project.tags.slice(0, 3).map((tag) => (
@@ -396,7 +428,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                     href={`mailto:${personal.email}`}
                     className={`group flex items-center gap-2 rounded-lg px-5 py-2.5 font-sans text-xs font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg cursor-pointer ${bgAccent}`}
                   >
-                    <Icons.Mail className="h-3.5 w-3.5" />
+                    <Mail className="h-3.5 w-3.5" />
                     Send Email
                   </a>
                 </MagneticEffect>

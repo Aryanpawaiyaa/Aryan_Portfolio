@@ -250,6 +250,73 @@ export const projects: Project[] = [
     ]
   },
   {
+    id: "pcb-design-engineering",
+    title: "Advanced PCB Design & Engineering",
+    category: "Hardware Engineering",
+    tags: ["KiCad 10.0", "Manual Routing", "Programmatic PCB", "Power Distribution"],
+    readTime: "2 min read",
+    description: "Intermediate-level PCB designing featuring complex routing, custom power distribution boards, and programmatically generated layouts using KiCad 10.0.",
+    content: `### Overview
+As an embedded systems engineer, I have developed intermediate skills in PCB designing, bridging the gap between hardware prototyping and production-ready boards. My workflow heavily utilizes **KiCad 10.0**.
+
+### Design Methodology
+- **Manual Routing:** I excel at manual trace routing for complex mixed-signal boards, ensuring signal integrity, proper grounding, and efficient component placement.
+- **Programmatic Design (Coding Way):** Beyond manual drafting, I leverage KiCad's scripting and coding capabilities to programmatically generate PCB layouts, automate repetitive tasks, and design complex geometric board patterns.
+
+### Key Projects & Capabilities
+- **Complex Custom PCBs:** Designed customized PCBs tailored for highly specific tasks that cannot be solved using off-the-shelf market solutions.
+- **Power Distribution Boards (PDBs):** Created reliable basic and intermediate PDBs for drones and robotic systems, safely managing high current draws and multiple voltage regulators.
+
+### Image Gallery
+*(Empty boxes reserved below for future PCB renders and photos)*
+`,
+    date: "2026",
+    image: "https://placehold.co/800x500/111111/444444?text=Replace+With+Main+PCB+Cover+Image",
+    gallery: [
+      "https://placehold.co/600x400/111111/444444?text=Replace+With+PCB+Render+1",
+      "https://placehold.co/600x400/111111/444444?text=Replace+With+PCB+Render+2",
+      "https://placehold.co/600x400/111111/444444?text=Replace+With+PCB+Render+3"
+    ]
+  },
+  {
+    id: "cad-3d-modeling-robotics",
+    title: "3D Modeling & CAD Design for Robotics",
+    category: "Hardware Engineering",
+    tags: ["Fusion 360", "AutoCAD", "3D Printing", "Robotics", "Rapid Prototyping"],
+    readTime: "4 min read",
+    description: "Narrative journey of designing custom robotic parts, drone chassis, and toy cars using Fusion 360 and AutoCAD, brought to life through 3D printing.",
+    content: `### Introduction: The Shift from Screen to Physical Reality
+My journey into 3D modeling and Computer-Aided Design (CAD) began out of sheer necessity. While working on various robotics and embedded systems projects, I constantly ran into the same roadblock: off-the-shelf parts never quite fit the specific dimensions or functional requirements of my custom builds. I realized that if I wanted to build truly integrated systems, I needed the ability to fabricate my own custom hardware. That realization pushed me to master tools like **Fusion 360** and **AutoCAD**.
+
+### Mastering the Tools: Fusion 360 & AutoCAD
+I started by learning the core principles of parametric modeling. In **Fusion 360**, I discovered the power of timeline-based design, allowing me to iterate on complex geometries without breaking the entire model. I learned how to sketch precisely, extrude with purpose, and apply constraints that mirrored real-world physics. **AutoCAD** became my go-to for precise 2D drafting and layout planning before translating concepts into three dimensions.
+
+### Designing for Drones and Robotics
+One of my first major challenges was designing parts for custom drones. A drone chassis needs to be incredibly lightweight yet rigid enough to withstand the forces of brushless motors and inevitable hard landings. I spent hours in Fusion 360 running stress simulations and hollowing out non-critical sections of the frame. 
+
+I designed custom motor mounts, aerodynamic canopies to protect sensitive flight controllers, and specialized landing gear. Beyond drones, I expanded into robotics, drafting structural brackets, sensor enclosures, and custom gears. Each design required meticulous attention to tolerances, ensuring that moving parts meshed perfectly without friction or play.
+
+### The Magic of 3D Printing
+Designing a part on a screen is deeply satisfying, but holding that part in your hands a few hours later is pure magic. I integrated a **3D printer** directly into my workflow, turning my digital CAD files into physical reality. 
+
+Learning to design for 3D printing (DFM - Design for Manufacturing) was a steep but rewarding learning curve. I had to understand how filament behaves, how to design without needing excessive support structures, and how to orient parts on the print bed for maximum structural strength. I learned to factor in shrinkage and layer adhesion, iterating rapidly—sometimes going from a rough sketch to a functional, printed prototype in a single afternoon.
+
+### Personal Projects: Toy Cars and Micro Drones
+While a lot of my CAD work was for serious robotics projects, I also applied these skills to personal passion projects. I designed entirely custom toy cars, meticulously modeling the chassis, wheels, and snap-fit body panels. I also engineered micro toy drones, pushing the limits of my 3D printer's resolution to create tiny, ultra-lightweight propeller guards and battery clips.
+
+These personal projects were my sandbox. They allowed me to experiment with organic shapes, complex surface modeling, and creative mechanical assemblies without the strict constraints of a formal engineering project.
+
+### Conclusion: The Full-Stack Hardware Engineer
+Today, CAD design and 3D printing are fundamental pillars of my skill set. They allow me to be a truly "full-stack" hardware engineer—someone who can write the firmware, design the PCB, and then draft and manufacture the physical enclosure that holds it all together. From the first digital sketch to the final printed prototype, the ability to manifest ideas into the physical world remains one of the most rewarding aspects of my engineering journey.`,
+    date: "2026 ",
+    image: "https://placehold.co/800x500/111111/444444?text=Replace+With+Main+CAD+Cover+Image",
+    gallery: [
+      "https://placehold.co/600x400/111111/444444?text=Replace+With+CAD+Render+1",
+      "https://placehold.co/600x400/111111/444444?text=Replace+With+3D+Print+Photo",
+      "https://placehold.co/600x400/111111/444444?text=Replace+With+Drone+Part+Image"
+    ]
+  },
+  {
     id: "faculty-portfolio-uiux-design",
     title: "Freelance UI/UX & Academic Web Design",
     category: "Design & Development",
@@ -370,7 +437,7 @@ Our 4-member team operated in parallel execution across a 12-hour clock:
 ### The 12-Hour Sprint & Challenges
 With only 12 hours on the clock, time management was ruthless:
 - Rapidly resolved API rate limits and response formatting to ensure zero latency during live evaluations.
-- Streamlined state management so AI review reports rendered seamlessly without blocking UI threads.
+- Streamlined state management so AI review reports rendered seamlessly without BLOCKING UI threads.
 - Iterated from blank repository to a fully functional interactive prototype in under 10 hours, dedicating the final 2 hours to pitch rehearsal and edge-case testing.
 
 ### Final Stage & Takeaways
@@ -460,41 +527,59 @@ While the drone didn't complete a full untethered hover during the tight final f
     coverImage: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&h=500&q=80"
   },
   {
-    id: "micro-interactions-and-motion",
-    title: "Crafting Micro-interactions with Spring Physics",
-    description: "Ditch simple ease-in-out CSS animations. Learn how to program high-performance physical acceleration curves that mimic real-world kinetic inertia.",
-    content: `### The Problem with CSS Transition Curves
-Standard CSS transitions are based on cubic-bezier curves (like \`ease-in-out\`). While functional, these curves are strictly deterministic based on time. A button slide takes exactly 300ms, accelerating and decelerating along an artificial path.
+    id: "suas-2026-competition-trinetra",
+    title: "SUAS 2026 USA — Building an Autonomous AI Drone with Team Trinetra",
+    description: "An inside look at our journey to the international SUAS 2026 competition in Oklahoma, building a fully AI-automated self-navigating drone and representing India on the global stage.",
+    content: `### Overview & Event Background
+As an official member of **Team Trinetra** (which operates under the DroneX Club of MITS Gwalior), I had the incredible opportunity to participate in the prestigious **Student Unmanned Aerial Systems (SUAS) 2026** competition. Held internationally in Tulsa, Oklahoma, USA from September 14 to 17, 2026, SUAS is one of the world's most demanding aerial robotics competitions.
 
-In the real world, nothing moves like this. Objects have mass, tension, and kinetic friction. 
+### The Mission: AI-Automated Self-Navigating Drone
+The core challenge of SUAS is not just to build a drone, but to engineer an intelligent system capable of autonomous flight. We built a **fully AI-automated, self-navigating drone**.
 
-### Spring Physics to the Rescue
-By replacing time-based curves with spring physics (tension, friction, mass), we create interactions that respond dynamically:
-- **Velocity Preservation**: If a user drags an item and releases it, the speed of their finger is preserved in the spring's launch momentum.
-- **No Jerky Stops**: If an animation is interrupted (e.g. hovering off a button before it finishes expanding), a spring transition seamlessly changes direction without an awkward skip.
+Every single team member actively participated, pooling our diverse skills in embedded systems, mechanical design, computer vision, and flight control. The drone had to navigate complex waypoints without human intervention, avoid obstacles dynamically, and execute precision tasks using advanced AI and computer vision algorithms. I am immensely proud of the collective effort; it truly was a massive undertaking where every person played a critical role.
 
-### How to Implement in React
-With libraries like \`motion\` (formerly Framer Motion), you can easily declare physical physics:
+### International Stage & India's Representation
+Participating in an international competition of this scale is a massive achievement. Out of all the global entries, **only two teams from India** are participating in SUAS 2026:
+- **Team Trinetra (MITS Gwalior):** Currently ranked **17th** on the flight order ranking!
+- **IIT Madras:** Ranked **31st**.
 
-\`\`\`typescript
-<motion.div
-  whileHover={{ scale: 1.05 }}
-  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-/>
-\`\`\`
+Competing at this level, and seeing our ranking up against some of the top technical institutions in the world, is an incredibly proud moment for all of us.
 
-Here:
-- **Stiffness (Tension)**: Controls the bounce force. Higher values make it snappier.
-- **Damping (Friction)**: Opposes the motion. Lower values cause more oscillation; higher values bring it to a gradual halt.
+### Funding & Industry Support
+Building a competition-grade autonomous drone and handling international logistics requires significant resources. We are immensely grateful to **Vyom Drones Private Limited**, a pioneering startup based out of Gwalior. Under the leadership of their CEO, **Santosh Sharma**, Vyom Drones completely funded our project expenses. Their belief in our vision and their financial support were instrumental in turning our designs into reality and getting us to Oklahoma.
 
-### Three Rules of Great UI Motion
-1. **Keep it Subdued**: Large-scale layout shifts should be fast (<200ms) and highly dampened.
-2. **Add Haptic Feedbacks**: Small buttons can afford a bit more stiffness to feel springy and responsive to the cursor.
-3. **Respect user settings**: Always query \`prefers-reduced-motion\` and disable animations gracefully for users who request it.`,
-    date: "May 14, 2026",
-    readTime: "2 min read",
-    category: "Tutorials",
-    coverImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&h=500&q=80"
+### Key Takeaways
+Building for SUAS tested our engineering mettle under strict deadlines and complex international rules. It pushed our AI, robotics, and teamwork skills to the absolute limit. It was not just a competition, but a masterclass in autonomous systems engineering.`,
+    date: "September 2026",
+    readTime: "4 min read",
+    category: "Competitions",
+    coverImage: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&h=500&q=80"
+  },
+  {
+    id: "mov-filmmaking-HAPPENING",
+    title: "Beyond Engineering: Winning the .MOV Filmmaking Competition",
+    description: "Stepping outside the technical domain to direct, shoot, and act in a 22-minute short film, 'HAPPENING', which secured 1st position in a university-level movie-making competition.",
+    content: `### Overview & The Creative Shift
+While my primary domain lies in robotics and embedded systems, I firmly believe that engineering and storytelling share the same creative DNA. Recently, I collaborated with Nishant Singh Kushwah on the **.MOV Movie Making Competition** at the university level. It was an opportunity to step entirely out of my comfort zone and dive into the fast-paced world of cinematography, direction, and acting.
+
+### The Challenge: A 4-Day Sprint
+The competition format was incredibly demanding: we had exactly four days to conceptualize, shoot, act, and edit a complete short film. 
+
+Our team consisted of six students pulled from various technical departments, including Computer Science (CST), Information Technology (IT), and Electronics (ECE). Managing a multidisciplinary team under a tight deadline was remarkably similar to managing a hackathon, but instead of compiling code, we were framing shots and managing lighting. We successfully produced a 22-minute short film titled **HAPPENING**.
+
+### The Victory
+The intense collaboration paid off beautifully. *HAPPENING* secured the **1st Position** in the university-level competition. 
+
+Working in this entirely new field—handling cameras, coordinating actor movements, and editing timelines—provided a refreshing perspective on project management and creative execution. The precision required to edit video matched the rigor of debugging a software project, but with an entirely different creative output.
+
+### Continuing the Journey
+Following the success of *HAPPENING*, our team to work on another short film project titled **BLOCKING**. Both projects have been published on Instagram (where I am tagged), showcasing our journey from engineering students to amateur filmmakers. 
+
+Stepping out of the engineering lab and looking through a camera lens was an invaluable experience. It reinforced the importance of cross-disciplinary collaboration and proved that the problem-solving skills learned in engineering can be successfully applied to any creative medium.`,
+    date: "2026",
+    readTime: "3 min read",
+    category: "Creative",
+    coverImage: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&h=500&q=80"
   }
 ];
 

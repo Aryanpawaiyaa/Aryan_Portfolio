@@ -5,6 +5,7 @@ interface InteractiveGridProps {
   showDots?: boolean;
   glowStrength?: number;
   accentColor?: "white" | "amber" | "emerald" | "violet";
+  themeMode?: "dark" | "light";
 }
 
 export default function InteractiveGrid({
@@ -12,6 +13,7 @@ export default function InteractiveGrid({
   showDots = true,
   glowStrength = 0.4,
   accentColor = "white",
+  themeMode = "dark",
 }: InteractiveGridProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -55,10 +57,12 @@ export default function InteractiveGrid({
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      let accentRgb = "255, 255, 255";
+      let accentRgb = themeMode === "light" ? "15, 23, 42" : "255, 255, 255";
       if (accentColor === "amber") accentRgb = "245, 158, 11";
-      else if (accentColor === "emerald") accentRgb = "16, 185, 129";
-      else if (accentColor === "violet") accentRgb = "139, 92, 246";
+      else if (accentColor === "emerald") accentRgb = themeMode === "light" ? "5, 150, 105" : "16, 185, 129";
+      else if (accentColor === "violet") accentRgb = themeMode === "light" ? "124, 58, 237" : "139, 92, 246";
+
+      const opMultiplier = themeMode === "light" ? 3.5 : 1;
 
       // 1. Draw subtle interactive spotlight radial glow around the cursor
       if (mouse.x !== -1000 && mouse.y !== -1000 && glowStrength > 0) {
@@ -70,8 +74,8 @@ export default function InteractiveGrid({
           mouse.y,
           320
         );
-        gradient.addColorStop(0, `rgba(${accentRgb}, ${0.08 * glowStrength})`);
-        gradient.addColorStop(0.4, `rgba(${accentRgb}, ${0.025 * glowStrength})`);
+        gradient.addColorStop(0, `rgba(${accentRgb}, ${0.08 * glowStrength * opMultiplier})`);
+        gradient.addColorStop(0.4, `rgba(${accentRgb}, ${0.025 * glowStrength * opMultiplier})`);
         gradient.addColorStop(1, `rgba(${accentRgb}, 0)`);
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -81,7 +85,7 @@ export default function InteractiveGrid({
 
       // 2. Draw vertical and horizontal grid lines with 3D lens warping
       if (showGrid) {
-        ctx.strokeStyle = `rgba(${accentRgb}, 0.015)`;
+        ctx.strokeStyle = `rgba(${accentRgb}, ${0.015 * opMultiplier})`;
         ctx.lineWidth = 1;
 
         // Draw vertical warped lines
@@ -161,12 +165,12 @@ export default function InteractiveGrid({
             const distance = Math.hypot(dx, dy);
 
             let dotSize = 1;
-            let opacity = 0.05;
+            let opacity = 0.05 * opMultiplier;
 
             if (distance < warpRadius) {
               const factor = (warpRadius - distance) / warpRadius;
               dotSize = 1 + factor * 2.2;
-              opacity = 0.05 + factor * 0.35;
+              opacity = 0.05 * opMultiplier + factor * 0.35;
 
               // Distort dot position identically to the lines
               const force = (1 + Math.cos((distance * Math.PI) / warpRadius)) / 2;
@@ -194,7 +198,7 @@ export default function InteractiveGrid({
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [showGrid, showDots, glowStrength, accentColor]);
+  }, [showGrid, showDots, glowStrength, accentColor, themeMode]);
 
   return (
     <canvas

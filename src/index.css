@@ -13,12 +13,32 @@
 
 /* Base custom styles to replicate Once UI and premium SaaS/tech aesthetic */
 body {
-  background-color: #030303;
-  color: #f4f4f5;
+  background-color: var(--bg-main, #030303);
+  color: var(--text-main, #f4f4f5);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Light & Dark Theme Variables */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg-main: #f8fafc;
+  --text-main: #0f172a;
+  --text-sub: #475569;
+  --text-muted: #64748b;
+  --accent-rgb-default: 15, 23, 42;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-main: #030303;
+  --text-main: #f4f4f5;
+  --text-sub: #9ca3af;
+  --text-muted: #6b7280;
+  --accent-rgb-default: 255, 255, 255;
 }
 
 /* Selection colors */
@@ -27,27 +47,120 @@ body {
   color: #000000;
 }
 
+.light-mode ::selection {
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+/* Light Mode Comprehensive Class Overrides */
+.light-mode {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.light-mode #app-root-container {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.light-mode .bg-black,
+.light-mode .bg-zinc-950,
+.light-mode .bg-black\/80,
+.light-mode .bg-black\/90,
+.light-mode .bg-black\/95,
+.light-mode .bg-black\/50,
+.light-mode .bg-zinc-900 {
+  background-color: #ffffff !important;
+}
+
+.light-mode .bg-black\/75 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.light-mode .border-white\/5,
+.light-mode .border-white\/10,
+.light-mode .border-white\/20,
+.light-mode .border-white\/15,
+.light-mode .border-white\/25 {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+.light-mode .text-white {
+  color: #0f172a !important;
+}
+
+.light-mode .text-gray-300,
+.light-mode .text-gray-400 {
+  color: #334155 !important;
+}
+
+.light-mode .text-gray-500,
+.light-mode .text-gray-600 {
+  color: #64748b !important;
+}
+
+.light-mode .text-white\/80,
+.light-mode .text-white\/90 {
+  color: #1e293b !important;
+}
+
+.light-mode .bg-white\/1,
+.light-mode .bg-white\/2,
+.light-mode .bg-white\/3,
+.light-mode .bg-white\/4,
+.light-mode .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+}
+
+.light-mode .bg-white\/7,
+.light-mode .bg-white\/8,
+.light-mode .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.07) !important;
+}
+
+.light-mode .hover\:bg-white\/10:hover,
+.light-mode .hover\:bg-white\/5:hover,
+.light-mode .hover\:bg-white\/8:hover,
+.light-mode .hover\:bg-white\/20:hover {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-mode .shadow-\[0_20px_50px_rgba\(0\,0\,0\,0\.8\)\] {
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-mode .shadow-\[0_10px_30px_rgba\(0\,0\,0\,0\.5\)\] {
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06) !important;
+}
+
+.light-mode .shadow-\[0_8px_32px_rgba\(0\,0\,0\,0\.8\)\] {
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+}
+
+.light-mode .bg-white.text-black {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
 /* Premium Glassmorphism classes */
 .glass-header {
-  background: rgba(3, 3, 3, 0.7);
+  background: var(--glass-header-bg, rgba(3, 3, 3, 0.7));
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.003) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--glass-card-bg, linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.003) 100%));
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.05));
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.03);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.03);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  border-color: var(--border-hover, rgba(255, 255, 255, 0.12));
 }
 
 .glass-pill {
@@ -56,6 +169,11 @@ body {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light-mode .glass-pill {
+  background: rgba(15, 23, 42, 0.03);
+  border-color: rgba(15, 23, 42, 0.08);
 }
 
 .glass-pill:hover {
@@ -80,6 +198,10 @@ body {
   z-index: 0;
 }
 
+.light-mode .ambient-glow {
+  background: radial-gradient(circle, rgba(15, 23, 42, 0.04) 0%, rgba(15, 23, 42, 0) 70%);
+}
+
 .ambient-glow-amber {
   position: absolute;
   width: 400px;
@@ -98,17 +220,26 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #030303;
+  background: var(--bg-main, #030303);
 }
 
 ::-webkit-scrollbar-thumb {
   background: #1f1f23;
-  border: 2px solid #030303;
+  border: 2px solid var(--bg-main, #030303);
   border-radius: 10px;
+}
+
+.light-mode ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-color: #f8fafc;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #2e2e35;
+}
+
+.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
 /* Micro-interaction: animated underline link */
@@ -142,3 +273,180 @@ body {
   transition: background-image 0.4s ease;
 }
 
+/* Spotlight Card Light Mode Overrides for creamy background and dark text */
+.light-mode .spotlight-card {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+}
+
+.light-mode .spotlight-card:hover {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.16) !important;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.03) !important;
+}
+
+.light-mode .spotlight-card .text-white,
+.light-mode .spotlight-card .text-white\/95,
+.light-mode .spotlight-card .text-white\/90,
+.light-mode .spotlight-card .text-white\/80,
+.light-mode .spotlight-card .group:hover .group-hover\:text-white,
+.light-mode .spotlight-card .group:hover .group-hover\:text-white\/90 {
+  color: #0f172a !important;
+}
+
+.light-mode .spotlight-card .text-gray-400 {
+  color: #334155 !important;
+}
+
+.light-mode .spotlight-card .text-gray-500 {
+  color: #64748b !important;
+}
+
+/* Certificate Specific Light Mode Styling */
+.light-mode .certificate-card {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02) !important;
+}
+
+.light-mode .certificate-card:hover {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.09) !important;
+}
+
+.light-mode .certificate-card .cert-img-container {
+  background-color: #f8fafc !important;
+  border-bottom-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-mode .certificate-card img {
+  filter: none !important;
+  opacity: 0.95;
+}
+
+.light-mode .certificate-card:hover img {
+  opacity: 1;
+}
+
+.light-mode .certificate-card .cert-tag {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-mode .certificate-card .cert-tag:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.16) !important;
+}
+
+.light-mode .certificate-card .cert-status-badge {
+  background-color: #ecfdf5 !important;
+  color: #047857 !important;
+  border-color: #a7f3d0 !important;
+}
+
+.light-mode .certificate-card .cert-status-badge svg {
+  color: #059669 !important;
+}
+
+/* Certificate Fallback Box */
+.light-mode .cert-fallback-box {
+  background-color: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-mode .cert-fallback-box svg {
+  color: #94a3b8 !important;
+}
+
+.light-mode .cert-fallback-box span {
+  color: #64748b !important;
+}
+
+/* Certificate Modal in Light Mode */
+.light-mode .cert-modal-dialog {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
+}
+
+.light-mode .cert-modal-sidebar {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-mode .cert-modal-viewer {
+  background-color: #f1f5f9 !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-mode .cert-modal-viewer img {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1) !important;
+}
+/* Footer Light Mode */
+.light-mode .footer-adaptive {
+  background-color: #f8fafc !important;
+  border-top-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.light-mode .footer-brand {
+  color: #334155 !important;
+}
+
+.light-mode .footer-sub {
+  color: #94a3b8 !important;
+}
+
+.light-mode .footer-social-link {
+  background-color: #f1f5f9 !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  color: #475569 !important;
+}
+
+.light-mode .footer-social-link:hover {
+  background-color: #e2e8f0 !important;
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  color: #0f172a !important;
+}
+
+/* Blog & Gallery light mode image containers */
+.light-mode .bg-zinc-950 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Light mode prose content (blog posts, project detail) */
+.light-mode #blog-rich-content p,
+.light-mode #blog-rich-content li {
+  color: #475569 !important;
+}
+
+.light-mode #blog-rich-content h3 {
+  color: #0f172a !important;
+  border-left-color: rgba(15, 23, 42, 0.3) !important;
+}
+
+.light-mode #blog-rich-content pre {
+  background-color: #f1f5f9 !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  color: #334155 !important;
+}
+
+.light-mode #project-rich-content p,
+.light-mode #project-rich-content li {
+  color: #475569 !important;
+}
+
+.light-mode #project-rich-content h3 {
+  color: #0f172a !important;
+  border-left-color: rgba(15, 23, 42, 0.3) !important;
+}
+
+/* Zinc dot separators in light mode */
+.light-mode .bg-zinc-800,
+.light-mode .bg-zinc-850 {
+  background-color: rgba(15, 23, 42, 0.15) !important;
+}

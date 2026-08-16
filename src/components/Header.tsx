@@ -6,11 +6,12 @@ import { personal } from "../resources/content";
 interface HeaderProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  onPostClick?: () => void; // Reset article state if clicking Blog tab
+  onPostClick?: () => void;
   accentColor?: "white" | "amber" | "emerald" | "violet";
+  themeMode?: "dark" | "light";
 }
 
-export default function Header({ activeTab, setActiveTab, onPostClick, accentColor = "white" }: HeaderProps) {
+export default function Header({ activeTab, setActiveTab, onPostClick, accentColor = "white", themeMode = "dark" }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -39,12 +40,18 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const isLight = themeMode === "light";
+
   return (
     <header
       id="app-header"
       className={`sticky top-0 z-50 w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         isScrolled
-          ? "border-b border-white/10 bg-black/75 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.8)] backdrop-blur-xl"
+          ? isLight
+            ? "border-b border-slate-200 bg-white/90 py-2.5 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-xl"
+            : "border-b border-white/10 bg-black/75 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.8)] backdrop-blur-xl"
+          : isLight
+          ? "border-b border-slate-100/80 bg-white/60 py-4 backdrop-blur-md"
           : "border-b border-white/5 bg-transparent py-4 backdrop-blur-none"
       }`}
     >
@@ -70,28 +77,30 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
             }`} />
           </div>
           <div className="hidden sm:block">
-            <h1 className="font-sans text-xs font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-gray-300">{personal.name}</h1>
-            <p className="font-sans text-[10px] text-gray-400 font-normal leading-none tracking-wide mt-0.5">{personal.role}</p>
+            <h1 className={`font-sans text-xs font-semibold tracking-tight transition-colors duration-300 ${isLight ? "text-slate-800 group-hover:text-slate-600" : "text-white group-hover:text-gray-300"}`}>{personal.name}</h1>
+            <p className={`font-sans text-[10px] font-normal leading-none tracking-wide mt-0.5 ${isLight ? "text-slate-500" : "text-gray-400"}`}>{personal.role}</p>
           </div>
         </button>
 
         {/* Desktop Navigation */}
-        <nav id="desktop-nav" className="hidden md:flex items-center gap-1.5 rounded-full border border-white/5 bg-white/[0.02] p-1 shadow-inner backdrop-blur-md">
+        <nav id="desktop-nav" className={`hidden md:flex items-center gap-1.5 rounded-full border p-1 shadow-inner backdrop-blur-md ${
+          isLight ? "border-slate-200 bg-slate-100/60" : "border-white/5 bg-white/[0.02]"
+        }`}>
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             
-            let tabActiveBgClass = "bg-white/[0.07] border-white/10";
-            let activeTextClass = "text-white font-semibold";
+            let tabActiveBgClass = isLight ? "bg-slate-900/10 border-slate-400/20" : "bg-white/[0.07] border-white/10";
+            let activeTextClass = isLight ? "text-slate-900 font-semibold" : "text-white font-semibold";
             if (isActive) {
               if (accentColor === "amber") {
                 tabActiveBgClass = "bg-amber-500/[0.05] border-amber-500/20";
-                activeTextClass = "text-amber-400 font-semibold";
+                activeTextClass = "text-amber-500 font-semibold";
               } else if (accentColor === "emerald") {
                 tabActiveBgClass = "bg-emerald-500/[0.05] border-emerald-500/20";
-                activeTextClass = "text-emerald-400 font-semibold";
+                activeTextClass = isLight ? "text-emerald-700 font-semibold" : "text-emerald-400 font-semibold";
               } else if (accentColor === "violet") {
                 tabActiveBgClass = "bg-violet-500/[0.05] border-violet-500/20";
-                activeTextClass = "text-violet-400 font-semibold";
+                activeTextClass = isLight ? "text-violet-700 font-semibold" : "text-violet-400 font-semibold";
               }
             }
 
@@ -101,7 +110,7 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
                 className={`relative rounded-full px-4 py-1.5 font-sans text-xs font-medium tracking-wide transition-all duration-300 focus:outline-none ${
-                  isActive ? activeTextClass : "text-gray-400 hover:text-white"
+                  isActive ? activeTextClass : isLight ? "text-slate-500 hover:text-slate-800" : "text-gray-400 hover:text-white"
                 }`}
               >
                 {isActive && (
@@ -117,14 +126,17 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
           })}
         </nav>
 
-        {/* Action Button spacer to keep flex layout balanced */}
         <div className="hidden md:block w-[100px]" />
 
         {/* Mobile Navigation Toggle */}
         <button
           id="mobile-nav-toggle-btn"
           onClick={() => setIsOpen(!isOpen)}
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/5 bg-white/[0.01] text-gray-400 hover:text-white hover:border-white/20 hover:bg-white/[0.04] md:hidden focus:outline-none transition-all duration-300"
+          className={`flex h-9 w-9 items-center justify-center rounded-lg border md:hidden focus:outline-none transition-all duration-300 ${
+            isLight
+              ? "border-slate-200 bg-slate-100 text-slate-500 hover:text-slate-800 hover:border-slate-300 hover:bg-slate-200"
+              : "border-white/5 bg-white/[0.01] text-gray-400 hover:text-white hover:border-white/20 hover:bg-white/[0.04]"
+          }`}
         >
           {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
         </button>
@@ -138,23 +150,27 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="border-b border-white/10 bg-black/95 px-6 py-6 md:hidden backdrop-blur-xl"
+          className={`border-b px-6 py-6 md:hidden backdrop-blur-xl ${
+            isLight ? "border-slate-200 bg-white/95" : "border-white/10 bg-black/95"
+          }`}
         >
           <div className="flex flex-col gap-1.5">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               
-              let mobileActiveTabClass = "bg-white/10 text-white border-white/5";
+              let mobileActiveTabClass = isLight
+                ? "bg-slate-100 text-slate-900 border-slate-200"
+                : "bg-white/10 text-white border-white/5";
               let mobileDotClass = "bg-white shadow-white";
               if (isActive) {
                 if (accentColor === "amber") {
-                  mobileActiveTabClass = "bg-amber-500/10 text-amber-400 border-amber-500/20";
+                  mobileActiveTabClass = "bg-amber-500/10 text-amber-500 border-amber-500/20";
                   mobileDotClass = "bg-amber-500 shadow-amber-500";
                 } else if (accentColor === "emerald") {
-                  mobileActiveTabClass = "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+                  mobileActiveTabClass = isLight ? "bg-emerald-50 text-emerald-700 border-emerald-200" : "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
                   mobileDotClass = "bg-emerald-500 shadow-emerald-500";
                 } else if (accentColor === "violet") {
-                  mobileActiveTabClass = "bg-violet-500/10 text-violet-400 border-violet-500/20";
+                  mobileActiveTabClass = isLight ? "bg-violet-50 text-violet-700 border-violet-200" : "bg-violet-500/10 text-violet-400 border-violet-500/20";
                   mobileDotClass = "bg-violet-500 shadow-violet-500";
                 }
               }
@@ -165,7 +181,7 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
                   key={tab.id}
                   onClick={() => handleTabClick(tab.id)}
                   className={`flex items-center justify-between rounded-lg px-4 py-2.5 font-sans text-xs font-medium transition-all duration-300 ${
-                    isActive ? mobileActiveTabClass : "text-gray-400 hover:bg-white/[0.03] hover:text-white"
+                    isActive ? mobileActiveTabClass : isLight ? "text-slate-500 hover:bg-slate-100 hover:text-slate-800" : "text-gray-400 hover:bg-white/[0.03] hover:text-white"
                   }`}
                 >
                   {tab.label}

@@ -2,9 +2,13 @@ import { useEffect, useRef } from "react";
 
 interface AtmosphericBackgroundProps {
   accentColor?: "white" | "amber" | "emerald" | "violet";
+  themeMode?: "dark" | "light";
 }
 
-export default function AtmosphericBackground({ accentColor = "white" }: AtmosphericBackgroundProps) {
+export default function AtmosphericBackground({
+  accentColor = "white",
+  themeMode = "dark",
+}: AtmosphericBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -89,7 +93,7 @@ export default function AtmosphericBackground({ accentColor = "white" }: Atmosph
     }> = [];
 
     for (let i = 0; i < particleCount; i++) {
-      const baseOpacity = Math.random() * 0.22 + 0.05;
+      const baseOpacity = (Math.random() * 0.22 + 0.05) * (themeMode === "light" ? 3.5 : 1);
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -108,10 +112,10 @@ export default function AtmosphericBackground({ accentColor = "white" }: Atmosph
     const drawParticles = () => {
       ctx.clearRect(0, 0, width, height);
 
-      let accentRgb = "255, 255, 255";
+      let accentRgb = themeMode === "light" ? "15, 23, 42" : "255, 255, 255";
       if (accentColor === "amber") accentRgb = "245, 158, 11";
-      else if (accentColor === "emerald") accentRgb = "16, 185, 129";
-      else if (accentColor === "violet") accentRgb = "139, 92, 246";
+      else if (accentColor === "emerald") accentRgb = themeMode === "light" ? "5, 150, 105" : "16, 185, 129";
+      else if (accentColor === "violet") accentRgb = themeMode === "light" ? "124, 58, 237" : "139, 92, 246";
 
       // 1. Draw dynamic constellation network lines between close particles
       ctx.lineWidth = 0.5;
@@ -125,7 +129,7 @@ export default function AtmosphericBackground({ accentColor = "white" }: Atmosph
 
           if (dist < 95) {
             // Faint network connection lines
-            const lineOpacity = (1 - dist / 95) * 0.055 * Math.min(pi.opacity, pj.opacity);
+            const lineOpacity = (1 - dist / 95) * 0.055 * Math.min(pi.opacity, pj.opacity) * (themeMode === "light" ? 3.5 : 1);
             ctx.strokeStyle = `rgba(${accentRgb}, ${lineOpacity})`;
             ctx.beginPath();
             ctx.moveTo(pi.x, pi.y);
@@ -164,7 +168,7 @@ export default function AtmosphericBackground({ accentColor = "white" }: Atmosph
           // Soft magnetic push away from the cursor
           p.x -= (dx / distance) * force * 1.35;
           p.y -= (dy / distance) * force * 1.35;
-          p.opacity = Math.min(0.65, p.baseOpacity + pulseOffset + force * 0.38);
+          p.opacity = Math.min(themeMode === "light" ? 0.95 : 0.65, p.baseOpacity + pulseOffset + force * 0.38);
         } else {
           // Return to base pulsing opacity
           const targetOpacity = p.baseOpacity + pulseOffset;
@@ -196,7 +200,7 @@ export default function AtmosphericBackground({ accentColor = "white" }: Atmosph
           continue;
         }
 
-        const opacity = (tp.life / tp.maxLife) * 0.28;
+        const opacity = (tp.life / tp.maxLife) * 0.28 * (themeMode === "light" ? 3.5 : 1);
         ctx.fillStyle = `rgba(${accentRgb}, ${opacity})`;
         ctx.beginPath();
         ctx.arc(tp.x, tp.y, tp.size, 0, Math.PI * 2);
@@ -214,7 +218,7 @@ export default function AtmosphericBackground({ accentColor = "white" }: Atmosph
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [accentColor]);
+  }, [accentColor, themeMode]);
 
   return (
     <canvas

@@ -54,7 +54,7 @@ export default function CertificateCard({ cert, onClick }: CertificateCardProps)
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      className="group relative cursor-pointer overflow-hidden rounded-xl border border-white/5 bg-[#08080a]/60 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] shadow-[0_4px_30px_rgba(0,0,0,0.4)] flex flex-col h-full"
+      className="certificate-card spotlight-card group relative cursor-pointer overflow-hidden rounded-xl border border-white/5 bg-[#08080a]/60 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] shadow-[0_4px_30px_rgba(0,0,0,0.4)] flex flex-col h-full"
     >
       {/* Animated Glowing border on hover */}
       <div className="absolute inset-0 -z-10 bg-linear-to-r from-transparent via-white/5 to-transparent group-hover:via-white/10 transition-all duration-1000 group-hover:duration-500 animate-[pulse_2s_infinite]" />
@@ -72,17 +72,17 @@ export default function CertificateCard({ cert, onClick }: CertificateCardProps)
 
       {/* Large Certificate Preview Container */}
       <div 
-        className="relative w-full aspect-[1.414/1] overflow-hidden rounded-t-xl border-b border-white/5 bg-zinc-900 shadow-inner"
+        className="cert-img-container relative w-full aspect-[1.414/1] overflow-hidden rounded-t-xl border-b border-white/5 bg-zinc-900 shadow-inner flex items-center justify-center"
         style={{ transform: "translateZ(20px)" }}
       >
         <OptimizedImage
           src={cert.image}
           alt={cert.title}
           loading="lazy"
-          className="h-full w-full object-cover grayscale group-hover:grayscale-0 brightness-[0.8] contrast-[1.05] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="h-full w-full object-cover group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
         />
         {/* Soft gloss effect */}
-        <div className="absolute inset-0 bg-linear-to-tr from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-linear-to-tr from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       </div>
 
       {/* Card Info */}
@@ -119,20 +119,20 @@ export default function CertificateCard({ cert, onClick }: CertificateCardProps)
             {cert.skills.slice(0, 3).map((skill) => (
               <span
                 key={skill}
-                className="rounded bg-white/2 px-1.5 py-0.5 font-sans text-[9px] text-gray-400 border border-white/5 transition-colors duration-300 hover:border-white/10 hover:text-white"
+                className="cert-tag rounded bg-white/2 px-1.5 py-0.5 font-sans text-[9px] text-gray-400 border border-white/5 transition-colors duration-300 hover:border-white/10 hover:text-white"
               >
                 {skill}
               </span>
             ))}
             {cert.skills.length > 3 && (
-              <span className="rounded bg-white/2 px-1.5 py-0.5 font-sans text-[9px] text-gray-500 border border-white/5">
+              <span className="cert-tag rounded bg-white/2 px-1.5 py-0.5 font-sans text-[9px] text-gray-500 border border-white/5">
                 +{cert.skills.length - 3} more
               </span>
             )}
           </div>
 
           <div className="flex items-center justify-between">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/5 border border-emerald-500/10 text-[9px] font-mono font-semibold text-emerald-400">
+            <span className="cert-status-badge inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/5 border border-emerald-500/10 text-[9px] font-mono font-semibold text-emerald-400">
               <ShieldCheck className="h-3 w-3 text-emerald-400" />
               Completed
             </span>

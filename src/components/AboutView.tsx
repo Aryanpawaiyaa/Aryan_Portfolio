@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Briefcase, GraduationCap, Code, Award, X, Eye, ShieldCheck, ArrowUpRight, Shield, Trophy, Star, Target, Compass, Flame } from "lucide-react";
+import { Briefcase, GraduationCap, Code, Award, X, ShieldCheck, ArrowUpRight, Shield, Trophy, Star, Target, Compass, Flame } from "lucide-react";
 import { personal, workExperiences, education, skills, nccExperiences } from "../resources/content";
 import SpotlightCard from "./SpotlightCard";
 import certificateData from "../resources/certificates";
@@ -47,7 +47,6 @@ const getIssuerBadge = (issuer: string) => {
 
 export default function AboutView() {
   const [selectedCert, setSelectedCert] = useState<any | null>(null);
-  const [viewMode, setViewMode] = useState<"preview" | "pdf" | "details">("preview");
   const [activeNccIdx, setActiveNccIdx] = useState(0);
 
   useEffect(() => {
@@ -435,7 +434,6 @@ export default function AboutView() {
                       cert={cert}
                       onClick={() => {
                         setSelectedCert(cert);
-                        setViewMode("preview");
                       }}
                     />
                   ))}
@@ -459,7 +457,6 @@ export default function AboutView() {
                       cert={cert}
                       onClick={() => {
                         setSelectedCert(cert);
-                        setViewMode("preview");
                       }}
                     />
                   ))}
@@ -487,7 +484,7 @@ export default function AboutView() {
       <AnimatePresence>
         {selectedCert && (
           <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md cursor-pointer animate-fade-in"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md cursor-pointer animate-fade-in"
             onClick={() => setSelectedCert(null)}
             role="dialog"
             aria-modal="true"
@@ -497,7 +494,7 @@ export default function AboutView() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-5xl bg-zinc-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row h-[90vh] md:h-[80vh] cursor-default"
+              className="cert-modal-dialog relative w-full max-w-5xl bg-zinc-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row h-[90vh] md:h-[80vh] cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -512,7 +509,7 @@ export default function AboutView() {
               </div>
 
               {/* Left Column: Metadata & Credential Details */}
-              <div className="w-full md:w-95 shrink-0 border-t md:border-t-0 md:border-r border-white/10 p-6 flex flex-col justify-between h-auto md:h-full bg-zinc-950 overflow-y-auto order-2 md:order-1">
+              <div className="cert-modal-sidebar w-full md:w-95 shrink-0 border-t md:border-t-0 md:border-r border-white/10 p-6 flex flex-col justify-between h-auto md:h-full bg-zinc-950 overflow-y-auto order-2 md:order-1">
                 <div className="space-y-6">
                   <div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-zinc-900 border border-white/5 text-gray-400 font-mono text-[9px] uppercase tracking-wider">
@@ -606,7 +603,7 @@ export default function AboutView() {
               </div>
 
               {/* Right Column: High-Fidelity Viewer */}
-              <div className="flex-1 bg-black p-6 flex flex-col relative min-h-[40vh] md:h-full order-1 md:order-2 border-b md:border-b-0 border-white/10 overflow-y-auto">
+              <div className="cert-modal-viewer flex-1 bg-black p-6 flex flex-col relative min-h-[40vh] md:h-full order-1 md:order-2 border-b md:border-b-0 border-white/10 overflow-y-auto">
                 <div className={`w-full min-h-full flex flex-col items-center gap-8 ${selectedCert.images ? 'justify-start py-4' : 'justify-center'}`}>
                   {selectedCert.images ? (
                     selectedCert.images.map((img: string, idx: number) => (

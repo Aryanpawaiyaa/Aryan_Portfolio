@@ -10,27 +10,6 @@ interface BlogViewProps {
   onSelectPost: (id: string | null) => void;
 }
 
-function renderFormattedText(text: string) {
-  const parts = text.split(/(\*\*.*?\*\*|`.*?`)/g);
-  return parts.map((part, index) => {
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return (
-        <strong key={index} className="font-semibold text-white">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-    if (part.startsWith("`") && part.endsWith("`")) {
-      return (
-        <code key={index} className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-[10.5px] text-emerald-400 border border-white/5">
-          {part.slice(1, -1)}
-        </code>
-      );
-    }
-    return part;
-  });
-}
-
 export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [copied, setCopied] = useState(false);
@@ -58,8 +37,8 @@ export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps
   return (
     <div className="relative overflow-hidden grid-bg min-h-screen py-6">
       {/* Background Ambient Glows */}
-      <div className="absolute top-10 left-10 w-[400px] h-[400px] bg-white/[0.012] rounded-full filter blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-20 right-10 w-[300px] h-[300px] bg-white/[0.008] rounded-full filter blur-[80px] pointer-events-none" />
+      <div className="absolute top-10 left-10 w-100 h-100 bg-white/[0.012] rounded-full filter blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-20 right-10 w-75 h-75 bg-white/[0.008] rounded-full filter blur-[80px] pointer-events-none" />
 
       <div id="blog-view-container" className="relative z-10 mx-auto max-w-5xl px-6 py-12">
         <AnimatePresence mode="wait">
@@ -237,7 +216,7 @@ export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps
                     if (trimmed.startsWith("###")) {
                       return (
                         <h3 key={i} className="font-sans text-sm font-semibold text-white mt-10 mb-3 border-l-2 border-white/25 pl-3">
-                          {renderFormattedText(trimmed.replace(/^#{1,6}\s*/, "").trim())}
+                          {trimmed.replace("###", "").trim()}
                         </h3>
                       );
                     }
@@ -248,7 +227,7 @@ export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps
                         <ol key={i} className="list-decimal pl-5 space-y-2.5 my-4 text-gray-400">
                           {trimmed.split("\n").map((item, idx) => (
                             <li key={idx} className="text-gray-400 font-light leading-relaxed">
-                              {renderFormattedText(item.replace(/^\d+\.\s*/, "").trim())}
+                              {item.replace(/^\d+\.\s*/, "").trim()}
                             </li>
                           ))}
                         </ol>
@@ -272,7 +251,7 @@ export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps
                         <ul key={i} className="list-disc pl-5 space-y-2 my-4 text-gray-400">
                           {trimmed.split("\n").map((item, idx) => (
                             <li key={idx} className="text-gray-400 font-light leading-relaxed">
-                              {renderFormattedText(item.replace(/^-\s*/, "").trim())}
+                              {item.replace("-", "").trim()}
                             </li>
                           ))}
                         </ul>
@@ -282,7 +261,7 @@ export default function BlogView({ selectedPostId, onSelectPost }: BlogViewProps
                     // Standard Paragraph
                     return (
                       <p key={i} className="text-gray-400 leading-relaxed text-justify font-light">
-                        {renderFormattedText(trimmed)}
+                        {trimmed}
                       </p>
                     );
                   })}
