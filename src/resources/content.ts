@@ -271,11 +271,11 @@ As an embedded systems engineer, I have developed intermediate skills in PCB des
 *(Empty boxes reserved below for future PCB renders and photos)*
 `,
     date: "2026",
-    image: "https://placehold.co/800x500/111111/444444?text=Replace+With+Main+PCB+Cover+Image",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&h=500&q=80",
     gallery: [
-      "https://placehold.co/600x400/111111/444444?text=Replace+With+PCB+Render+1",
-      "https://placehold.co/600x400/111111/444444?text=Replace+With+PCB+Render+2",
-      "https://placehold.co/600x400/111111/444444?text=Replace+With+PCB+Render+3"
+      "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1608564697071-ddf911d81370?auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&h=400&q=80"
     ]
   },
   {
@@ -309,11 +309,11 @@ These personal projects were my sandbox. They allowed me to experiment with orga
 ### Conclusion: The Full-Stack Hardware Engineer
 Today, CAD design and 3D printing are fundamental pillars of my skill set. They allow me to be a truly "full-stack" hardware engineer—someone who can write the firmware, design the PCB, and then draft and manufacture the physical enclosure that holds it all together. From the first digital sketch to the final printed prototype, the ability to manifest ideas into the physical world remains one of the most rewarding aspects of my engineering journey.`,
     date: "2026 ",
-    image: "https://placehold.co/800x500/111111/444444?text=Replace+With+Main+CAD+Cover+Image",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&h=500&q=80",
     gallery: [
-      "https://placehold.co/600x400/111111/444444?text=Replace+With+CAD+Render+1",
-      "https://placehold.co/600x400/111111/444444?text=Replace+With+3D+Print+Photo",
-      "https://placehold.co/600x400/111111/444444?text=Replace+With+Drone+Part+Image"
+      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1517055729445-fa7d27394b48?auto=format&fit=crop&w=600&h=400&q=80"
     ]
   },
   {
@@ -583,7 +583,104 @@ Stepping out of the engineering lab and looking through a camera lens was an inv
   }
 ];
 
-export const galleryItems: GalleryItem[] = [];
+export const galleryItems: GalleryItem[] = [
+  {
+    id: "gal-arch-1",
+    title: "Minimalist Parametric Facade",
+    category: "Architecture",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80",
+    description: "Computational parametric facade engineering study demonstrating rhythmic geometric louvers and natural light diffusion.",
+    date: "2026"
+  },
+  {
+    id: "gal-ind-1",
+    title: "Aerodynamic UAV Airframe Concept",
+    category: "Industrial Design",
+    image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1000&q=80",
+    description: "Rapid iteration on carbon-fiber composite drone arms and structural load-bearing landing gear assemblies.",
+    date: "2026"
+  },
+  {
+    id: "gal-abs-1",
+    title: "Kinetic Fluid Simulation",
+    category: "Abstract",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80",
+    description: "High-density particle turbulence and fluid dynamic field visual study rendered with computational shaders.",
+    date: "2025"
+  },
+  {
+    id: "gal-graph-1",
+    title: "Cybernetic Swiss Grid System",
+    category: "Graphic Design",
+    image: "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=1000&q=80",
+    description: "Precision typographical grid architecture exploring monospaced structural layout tokens and visual hierarchy.",
+    date: "2026"
+  },
+  {
+    id: "gal-arch-2",
+    title: "Brutalist Concrete Pavilion",
+    category: "Architecture",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+    description: "Monolithic geometric spatial study balancing raw tactile surfaces with geometric shadows.",
+    date: "2025"
+  },
+  {
+    id: "gal-ind-2",
+    title: "Precision Microcontroller Enclosure",
+    category: "Industrial Design",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80",
+    description: "Snap-fit modular 3D printed casing with passive airflow channels for high-current flight computers.",
+    date: "2026"
+  },
+  {
+    id: "gal-int-1",
+    title: "Nordic Monochromatic Workspace",
+    category: "Interior Design",
+    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1000&q=80",
+    description: "Ergonomic hardware lab desk layout designed for dual-screen telemetry analysis and PCB probing.",
+    date: "2026"
+  },
+  {
+    id: "gal-abs-2",
+    title: "Neon Wave Intersections",
+    category: "Abstract",
+    image: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1000&q=80",
+    description: "Electroluminescent waveform experiments representing digital signal propagation across circuits.",
+    date: "2025"
+  },
+  {
+    id: "gal-graph-2",
+    title: "Dark Mode Systems UI Specimen",
+    category: "Graphic Design",
+    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80",
+    description: "High-density flight telemetry design tokens and chromatic aberration visual experiments.",
+    date: "2026"
+  },
+  {
+    id: "gal-int-2",
+    title: "Acoustic Minimalist Studio",
+    category: "Interior Design",
+    image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1000&q=80",
+    description: "Diffusion panel sound isolation study tailored for high-focus creative software sprints.",
+    date: "2025"
+  },
+  {
+    id: "gal-arch-3",
+    title: "Futuristic Cantilever Overhang",
+    category: "Architecture",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
+    description: "Structural cantilever physics model evaluating high wind load distribution in urban high-rises.",
+    date: "2026"
+  },
+  {
+    id: "gal-ind-3",
+    title: "Custom Mechanical Keyset & Frame",
+    category: "Industrial Design",
+    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=80",
+    description: "CNC milled aluminum chassis paired with custom tactile mechanical key switches for high-cadence development.",
+    date: "2026"
+  }
+];
 
 export const newsletter: Newsletter = {
   title: "Systems & Aesthetics",

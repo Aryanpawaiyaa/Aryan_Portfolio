@@ -9,31 +9,49 @@ import { OptimizedImage } from "./OptimizedImage";
 
 
 const getIssuerBadge = (issuer: string) => {
-  const isIBM = issuer.toLowerCase().includes("ibm");
   const isCisco = issuer.toLowerCase().includes("cisco");
-  const isGoogle = issuer.toLowerCase().includes("google");
+  const isArmy = issuer.toLowerCase().includes("army") || issuer.toLowerCase().includes("ncc");
+  const isMITS = issuer.toLowerCase().includes("mits");
+  const isBoard = issuer.toLowerCase().includes("board") || issuer.toLowerCase().includes("council");
+  const isFilm = issuer.toLowerCase().includes("film") || issuer.toLowerCase().includes("media");
 
-  if (isIBM) {
+  if (isArmy) {
     return (
-      <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 px-2.5 py-0.5 font-sans text-[9px] font-bold tracking-wider text-blue-400 uppercase shadow-sm transition-transform duration-200 cursor-default">
-        <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
-        IBM SkillsBuild
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 font-sans text-[9px] font-bold tracking-wider text-emerald-400 uppercase shadow-sm cursor-default">
+        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        Indian Army / NCC
       </span>
     );
   }
   if (isCisco) {
     return (
-      <span className="inline-flex items-center gap-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-0.5 font-sans text-[9px] font-bold tracking-wider text-cyan-400 uppercase shadow-sm transition-transform duration-200 cursor-default">
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-0.5 font-sans text-[9px] font-bold tracking-wider text-cyan-400 uppercase shadow-sm cursor-default">
         <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
         Cisco Academy
       </span>
     );
   }
-  if (isGoogle) {
+  if (isMITS) {
     return (
-      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 font-sans text-[9px] font-bold tracking-wider text-emerald-400 uppercase shadow-sm transition-transform duration-200 cursor-default">
-        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-        Google Ambassador
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 px-2.5 py-0.5 font-sans text-[9px] font-bold tracking-wider text-blue-400 uppercase shadow-sm cursor-default">
+        <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+        MITS Gwalior
+      </span>
+    );
+  }
+  if (isBoard) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 font-sans text-[9px] font-bold tracking-wider text-amber-400 uppercase shadow-sm cursor-default">
+        <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+        State Board / Council
+      </span>
+    );
+  }
+  if (isFilm) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 px-2.5 py-0.5 font-sans text-[9px] font-bold tracking-wider text-purple-400 uppercase shadow-sm cursor-default">
+        <span className="h-1.5 w-1.5 rounded-full bg-purple-400" />
+        Film & Media Society
       </span>
     );
   }
@@ -48,6 +66,7 @@ const getIssuerBadge = (issuer: string) => {
 export default function AboutView() {
   const [selectedCert, setSelectedCert] = useState<any | null>(null);
   const [activeNccIdx, setActiveNccIdx] = useState(0);
+  const [certFilter, setCertFilter] = useState<"all" | "academic" | "competition">("all");
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -65,6 +84,12 @@ export default function AboutView() {
 
   const academicCerts = certificateData.certificates.filter(c => c.category === "Academic & Course Certificates");
   const competitionCerts = certificateData.certificates.filter(c => c.category === "Hackathons, Competitions & Achievements");
+
+  const displayedCerts = certFilter === "all"
+    ? certificateData.certificates
+    : certFilter === "academic"
+    ? academicCerts
+    : competitionCerts;
 
   const getInitials = (name: string) => {
     if (name.includes("IIT")) return "IIT";
@@ -233,26 +258,51 @@ export default function AboutView() {
 
         {/* Skills Matrix layout */}
         <motion.section id="skills-section" variants={itemVariants} className="mb-20">
-          <h3 className="flex items-center gap-2.5 font-sans text-xs font-bold uppercase tracking-widest text-white/95 border-b border-white/5 pb-3.5 mb-10">
-            <Code className="h-4 w-4 text-gray-400" />
-            Technical Expertise
-          </h3>
+          <div className="flex items-baseline justify-between border-b border-white/5 pb-3.5 mb-8">
+            <h3 className="flex items-center gap-2.5 font-sans text-xs font-bold uppercase tracking-widest text-white/95">
+              <Code className="h-4 w-4 text-gray-400" />
+              Technical Expertise & Competencies
+            </h3>
+            <span className="font-mono text-[9px] text-gray-500 font-semibold tracking-wider uppercase">
+              {skills.reduce((acc, g) => acc + g.skills.length, 0)} Total Skills
+            </span>
+          </div>
 
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {skills.map((group, idx) => (
-              <SpotlightCard id={`skills-group-${idx}`} key={idx} className="p-4.5">
-                <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-400 border-b border-white/5 pb-2">
-                  {group.name}
-                </h4>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {group.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded bg-white/2 px-2 py-0.5 font-sans text-[10px] text-gray-400 border border-white/5 shadow-sm"
-                    >
-                      {skill}
+              <SpotlightCard id={`skills-group-${idx}`} key={idx} className="p-5 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between border-b border-white/5 pb-2.5 mb-3.5">
+                    <h4 className="font-sans text-[11px] font-bold uppercase tracking-wider text-white/90">
+                      {group.name}
+                    </h4>
+                    <span className="font-mono text-[9px] text-gray-500 bg-white/3 border border-white/5 px-2 py-0.5 rounded-full font-medium">
+                      {group.skills.length}
                     </span>
-                  ))}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {group.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-md bg-white/3 hover:bg-white/8 px-2.5 py-1 font-sans text-[10px] text-gray-300 border border-white/5 hover:border-white/20 transition-all duration-300 shadow-xs hover:scale-105 cursor-default"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Animated proficiency indicator bar */}
+                <div className="mt-4 pt-3 border-t border-white/5">
+                  <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${Math.min(100, 65 + (group.skills.length * 3.5))}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                      className="h-full rounded-full bg-gradient-to-r from-white/20 via-white/40 to-white/60"
+                    />
+                  </div>
                 </div>
               </SpotlightCard>
             ))}
@@ -406,64 +456,67 @@ export default function AboutView() {
 
         {/* Certifications & Credentials Section */}
         <motion.section id="certifications-section" variants={itemVariants} className="mb-20">
-          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between border-b border-white/5 pb-3.5 mb-10 gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between border-b border-white/5 pb-3.5 mb-6 gap-2">
             <h3 className="flex items-center gap-2.5 font-sans text-xs font-bold uppercase tracking-widest text-white/95">
               <Award className="h-4 w-4 text-gray-400" />
-              Certifications & Credentials
+              Certifications & Verified Credentials
             </h3>
             <span className="font-mono text-[9px] text-gray-500 font-semibold tracking-wider">
-              STUDENT: {certificateData.student.name} ({certificateData.student.email})
+              STUDENT: {certificateData.student.name} • {certificateData.certificates.length} VERIFIED RECORDS
             </span>
           </div>
 
-          <div className="space-y-16">
-
-            {/* Category: Academic & Course Certificates */}
-            {academicCerts.length > 0 && (
-              <div id="academic-certificates-group" className="space-y-6">
-                <div className="flex items-center gap-2 border-b border-white/5 pb-3">
-                  <GraduationCap className="h-4 w-4 text-gray-400" />
-                  <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-300">
-                    🎓 Academic & Course Certificates ({academicCerts.length})
-                  </h4>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {academicCerts.map((cert, idx) => (
-                    <CertificateCard
-                      key={`academic-${idx}`}
-                      cert={cert}
-                      onClick={() => {
-                        setSelectedCert(cert);
-                      }}
+          {/* Certificate Filter Tabs */}
+          <div className="flex flex-wrap gap-2 mb-8 border-b border-white/5 pb-4">
+            {[
+              { id: "all", label: "All Credentials", count: certificateData.certificates.length },
+              { id: "academic", label: "Academic & Courses", count: academicCerts.length },
+              { id: "competition", label: "Competitions & Achievements", count: competitionCerts.length },
+            ].map((tab) => {
+              const isActive = certFilter === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setCertFilter(tab.id as any)}
+                  className={`relative rounded-lg px-3 py-1.5 font-sans text-[11px] font-semibold tracking-wide transition-all duration-300 cursor-pointer ${
+                    isActive ? "text-black font-bold" : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="active-cert-filter"
+                      className="absolute inset-0 rounded-lg bg-white shadow-md shadow-white/5 -z-10"
+                      transition={{ type: "spring", stiffness: 380, damping: 28 }}
                     />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Category: Hackathons, Competitions & Achievements */}
-            {competitionCerts.length > 0 && (
-              <div id="competition-certificates-group" className="space-y-6">
-                <div className="flex items-center gap-2 border-b border-white/5 pb-3">
-                  <Trophy className="h-4 w-4 text-gray-400" />
-                  <h4 className="font-sans text-[10px] font-bold uppercase tracking-widest text-gray-300">
-                    🏆 Hackathons, Competitions & Achievements ({competitionCerts.length})
-                  </h4>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {competitionCerts.map((cert, idx) => (
-                    <CertificateCard
-                      key={`comp-${idx}`}
-                      cert={cert}
-                      onClick={() => {
-                        setSelectedCert(cert);
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
+                  )}
+                  {tab.label} ({tab.count})
+                </button>
+              );
+            })}
           </div>
+
+          {/* Unified Certificate Cards Grid */}
+          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <AnimatePresence mode="popLayout">
+              {displayedCerts.map((cert, idx) => (
+                <motion.div
+                  key={cert.title + idx}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <CertificateCard
+                    cert={cert}
+                    onClick={() => {
+                      setSelectedCert(cert);
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </motion.section>
 
         {/* Aesthetic Signature block */}
@@ -604,8 +657,44 @@ export default function AboutView() {
 
               {/* Right Column: High-Fidelity Viewer */}
               <div className="cert-modal-viewer flex-1 bg-black p-6 flex flex-col relative min-h-[40vh] md:h-full order-1 md:order-2 border-b md:border-b-0 border-white/10 overflow-y-auto">
-                <div className={`w-full min-h-full flex flex-col items-center gap-8 ${selectedCert.images ? 'justify-start py-4' : 'justify-center'}`}>
-                  {selectedCert.images ? (
+                <div className={`w-full min-h-full flex flex-col items-center gap-8 ${selectedCert.images && !selectedCert.hideImage ? 'justify-start py-4' : 'justify-center'}`}>
+                  {selectedCert.hideImage ? (
+                    <div className="flex flex-col items-center justify-center p-8 text-center max-w-lg">
+                      <div className="relative mb-5 flex items-center justify-center">
+                        <div className="absolute -inset-3 rounded-full bg-indigo-500/20 blur-xl animate-pulse" />
+                        <div className="relative h-20 w-20 rounded-3xl bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-emerald-500/10 border border-indigo-500/30 flex items-center justify-center shadow-xl">
+                          <GraduationCap className="h-10 w-10 text-indigo-400" />
+                        </div>
+                      </div>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-3">
+                        <ShieldCheck className="h-3.5 w-3.5 text-indigo-400" />
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-indigo-300 font-bold">
+                          Verified Curriculum Record
+                        </span>
+                      </div>
+                      <h4 className="font-sans text-xl font-bold text-white mb-2">{selectedCert.title}</h4>
+                      <p className="font-sans text-xs text-gray-400 leading-relaxed max-w-md font-light mb-6">
+                        Official credential issued by <span className="text-white font-medium">{selectedCert.issuer}</span>. Raw document/marksheet preview is kept private while all verified competencies, coursework modules, and practical skills are listed below.
+                      </p>
+                      
+                      {/* Competency Badges Grid */}
+                      <div className="w-full rounded-xl bg-white/3 border border-white/5 p-4 text-left">
+                        <span className="font-mono text-[9px] text-gray-500 uppercase tracking-widest font-semibold block mb-2.5">
+                          VERIFIED MODULES & CORE DOMAINS
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {selectedCert.skills.map((skill: string) => (
+                            <span
+                              key={skill}
+                              className="rounded-md bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 font-sans text-[11px] text-indigo-300 font-medium"
+                            >
+                              ✓ {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : selectedCert.images ? (
                     selectedCert.images.map((img: string, idx: number) => (
                       <OptimizedImage
                         key={idx}

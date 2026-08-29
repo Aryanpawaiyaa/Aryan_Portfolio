@@ -31,7 +31,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   if (hasError) {
     return (
       <div
-        className={`cert-fallback-box flex flex-col items-center justify-center bg-slate-900/40 backdrop-blur-sm border border-white/5 rounded-lg text-center p-4 min-h-[180px] w-full h-full aspect-4/3 selection:bg-none select-none transition-all duration-300 ${containerClassName}`}
+        className={`cert-fallback-box flex flex-col items-center justify-center bg-slate-900/40 backdrop-blur-sm border border-white/5 rounded-lg text-center p-4 min-h-45 w-full h-full aspect-4/3 selection:bg-none select-none transition-all duration-300 ${containerClassName}`}
       >
         {/* Subtle Decorative SVG Icon */}
         <svg

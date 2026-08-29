@@ -26,6 +26,8 @@ import certificateData from "../resources/certificates";
 import SpotlightCard from "./SpotlightCard";
 import MagneticEffect from "./MagneticEffect";
 import { OptimizedImage } from "./OptimizedImage";
+import TypedText from "./TypedText";
+import FloatingGeometry from "./FloatingGeometry";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   Github,
@@ -46,9 +48,10 @@ interface HomeViewProps {
   onProjectSelect: (projectId: string) => void;
   onPostSelect: (postId: string) => void;
   accentColor?: "white" | "amber" | "emerald" | "violet";
+  themeMode?: "dark" | "light";
 }
 
-export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, accentColor = "white" }: HomeViewProps) {
+export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, accentColor = "white", themeMode = "dark" }: HomeViewProps) {
   const [time, setTime] = useState("");
 
   // Real-time Gwalior Clock
@@ -139,7 +142,10 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
         className="relative z-10 mx-auto max-w-5xl px-6 py-10 sm:py-16 space-y-16"
       >
         {/* ─────────────── HERO SECTION ─────────────── */}
-        <motion.section id="hero-section" variants={itemVariants} className="pt-2 sm:pt-4">
+        <motion.section id="hero-section" variants={itemVariants} className="relative pt-2 sm:pt-4">
+          {/* Subtle floating background wireframe geometry */}
+          <FloatingGeometry accentColor={accentColor} themeMode={themeMode} />
+
           <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-6">
             <div className="space-y-3 max-w-2xl">
               {/* Status & Location */}
@@ -165,8 +171,22 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
               <h2 className="font-sans text-4xl font-extrabold tracking-tight text-white sm:text-5xl leading-[1.1]">
                 {personal.name}
               </h2>
-              <h3 className={`font-sans text-lg font-semibold tracking-tight ${textAccent} sm:text-xl`}>
-                {personal.role}
+              <h3 className={`font-sans text-lg font-semibold tracking-tight ${textAccent} sm:text-xl min-h-[1.75rem] flex items-center`}>
+                <TypedText
+                  words={[
+                    personal.role,
+                    "Robotics & UAV Systems Engineer",
+                    "Embedded Systems & Hardware Developer",
+                    "Computer Vision & AI Researcher",
+                    "UI/UX & Interactive Design Engineer"
+                  ]}
+                  cursorColor={
+                    accentColor === "amber" ? "#f59e0b" :
+                    accentColor === "emerald" ? "#10b981" :
+                    accentColor === "violet" ? "#8b5cf6" :
+                    (themeMode === "light" ? "#0f172a" : "#ffffff")
+                  }
+                />
               </h3>
 
               {/* Value Proposition */}
@@ -265,8 +285,8 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
             </SpotlightCard>
             <SpotlightCard className="p-4">
               <div className="text-gray-500 font-mono text-[9px] uppercase tracking-wider font-semibold">Credentials</div>
-              <div className="mt-1.5 text-base font-bold text-white leading-tight">{totalCertsCount} Certs</div>
-              <div className="mt-0.5 text-[10px] text-gray-400 font-light">IBM AI & Cisco Validated</div>
+              <div className="mt-1.5 text-base font-bold text-white leading-tight">{totalCertsCount} Verified</div>
+              <div className="mt-0.5 text-[10px] text-gray-400 font-light">Army, Cisco & MITS Validated</div>
             </SpotlightCard>
           </div>
         </motion.section>

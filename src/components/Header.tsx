@@ -84,7 +84,7 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
 
         {/* Desktop Navigation */}
         <nav id="desktop-nav" className={`hidden md:flex items-center gap-1.5 rounded-full border p-1 shadow-inner backdrop-blur-md ${
-          isLight ? "border-slate-200 bg-slate-100/60" : "border-white/5 bg-white/[0.02]"
+          isLight ? "border-slate-200 bg-slate-100/60" : "border-white/5 bg-white/2"
         }`}>
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -126,7 +126,7 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
           })}
         </nav>
 
-        <div className="hidden md:block w-[100px]" />
+        <div className="hidden md:block w-25" />
 
         {/* Mobile Navigation Toggle */}
         <button
@@ -135,7 +135,7 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
           className={`flex h-9 w-9 items-center justify-center rounded-lg border md:hidden focus:outline-none transition-all duration-300 ${
             isLight
               ? "border-slate-200 bg-slate-100 text-slate-500 hover:text-slate-800 hover:border-slate-300 hover:bg-slate-200"
-              : "border-white/5 bg-white/[0.01] text-gray-400 hover:text-white hover:border-white/20 hover:bg-white/[0.04]"
+              : "border-white/5 bg-white/1 text-gray-400 hover:text-white hover:border-white/20 hover:bg-white/4"
           }`}
         >
           {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -181,7 +181,7 @@ export default function Header({ activeTab, setActiveTab, onPostClick, accentCol
                   key={tab.id}
                   onClick={() => handleTabClick(tab.id)}
                   className={`flex items-center justify-between rounded-lg px-4 py-2.5 font-sans text-xs font-medium transition-all duration-300 ${
-                    isActive ? mobileActiveTabClass : isLight ? "text-slate-500 hover:bg-slate-100 hover:text-slate-800" : "text-gray-400 hover:bg-white/[0.03] hover:text-white"
+                    isActive ? mobileActiveTabClass : isLight ? "text-slate-500 hover:bg-slate-100 hover:text-slate-800" : "text-gray-400 hover:bg-white/3 hover:text-white"
                   }`}
                 >
                   {tab.label}

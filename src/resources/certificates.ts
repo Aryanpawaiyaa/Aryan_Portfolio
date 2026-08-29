@@ -11,7 +11,7 @@ const certificateData = {
       recipient: "Aryan Narwariya",
       skills: ["Artificial Intelligence", "Machine Learning", "Neural Networks", "Deep Learning", "AI Ethics"],
       description: "Awarded for successfully completing the AI Fundamentals course, validating foundational knowledge in machine learning models, neural architectures, AI ethics, and cognitive computing concepts.",
-      image: "/images/certifications/ai-fundamentals.png",
+      image: "/images/certifications/ai-fundamentals-certificate.jpg",
       category: "Academic & Course Certificates" as const,
       technologies: ["IBM SkillsBuild", "Cisco Academy", "AI Models"]
     },
@@ -21,12 +21,13 @@ const certificateData = {
       date: "2025",
       recipient: "Aryan Narwariya",
       skills: ["Computer Applications", "IT Infrastructure", "Database Management Systems", "Office Automation", "Networking Basics", "System Administration"],
-      description: "Awarded for successfully completing the Advanced Diploma curriculum, validating skills in database administration, business applications, IT infrastructure systems, and software engineering principles. Includes academic transcript for core IT courses.",
+      description: "Awarded for successfully completing the Advanced Diploma curriculum, validating skills in database administration, business applications, IT infrastructure systems, and software engineering principles. Includes official academic marksheet transcript.",
       image: "/images/certifications/advance-diploma-certificate.webp",
       images: [
         "/images/certifications/advance-diploma-certificate.webp",
         "/images/certifications/it-diploma-marksheet.webp"
       ],
+      hideImage: true,
       category: "Academic & Course Certificates" as const,
       technologies: ["IT Systems", "Office Suites", "Database Management", "Academic Transcript"]
     },
@@ -36,8 +37,12 @@ const certificateData = {
       date: "2026",
       recipient: "Aryan Narwariya",
       skills: ["Computer Hardware", "PC Assembly", "Preventive Maintenance", "Mobile Diagnostics", "OS Installation"],
-      description: "Validates proficiency in installing component architectures, building, repairing, upgrading personal computers, and configuring diagnostic hardware features.",
-      image: "/images/certifications/computer-hardware-basics.png",
+      description: "Validates proficiency in installing component architectures, building, repairing, upgrading personal computers, and configuring diagnostic hardware features. Includes official student course verification letter.",
+      image: "/images/certifications/computer-hardware-basics-certificate.jpg",
+      images: [
+        "/images/certifications/computer-hardware-basics-certificate.jpg",
+        "/images/certifications/computer-hardware-basics-letter.jpg"
+      ],
       category: "Academic & Course Certificates" as const,
       technologies: ["Cisco Academy", "Hardware Integration", "Diagnostics"]
     },
@@ -69,8 +74,12 @@ const certificateData = {
       date: "2026",
       recipient: "Aryan Narwariya",
       skills: ["Internet of Things (IoT)", "Digital Transformation", "Smart Sensors", "Automation Systems"],
-      description: "Awarded for demonstrating a solid understanding of smart devices, industrial automation systems, sensor integration, and security concepts inside the IoT landscape.",
-      image: "/images/certifications/introduction-to-iot.png",
+      description: "Awarded for demonstrating a solid understanding of smart devices, industrial automation systems, sensor integration, and security concepts inside the IoT landscape. Includes official student letter.",
+      image: "/images/certifications/intro-to-iot-certificate.jpg",
+      images: [
+        "/images/certifications/intro-to-iot-certificate.jpg",
+        "/images/certifications/intro-to-iot-letter.jpg"
+      ],
       category: "Academic & Course Certificates" as const,
       technologies: ["Cisco Academy", "IoT Systems", "Automation"]
     },
@@ -82,6 +91,7 @@ const certificateData = {
       skills: ["Computer Operations", "Operating Systems", "Spreadsheets", "Internet Applications", "Word Processing"],
       description: "Validates foundational skills in computer operations, operating systems, word processing, spreadsheet modeling, and essential internet applications.",
       image: "/images/certifications/basic-computer-certificate.webp",
+      hideImage: true,
       category: "Academic & Course Certificates" as const,
       technologies: ["Basic IT", "Office Suites", "Windows OS"]
     },
@@ -113,7 +123,7 @@ const certificateData = {
       date: "2026",
       recipient: "Aryan Narwariya",
       skills: ["Robotics Exhibition", "Technical Presentation", "Innovation", "Rapid Prototyping", "Event Coordination"],
-      description: "Awarded for exceptional performance, technical innovation, and presentation in the robotics and project exhibition events during the Aarunya National Tech Fest.",
+      description: "Awarded for exceptional performance, technical innovation, and live prototype demonstration in the robotics and project exhibition events during the Aarunya National Tech Fest.",
       image: "/images/certifications/aarunya-certificate.webp",
       category: "Hackathons, Competitions & Achievements" as const,
       technologies: ["Robotics Hardware", "Project Exhibition", "Event Coordination"]
@@ -130,15 +140,15 @@ const certificateData = {
       technologies: ["Google Program", "Community Engagement", "Event Coordination"]
     },
     {
-      title: "Creative Media & Filmmaking Certification",
+      title: "Creative Media & Filmmaking Certification — 1st Position",
       issuer: "Film & Media Club",
       date: "2025",
       recipient: "Aryan Narwariya",
-      skills: ["Videography", "Storytelling", "Video Editing", "Creative Direction", "Post-Production"],
-      description: "Awarded for excellence in video production, storytelling, cinematography, and post-production editing during the filmmaking workshop and competition.",
+      skills: ["Cinematography", "Directing", "Storytelling", "Video Editing", "Creative Direction", "Post-Production"],
+      description: "Secured 1st Position in the .MOV university filmmaking competition for writing, directing, and editing the 22-minute narrative film 'HAPPENING'.",
       image: "/images/certifications/filmmaking-certificate.webp",
       category: "Hackathons, Competitions & Achievements" as const,
-      technologies: ["Post-Production", "Creative Direction"]
+      technologies: ["Post-Production", "Creative Direction", "Cinematography"]
     },
     {
       title: "Academic Merit & Leadership Award",
@@ -149,7 +159,7 @@ const certificateData = {
       description: "Awarded in recognition of outstanding academic performance, leadership within the student community, and active coordination of college technical events.",
       image: "/images/certifications/certificate-page.jpg",
       category: "Hackathons, Competitions & Achievements" as const,
-      technologies: ["Event Management", "Academic Excellence"]
+      technologies: ["Event Management", "Academic Excellence", "Leadership"]
     }
   ]
 };

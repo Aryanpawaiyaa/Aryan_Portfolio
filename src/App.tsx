@@ -8,6 +8,7 @@ import AboutView from "./components/AboutView";
 import GalleryView from "./components/GalleryView";
 import BlogView from "./components/BlogView";
 import AtmosphericBackground from "./components/AtmosphericBackground";
+import AuroraBackground from "./components/AuroraBackground";
 import InteractiveGrid from "./components/InteractiveGrid";
 import AestheticsController from "./components/AestheticsController";
 
@@ -103,6 +104,7 @@ export default function App() {
             onProjectSelect={handleProjectSelect}
             onPostSelect={handlePostSelect}
             accentColor={accentColor}
+            themeMode={themeMode}
           />
         );
       case "work":
@@ -130,6 +132,7 @@ export default function App() {
             onProjectSelect={handleProjectSelect}
             onPostSelect={handlePostSelect}
             accentColor={accentColor}
+            themeMode={themeMode}
           />
         );
     }
@@ -144,6 +147,9 @@ export default function App() {
           : "bg-black text-white selection:bg-white selection:text-black"
       }`}
     >
+      {/* Dynamic Aurora glow orbs */}
+      <AuroraBackground accentColor={accentColor} themeMode={themeMode} />
+
       {/* Interactive geometric design grids */}
       <InteractiveGrid showGrid={showGrid} showDots={showDots} glowStrength={glowStrength} accentColor={accentColor} themeMode={themeMode} />
 
