@@ -89,12 +89,12 @@ export default function CertificateCard({ cert, onClick }: CertificateCardProps)
         </div>
       ) : (
         <div 
-          className="cert-img-container cert-fallback-box relative w-full aspect-[1.414/1] overflow-hidden rounded-t-xl border-b border-white/5 bg-gradient-to-br from-indigo-950/20 via-zinc-950/80 to-purple-950/20 shadow-inner flex flex-col items-center justify-center p-5 text-center group-hover:from-indigo-950/30 group-hover:to-purple-950/30 transition-all duration-500"
+          className="cert-img-container cert-fallback-box relative w-full aspect-[1.414/1] overflow-hidden rounded-t-xl border-b border-white/5 bg-linear-to-br from-indigo-950/20 via-zinc-950/80 to-purple-950/20 shadow-inner flex flex-col items-center justify-center p-5 text-center group-hover:from-indigo-950/30 group-hover:to-purple-950/30 transition-all duration-500"
           style={{ transform: "translateZ(20px)" }}
         >
           <div className="relative mb-2.5 flex items-center justify-center">
             <div className="absolute -inset-2 rounded-2xl bg-indigo-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative h-11 w-11 rounded-2xl bg-gradient-to-tr from-indigo-500/15 to-purple-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:scale-110 group-hover:border-indigo-400/50 transition-all duration-300 shadow-md">
+            <div className="relative h-11 w-11 rounded-2xl bg-linear-to-tr from-indigo-500/15 to-purple-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:scale-110 group-hover:border-indigo-400/50 transition-all duration-300 shadow-md">
               <GraduationCap className="h-5.5 w-5.5" />
             </div>
           </div>

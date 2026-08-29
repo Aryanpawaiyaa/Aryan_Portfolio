@@ -57,7 +57,7 @@ export default function SpotlightCard({ id, children, className = "", onClick }:
       />
 
       {/* Top Edge Specular Reflection */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-40 group-hover:opacity-100 group-hover:via-white/30 transition-opacity duration-500" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/15 to-transparent opacity-40 group-hover:opacity-100 group-hover:via-white/30 transition-opacity duration-500" />
 
       {/* Internal Content slot */}
       <div className="relative z-10 h-full w-full">

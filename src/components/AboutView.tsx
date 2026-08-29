@@ -300,7 +300,7 @@ export default function AboutView() {
                       whileInView={{ width: `${Math.min(100, 65 + (group.skills.length * 3.5))}%` }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                      className="h-full rounded-full bg-gradient-to-r from-white/20 via-white/40 to-white/60"
+                      className="h-full rounded-full bg-linear-to-r from-white/20 via-white/40 to-white/60"
                     />
                   </div>
                 </div>
@@ -662,7 +662,7 @@ export default function AboutView() {
                     <div className="flex flex-col items-center justify-center p-8 text-center max-w-lg">
                       <div className="relative mb-5 flex items-center justify-center">
                         <div className="absolute -inset-3 rounded-full bg-indigo-500/20 blur-xl animate-pulse" />
-                        <div className="relative h-20 w-20 rounded-3xl bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-emerald-500/10 border border-indigo-500/30 flex items-center justify-center shadow-xl">
+                        <div className="relative h-20 w-20 rounded-3xl bg-linear-to-tr from-indigo-500/20 via-purple-500/20 to-emerald-500/10 border border-indigo-500/30 flex items-center justify-center shadow-xl">
                           <GraduationCap className="h-10 w-10 text-indigo-400" />
                         </div>
                       </div>

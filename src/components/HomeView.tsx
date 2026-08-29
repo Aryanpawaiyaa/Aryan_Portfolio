@@ -171,7 +171,7 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
               <h2 className="font-sans text-4xl font-extrabold tracking-tight text-white sm:text-5xl leading-[1.1]">
                 {personal.name}
               </h2>
-              <h3 className={`font-sans text-lg font-semibold tracking-tight ${textAccent} sm:text-xl min-h-[1.75rem] flex items-center`}>
+              <h3 className={`font-sans text-lg font-semibold tracking-tight ${textAccent} sm:text-xl min-h-7 flex items-center`}>
                 <TypedText
                   words={[
                     personal.role,

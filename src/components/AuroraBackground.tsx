@@ -61,7 +61,7 @@ export default function AuroraBackground({
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -top-[15%] left-[5%] h-[550px] w-[550px] rounded-full filter blur-[100px]"
+        className="absolute top-[-15%] left-[5%] h-137.5 w-137.5 rounded-full filter blur-[100px]"
         style={{
           background: `radial-gradient(circle, ${colors.primary} 0%, transparent 70%)`,
         }}
@@ -79,7 +79,7 @@ export default function AuroraBackground({
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-[35%] -right-[10%] h-[600px] w-[600px] rounded-full filter blur-[120px]"
+        className="absolute top-[35%] right-[-10%] h-150 w-150 rounded-full filter blur-[120px]"
         style={{
           background: `radial-gradient(circle, ${colors.secondary} 0%, transparent 70%)`,
         }}
@@ -97,7 +97,7 @@ export default function AuroraBackground({
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -bottom-[20%] left-[25%] h-[650px] w-[650px] rounded-full filter blur-[110px]"
+        className="absolute bottom-[-20%] left-[25%] h-162.5 w-162.5 rounded-full filter blur-[110px]"
         style={{
           background: `radial-gradient(circle, ${colors.accent} 0%, transparent 70%)`,
         }}
