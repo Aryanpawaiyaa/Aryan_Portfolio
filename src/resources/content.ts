@@ -585,100 +585,126 @@ Stepping out of the engineering lab and looking through a camera lens was an inv
 
 export const galleryItems: GalleryItem[] = [
   {
-    id: "gal-arch-1",
-    title: "Minimalist Parametric Facade",
-    category: "Architecture",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80",
-    description: "Computational parametric facade engineering study demonstrating rhythmic geometric louvers and natural light diffusion.",
+    id: "gal-vid-1",
+    title: "Flight Dynamics & Prototype Telemetry Demo",
+    category: "Robotics & Hardware",
+    image: "/images/gallery/drone-telemetry-demo-video.mp4",
+    video: "/images/gallery/drone-telemetry-demo-video.mp4",
+    type: "video",
+    description: "Live prototype demonstration capturing real-time actuator testing, flight dynamics, and payload control verification.",
+    date: "Jun 2026"
+  },
+  {
+    id: "gal-photo-1",
+    title: "Field Deployment & Tactical Scouting",
+    category: "Field & Exploration",
+    image: "/images/gallery/tactical-field-scouting.webp",
+    description: "Ground-level telemetry review and tactical site inspection during outdoor environmental testing drills.",
+    date: "Jun 2026"
+  },
+  {
+    id: "gal-photo-2",
+    title: "Embedded Workbench & Circuit Assembly",
+    category: "Lab & Prototyping",
+    image: "/images/gallery/embedded-circuit-assembly.webp",
+    description: "Microcontroller circuit assembly, logic analyzer probing, and multi-sensor bus integration.",
+    date: "Jun 2026"
+  },
+  {
+    id: "gal-photo-3",
+    title: "Sensor Bus Calibration & Telemetry Probe",
+    category: "Lab & Prototyping",
+    image: "/images/gallery/sensor-calibration-workbench.webp",
+    description: "Oscilloscope diagnostics and serial signal analysis for low-latency feedback control loops.",
+    date: "Jun 2026"
+  },
+  {
+    id: "gal-photo-4",
+    title: "High-Current Power Distribution Unit",
+    category: "Lab & Prototyping",
+    image: "/images/gallery/power-distribution-testing.webp",
+    description: "Thermal profiling and transient load testing of the dual-rail power regulation subsystem.",
+    date: "Jun 2026"
+  },
+  {
+    id: "gal-photo-5",
+    title: "Carbon-Fiber Airframe Structural Check",
+    category: "Robotics & Hardware",
+    image: "/images/gallery/carbon-fiber-airframe-check.webp",
+    description: "Torsional stiffness inspection and motor mount alignment on the custom multi-rotor carbon airframe.",
+    date: "Jun 2026"
+  },
+  {
+    id: "gal-photo-6",
+    title: "Avionics Core & IMU Sensor Mount",
+    category: "Robotics & Hardware",
+    image: "/images/gallery/avionics-core-imu-mount.webp",
+    description: "Vibration-damped mounting and 6-DOF IMU sensor calibration for autonomous stabilization.",
+    date: "Jun 2026"
+  },
+  {
+    id: "gal-photo-7",
+    title: "Hardware Telemetry Workshop Analysis",
+    category: "Lab & Prototyping",
+    image: "/images/gallery/hardware-telemetry-analysis.webp",
+    description: "In-situ hardware benchmarking, firmware flashing, and radio link latency optimization.",
+    date: "Jul 2026"
+  },
+  {
+    id: "gal-photo-8",
+    title: "National Tech Exhibition Showcase",
+    category: "Academic & Achievements",
+    image: "/images/gallery/tech-exhibition-showcase.webp",
+    description: "Live prototype demonstration and system architecture breakdown at the university technology exhibition.",
+    date: "Jul 2026"
+  },
+  {
+    id: "gal-photo-9",
+    title: "Team Collaborative Engineering Workshop",
+    category: "Academic & Achievements",
+    image: "/images/gallery/engineering-workshop-collaboration.webp",
+    description: "Joint cross-functional review of flight telemetry code, PCB schematics, and mechanical assemblies.",
+    date: "Jun 2026"
+  },
+  {
+    id: "gal-photo-10",
+    title: "Avionics Diagnostic Matrix",
+    category: "Robotics & Hardware",
+    image: "/images/gallery/avionics-diagnostic-matrix.webp",
+    description: "Bench-scale signal integrity verification and hardware fail-safe threshold configuration.",
+    date: "Aug 2026"
+  },
+  {
+    id: "gal-photo-11",
+    title: "Tactical Field Operations & Ground Station",
+    category: "Field & Exploration",
+    image: "/images/gallery/ground-station-field-ops.webp",
+    description: "Field deployment of mobile ground control station antennas and long-range telemetry link.",
+    date: "Aug 2026"
+  },
+  {
+    id: "gal-photo-12",
+    title: "Robotics & Innovation Showcase Display",
+    category: "Academic & Achievements",
+    image: "/images/gallery/robotics-showcase-display.webp",
+    description: "Official presentation of autonomous rover platforms and embedded computer vision modules.",
     date: "2026"
   },
   {
-    id: "gal-ind-1",
-    title: "Aerodynamic UAV Airframe Concept",
-    category: "Industrial Design",
-    image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1000&q=80",
-    description: "Rapid iteration on carbon-fiber composite drone arms and structural load-bearing landing gear assemblies.",
+    id: "gal-photo-13",
+    title: "Computational Systems Architecture",
+    category: "Lab & Prototyping",
+    image: "/images/gallery/computational-architecture-diagram.webp",
+    description: "Modular software block diagrams and embedded communication pipeline topology.",
     date: "2026"
   },
   {
-    id: "gal-abs-1",
-    title: "Kinetic Fluid Simulation",
-    category: "Abstract",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80",
-    description: "High-density particle turbulence and fluid dynamic field visual study rendered with computational shaders.",
+    id: "gal-photo-14",
+    title: "National Defence Academy (NDA) Examination Merit",
+    category: "Academic & Achievements",
+    image: "/images/gallery/nda-merit-record.webp",
+    description: "Official UPSC National Defence Academy (NDA) examination score verification and national competitive merit record.",
     date: "2025"
-  },
-  {
-    id: "gal-graph-1",
-    title: "Cybernetic Swiss Grid System",
-    category: "Graphic Design",
-    image: "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=1000&q=80",
-    description: "Precision typographical grid architecture exploring monospaced structural layout tokens and visual hierarchy.",
-    date: "2026"
-  },
-  {
-    id: "gal-arch-2",
-    title: "Brutalist Concrete Pavilion",
-    category: "Architecture",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
-    description: "Monolithic geometric spatial study balancing raw tactile surfaces with geometric shadows.",
-    date: "2025"
-  },
-  {
-    id: "gal-ind-2",
-    title: "Precision Microcontroller Enclosure",
-    category: "Industrial Design",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80",
-    description: "Snap-fit modular 3D printed casing with passive airflow channels for high-current flight computers.",
-    date: "2026"
-  },
-  {
-    id: "gal-int-1",
-    title: "Nordic Monochromatic Workspace",
-    category: "Interior Design",
-    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1000&q=80",
-    description: "Ergonomic hardware lab desk layout designed for dual-screen telemetry analysis and PCB probing.",
-    date: "2026"
-  },
-  {
-    id: "gal-abs-2",
-    title: "Neon Wave Intersections",
-    category: "Abstract",
-    image: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1000&q=80",
-    description: "Electroluminescent waveform experiments representing digital signal propagation across circuits.",
-    date: "2025"
-  },
-  {
-    id: "gal-graph-2",
-    title: "Dark Mode Systems UI Specimen",
-    category: "Graphic Design",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80",
-    description: "High-density flight telemetry design tokens and chromatic aberration visual experiments.",
-    date: "2026"
-  },
-  {
-    id: "gal-int-2",
-    title: "Acoustic Minimalist Studio",
-    category: "Interior Design",
-    image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1000&q=80",
-    description: "Diffusion panel sound isolation study tailored for high-focus creative software sprints.",
-    date: "2025"
-  },
-  {
-    id: "gal-arch-3",
-    title: "Futuristic Cantilever Overhang",
-    category: "Architecture",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
-    description: "Structural cantilever physics model evaluating high wind load distribution in urban high-rises.",
-    date: "2026"
-  },
-  {
-    id: "gal-ind-3",
-    title: "Custom Mechanical Keyset & Frame",
-    category: "Industrial Design",
-    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=80",
-    description: "CNC milled aluminum chassis paired with custom tactile mechanical key switches for high-cadence development.",
-    date: "2026"
   }
 ];
 
