@@ -9,11 +9,21 @@ import { OptimizedImage } from "./OptimizedImage";
 
 
 const getIssuerBadge = (issuer: string) => {
+  const isIIT = issuer.toLowerCase().includes("iit") || issuer.toLowerCase().includes("yantra") || issuer.toLowerCase().includes("paradox");
   const isCisco = issuer.toLowerCase().includes("cisco");
   const isArmy = issuer.toLowerCase().includes("army") || issuer.toLowerCase().includes("ncc");
   const isMITS = issuer.toLowerCase().includes("mits");
   const isBoard = issuer.toLowerCase().includes("board") || issuer.toLowerCase().includes("council");
   const isFilm = issuer.toLowerCase().includes("film") || issuer.toLowerCase().includes("media");
+
+  if (isIIT) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 font-sans text-[9px] font-bold tracking-wider text-rose-400 uppercase shadow-sm cursor-default">
+        <span className="h-1.5 w-1.5 rounded-full bg-rose-400 animate-pulse" />
+        IIT Madras / Yantra
+      </span>
+    );
+  }
 
   if (isArmy) {
     return (
@@ -352,31 +362,18 @@ export default function AboutView() {
               National Cadet Corps (NCC) — Military Training & Tactical Camps
             </h3>
             <span className="font-mono text-[9px] text-emerald-400/90 font-semibold tracking-wider uppercase bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
-              3 Camps Completed • Army Wing
+              {nccExperiences.length} Camps Completed • Army Wing
             </span>
           </div>
 
-          <div className="relative h-125 sm:h-125 w-full perspective-1000 mt-4">
+          <div className="relative h-140 sm:h-135 w-full perspective-1000 mt-4">
             {nccExperiences.map((camp, idx) => {
-              const isTop = activeNccIdx === idx;
-              const isSecond = (activeNccIdx + 1) % nccExperiences.length === idx;
-              
-              let zIndex = 10;
-              let yOffset = 48;
-              let scale = 0.9;
-              let opacity = 0.4;
-              
-              if (isTop) {
-                zIndex = 30;
-                yOffset = 0;
-                scale = 1;
-                opacity = 1;
-              } else if (isSecond) {
-                zIndex = 20;
-                yOffset = 24;
-                scale = 0.95;
-                opacity = 0.7;
-              }
+              const pos = (idx - activeNccIdx + nccExperiences.length) % nccExperiences.length;
+              const isTop = pos === 0;
+              const zIndex = 40 - pos * 8;
+              const yOffset = pos * 18;
+              const scale = Math.max(0.86, 1 - pos * 0.04);
+              const opacity = pos === 0 ? 1 : Math.max(0.3, 0.75 - pos * 0.2);
 
               return (
                 <motion.div
@@ -565,10 +562,13 @@ export default function AboutView() {
               <div className="cert-modal-sidebar w-full md:w-95 shrink-0 border-t md:border-t-0 md:border-r border-white/10 p-6 flex flex-col justify-between h-auto md:h-full bg-zinc-950 overflow-y-auto order-2 md:order-1">
                 <div className="space-y-6">
                   <div>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-zinc-900 border border-white/5 text-gray-400 font-mono text-[9px] uppercase tracking-wider">
-                      <Award className="h-2.5 w-2.5" /> Official Certificate
-                    </span>
-                    <h3 className="font-sans text-base font-bold text-white mt-3 leading-snug">
+                    <div className="flex items-center gap-2 flex-wrap mb-3">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-zinc-900 border border-white/5 text-gray-400 font-mono text-[9px] uppercase tracking-wider">
+                        <Award className="h-2.5 w-2.5" /> Official Certificate
+                      </span>
+                      {getIssuerBadge(selectedCert.issuer)}
+                    </div>
+                    <h3 className="font-sans text-base font-bold text-white mt-1 leading-snug">
                       {selectedCert.title}
                     </h3>
                     <p className="text-xs text-gray-400 font-medium font-sans mt-1">

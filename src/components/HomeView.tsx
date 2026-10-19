@@ -175,7 +175,9 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
                 <TypedText
                   words={[
                     personal.role,
+                    "Event Head — NaviGrid (IIT Madras BS)",
                     "Robotics & UAV Systems Engineer",
+                    "Autonomous Mobile Robot Developer",
                     "Embedded Systems & Hardware Developer",
                     "Computer Vision & AI Researcher",
                     "UI/UX & Interactive Design Engineer"
@@ -274,19 +276,19 @@ export default function HomeView({ onNavigate, onProjectSelect, onPostSelect, ac
               <div className="mt-0.5 text-[10px] text-gray-400 font-light">IIT Madras & MITS Gwalior</div>
             </SpotlightCard>
             <SpotlightCard className="p-4">
-              <div className="text-gray-500 font-mono text-[9px] uppercase tracking-wider font-semibold">Club Roles</div>
-              <div className="mt-1.5 text-base font-bold text-white leading-tight">2 Tech Clubs</div>
-              <div className="mt-0.5 text-[10px] text-gray-400 font-light">DroneX Lead & Yantra IITM</div>
+              <div className="text-gray-500 font-mono text-[9px] uppercase tracking-wider font-semibold">Leadership</div>
+              <div className="mt-1.5 text-base font-bold text-white leading-tight">NaviGrid Head</div>
+              <div className="mt-0.5 text-[10px] text-gray-400 font-light">427 Competitors • IITM BS</div>
             </SpotlightCard>
             <SpotlightCard className="p-4">
               <div className="text-gray-500 font-mono text-[9px] uppercase tracking-wider font-semibold">Core Systems</div>
-              <div className="mt-1.5 text-base font-bold text-white leading-tight">3+ Builds</div>
-              <div className="mt-0.5 text-[10px] text-gray-400 font-light">Drones, CV & Web Platforms</div>
+              <div className="mt-1.5 text-base font-bold text-white leading-tight">4+ Builds</div>
+              <div className="mt-0.5 text-[10px] text-gray-400 font-light">AMR Sim, Drones, CV & Web</div>
             </SpotlightCard>
             <SpotlightCard className="p-4">
               <div className="text-gray-500 font-mono text-[9px] uppercase tracking-wider font-semibold">Credentials</div>
               <div className="mt-1.5 text-base font-bold text-white leading-tight">{totalCertsCount} Verified</div>
-              <div className="mt-0.5 text-[10px] text-gray-400 font-light">Army, Cisco & MITS Validated</div>
+              <div className="mt-0.5 text-[10px] text-gray-400 font-light">IITM, Army, Cisco & MITS</div>
             </SpotlightCard>
           </div>
         </motion.section>

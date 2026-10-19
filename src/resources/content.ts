@@ -22,8 +22,8 @@ export const socialLinks: SocialLink[] = [
 export const workExperiences: WorkExperience[] = [
   {
     company: "Yantra Robotics Society, IIT Madras",
-    role: "Core Technical Member",
-    location: "Chennai, TN",
+    role: "Technical Coordinator",
+    location: "Chennai, TN (Hybrid)",
     period: "2025 — Present",
     description: [
       "Collaborated with multidisciplinary teams on robotics and embedded systems projects.",
@@ -32,22 +32,19 @@ export const workExperiences: WorkExperience[] = [
       "Gained practical experience in robotics software, hardware integration, and engineering design."
     ],
     skills: [
+      "Event Leadership",
+      "Autonomous Mobile Robots (AMR)",
+      "ROS 2 Jazzy",
+      "Gazebo Harmonic",
+      "C++",
+      "Python",
+      "Colcon Workspace",
+      "Path Planning & Navigation",
+      "Dynamic Obstacle Avoidance",
+      "Safety Critical Nodes",
       "Robotics",
       "Embedded Systems",
-      "Autonomous Systems",
-      "Control Systems",
-      "Sensor Integration",
-      "Microcontrollers",
-      "Arduino",
-      "Raspberry Pi",
-      "C/C++",
-      "Python",
-      "ROS (Robot Operating System)",
-      "Electronics",
-      "PCB Basics",
-      "Team Collaboration",
-      "Technical Documentation",
-      "Problem Solving"
+      "Technical Documentation"
     ],
     link: {
       label: "View Team Profile",
@@ -110,25 +107,48 @@ export const education: Education[] = [
 
 export const nccExperiences: NccExperience[] = [
   {
-    campName: "Army Attachment Camp (AAC)",
-    badge: "Indian Army Attachment",
-    location: "Babina Military Station, Jhansi, M.P.",
-    period: "Feb 2026",
-    headline: "High-Discipline Military Immersion & Armored Warfare Exposure",
-    specialHighlight: "Main Battle Tank (War Tank) Tactical Ride & Military Vehicle Depot Logistics",
+    campName: "Advanced Leadership Camp (ALC)",
+    badge: "National Leadership",
+    location: "Lakholi, Raipur, Chhattisgarh",
+    period: "2025",
+    headline: "National-Level Leadership Conditioning, Crisis Management & Tactical Decisions",
+    specialHighlight: "Selected for National-Level Advanced Leadership Conditioning under Indian Army Officers",
     description: [
-      "Underwent comprehensive military training and operational immersion attached directly with active Indian Army combat units at Babina Army Cantt.",
-      "Granted the rare distinction to ride an active Main Battle Tank (War Tank), experiencing firsthand armored combat dynamics, turret control, and tactical field maneuvers.",
-      "Toured and inspected high-security military warehouses housing hundreds of combat tanks and heavy military vehicles, learning comprehensive maintenance systems, technical overhauls, and supply-chain logistics.",
-      "Trained in live weapon handling protocols, firing range safety, combat obstacle courses, and defensive perimeter tactics under regular army instructors."
+      "Selected for National-level advanced leadership conditioning focused on crisis management, group dynamics, and decision-making under intense pressure.",
+      "Participated in strategic problem-solving simulations, officer-like qualities (OLQ) development sessions by Army Officers, and public speaking evaluations.",
+      "Led multi-directorate teams in competitive outdoor leadership tasks, tactical group exercises, and cross-cultural integration activities."
     ],
     skills: [
-      "Armored Vehicle Logistics",
-      "Battle Tank Maneuvers",
+      "Crisis Management",
+      "Strategic Decision Making",
+      "Officer-Like Qualities (OLQ)",
+      "Multi-Directorate Leadership",
+      "Group Dynamics",
+      "Public Speaking",
+      "Tactical Exercises"
+    ]
+  },
+  {
+    campName: "Army Attachment Camp (AAC)",
+    badge: "Indian Army Attachment",
+    location: "Babina Military Station, Jhansi",
+    period: "Feb 2026",
+    headline: "High-Discipline Military Immersion & Armored Warfare Tactical Exposure",
+    specialHighlight: "Main Battle Tank (MBT) Tactical Ride & High-Security Military Logistics Depot Overhauls",
+    description: [
+      "Completed high-discipline military training attached directly to active Indian Army combat units at Babina Army Cantt.",
+      "Gained hands-on tactical exposure to armored warfare, including turret control and dynamic field maneuvers aboard an active Main Battle Tank (MBT).",
+      "Inspected high-security military logistics depots and heavy vehicle warehouses, learning combat vehicle maintenance systems, technical overhauls, and supply chain management.",
+      "Trained in live weapon handling protocols, firing range safety procedures, combat obstacle courses, and defensive perimeter tactics under regular army instructors."
+    ],
+    skills: [
+      "Armored Warfare Exposure",
+      "Main Battle Tank (MBT)",
       "Weapon Handling Protocols",
-      "Tactical Range Drills",
-      "Military Discipline",
-      "Physical Endurance"
+      "Military Logistics & Depots",
+      "Firing Range Procedures",
+      "Perimeter Tactics",
+      "Obstacle Navigation"
     ]
   },
   {
@@ -206,6 +226,64 @@ export const skills: SkillGroup[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    id: "navigrid-adaptive-path-challenge",
+    title: "NaviGrid: The Adaptive Path Challenge",
+    category: "Robotics & Simulation",
+    tags: ["ROS 2 Jazzy", "Gazebo Harmonic", "AMR Navigation", "C++", "Python", "Colcon", "Path Planning"],
+    readTime: "4 min read",
+    description: "Led and engineered an autonomous mobile robot (AMR) simulation gauntlet in Gazebo Harmonic & ROS 2 Jazzy for 427 registered participants with Yantra Robotics Society, IIT Madras.",
+    content: `### Executive Summary & Event Leadership
+As **Event Head**, I led the conception, engineering, and execution of **NaviGrid: The Adaptive Path Challenge** alongside the **Yantra - Robotics Society IITM BS** and the **IIT Madras BS Degree Program**. Building this high-stakes technical platform from the ground up, we welcomed an overwhelming response of **427 registered solo participants** competing for a competitive prize pool (₹4,000 for 1st, ₹3,000 for 2nd, and ₹1,500 for 3rd place).
+
+NaviGrid pushed competitors through a rigorous multi-stage engineering gauntlet spanning September 24th to September 27th, 2026. The competition evaluated autonomous mobile robot (AMR) navigation within a custom-built, constrained **Gazebo Harmonic** environment utilizing a standard **Colcon workspace**, **C++ / Python**, and **ROS 2 Jazzy**.
+
+### Architectural & Simulation Overview
+- **Simulation Engine:** Gazebo Harmonic with high-fidelity physics, ray-traced sensor plugins, and laser scan simulation.
+- **Middleware & Ecosystem:** ROS 2 Jazzy, standard Colcon build workspaces, RViz 2 telemetry mapping.
+- **Language Nodes:** Modern C++ (performance-critical control nodes) and Python (rapid prototyping and automated test harnesses).
+- **Robot Platform:** Differential-drive Autonomous Mobile Robot (AMR) equipped with 2D/3D LiDAR, wheel odometry, and IMU sensor suites.
+- **Anti-Vibe Coding Policy:** Enforced strict algorithmic determinism, clean logic pipelines, and real-time computation constraints rather than fragile heuristic hacks.
+
+### Key Simulation Challenges Designed for Competitors
+
+**1. Dual-Path Topology & Elevation Costing**
+- Competitors faced a bifurcated environment requiring intelligent path selection.
+- **Incline Ramp Path:** A steep 3D incline ramp testing elevation terrain cost calculation against motor torque limits.
+- **Corridor Path:** A longer, flat zig-zag corridor requiring rapid turn execution and tight clearance navigation.
+- Participants had to dynamically balance elevation energy expenditure against travel distance.
+
+**2. Dynamic Obstacles & Reactive Replanning**
+- The arena featured moving pedestrians and cross-traffic AMRs simulated in real time.
+- Standard static global path planners failed; participants engineered reactive local trajectory planners capable of avoiding dynamic collisions at run-time.
+
+**3. Safety Overrides & Emergency Stop System**
+- Safety in autonomous robotics is paramount. Competitors were mandated to develop a dedicated safety watchdog node.
+- If linear or angular velocity crossed critical safety thresholds or if dynamic obstacles breached the safety bubble, the node triggered deterministic emergency stops, overriding navigation goals.
+
+**4. Multi-Stage Evaluation Pipeline**
+- **Stage 1 (Theoretical Mastery):** Comprehensive ROS 2 architectural quiz testing node lifecycles, QoS policies, and publisher/subscriber pipelines.
+- **Stage 2 (Algorithmic Logic Test):** Real-time problem-solving evaluating mathematical planning and data structures.
+- **Stage 3 (Full Simulation Gauntlet):** Autonomous deployment through the NaviGrid arena under unpredictable obstacle spawns.
+
+### Global Industry Mentors & Judging Panel
+We were honored to collaborate with world-class robotics industry leaders who elevated the competition for every participant:
+- **Princy Mariam Jacob:** Graduate Control Systems Software Engineer at **UKAEA** (Oxford, UK), who kicked off the event with an inspiring masterclass on control systems.
+- **Finny Varghese:** Lead Robotics Engineer and Co-founder (Edinburgh, UK), who brought invaluable industry expertise as our official Judge.
+- **Anirban Mandal:** Event Co-Head, who partnered closely with me across technical problem design, platform infrastructure, and flawless event execution.
+
+### Official Recognition & Open-Source Artifacts
+In recognition of building and heading this event, I was awarded the official **Certificate of Recognition** by Ms. Kothainayaki SK (Head, Student Affairs, IIT Madras BS Degree Program).
+
+All simulation world models, robot URDF/SDF assets, launch files, and starter codebases are open-sourced on GitHub: [https://github.com/Aryanpawaiyaa/navigrid_ws](https://github.com/Aryanpawaiyaa/navigrid_ws).`,
+    date: "Sept 2026 (Event Head)",
+    image: "/images/certifications/navigrid-simulation-banner.jpg",
+    link: "https://github.com/Aryanpawaiyaa/navigrid_ws",
+    gallery: [
+      "/images/certifications/navigrid-certificate.png",
+      "/images/certifications/navigrid-simulation-banner.jpg"
+    ]
+  },
   {
     id: "esp-drone-project",
     title: "ESP-Drone",
@@ -413,6 +491,49 @@ Designed and built a custom personal portfolio showcasing robotics, embedded sys
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "navigrid-adaptive-path-challenge-event-head",
+    title: "Heading NaviGrid: The Adaptive Path Challenge — 427 Participants, ROS 2 Jazzy & Gazebo Harmonic",
+    description: "Reflections as Event Head of NaviGrid alongside Yantra Robotics Society (IIT Madras BS) — architecting dual-path AMR simulation topologies, dynamic obstacle gauntlets, and global industry judging.",
+    content: `### Leading NaviGrid: The Adaptive Path Challenge
+Organizing and executing **NaviGrid: The Adaptive Path Challenge** as **Event Head** alongside the **Yantra - Robotics Society IITM BS** has been one of the most rewarding leadership and systems-engineering milestones of my journey. 
+
+When we first pitched the concept, our vision was clear: move beyond simple line-following or generic coding rounds, and plunge students directly into realistic Autonomous Mobile Robot (AMR) navigation problems faced in modern industrial automation.
+
+The community response was overwhelming: **427 registered participants** stepped up for this rigorous solo-participation competition, competing for a ₹8,500 prize pool (₹4,000 for 1st, ₹3,000 for 2nd, and ₹1,500 for 3rd place).
+
+### Designing the Simulation Platform from the Ground Up
+Building the competition platform required end-to-end systems architecture:
+- **Gazebo Harmonic & ROS 2 Jazzy:** Migrated away from deprecated ROS distributions to bring participants the latest industry-standard tooling.
+- **Colcon Workspace Setup:** Provided reproducible build artifacts and containerized development setups ensuring participants on varying machines experienced deterministic physics and sensor feeds.
+- **Dual-Path Arena Topology:** Engineered a custom 3D world featuring a challenging incline ramp with elevation terrain penalties alongside a longer, flat zig-zag corridor. Participants had to program their global path planners to evaluate cost vs. safety in real time.
+- **Dynamic Obstacles:** Implemented moving pedestrian models and cross-traffic AMRs to evaluate reactive local trajectory replanning.
+- **Watchdog Safety Node:** Required participants to write emergency stop logic responding instantly to velocity threshold violations.
+
+### High Stakes & Strict Evaluation
+To ensure engineering excellence, we implemented a strict "anti-vibe coding" policy. Submissions had to pass:
+1. A foundational ROS 2 architecture and node-lifecycle quiz.
+2. An algorithmic problem-solving test.
+3. The live Gazebo simulation benchmark evaluated against path efficiency, collision avoidance, and safety override compliance.
+
+### Global Mentorship & Collaboration
+None of this would have reached this level of polish without our phenomenal team and guests:
+- **Princy Mariam Jacob** (Graduate Control Systems Software Engineer at UKAEA, Oxford, UK) kicked off NaviGrid with an inspiring guest session on control systems.
+- **Finny Varghese** (Lead Robotics Engineer & Co-founder, Edinburgh, UK) joined us as our official Judge, holding participant code to real industrial robotics standards.
+- **Anirban Mandal**, my Event Co-Head, worked shoulder-to-shoulder with me to tackle every technical hurdle, logistics challenge, and live participant support query.
+- A huge shoutout to the entire **Yantra Robotics Society** team for the endless hours behind the scenes!
+
+### Reflections & Official Recognition
+Seeing 427 students grapple with costmaps, odometry drift, and laser scan subscriber queues proved that simulation-based robotics competitions are the most effective bridge between classroom theory and real-world autonomy. 
+
+I was deeply honored to receive an official **Certificate of Recognition** from Ms. Kothainayaki SK (Head, Student Affairs, IIT Madras BS Degree Program) acknowledging my contribution as Event Head.
+
+All technical documentation, world models, and competition files are published on GitHub: [https://github.com/Aryanpawaiyaa/navigrid_ws](https://github.com/Aryanpawaiyaa/navigrid_ws).`,
+    date: "September 2026",
+    readTime: "4 min read",
+    category: "Competitions",
+    coverImage: "/images/certifications/navigrid-simulation-banner.jpg"
+  },
+  {
     id: "black-box-protocol-hackathon",
     title: "Black Box Protocol — Building an Automated Creator Intelligence Platform in 12 Hours",
     description: "Inside our 12-hour sprint at MITS Gwalior: building Black Box Protocol, an all-in-one automated AI analysis and trend intelligence app for content creators that advanced to the final stage.",
@@ -584,6 +705,22 @@ Stepping out of the engineering lab and looking through a camera lens was an inv
 ];
 
 export const galleryItems: GalleryItem[] = [
+  {
+    id: "gal-navigrid-cert",
+    title: "NaviGrid Event Head — Official Certificate of Recognition",
+    category: "Academic & Achievements",
+    image: "/images/certifications/navigrid-certificate.png",
+    description: "Official Certificate of Recognition awarded by the Head of Student Affairs, IIT Madras BS Degree Program, recognizing invaluable contribution and leadership as Event Head for NaviGrid: The Adaptive Path Challenge.",
+    date: "Sept 2026"
+  },
+  {
+    id: "gal-navigrid-sim",
+    title: "NaviGrid AMR Autonomous Simulation Gauntlet",
+    category: "Robotics & Hardware",
+    image: "/images/gallery/navigrid-simulation-banner.jpg",
+    description: "High-fidelity Gazebo Harmonic simulation arena featuring dual-path topology, 3D incline ramp, LiDAR sensor scans, and dynamic pedestrian obstacle avoidance nodes.",
+    date: "Sept 2026"
+  },
   {
     id: "gal-vid-1",
     title: "Flight Dynamics & Prototype Telemetry Demo",

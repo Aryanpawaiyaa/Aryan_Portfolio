@@ -5,6 +5,21 @@ const certificateData = {
   },
   certificates: [
     {
+      title: "Certificate of Recognition — Event Head for NaviGrid",
+      issuer: "IIT Madras BS Degree Program / Paradox / Saavan / Yantra Robotics",
+      date: "2026",
+      recipient: "Aryan Narwariya",
+      skills: ["Event Leadership", "Autonomous Mobile Robots (AMR)", "ROS 2 Jazzy", "Gazebo Harmonic", "C++ / Python", "Colcon Workspace", "Path Planning & Obstacle Avoidance"],
+      description: "Official Certificate of Recognition awarded by the Head of Student Affairs, IIT Madras BS Degree Program, recognizing invaluable contribution, technical architecture, and leadership as Event Head for NaviGrid: The Adaptive Path Challenge, an AMR autonomous navigation competition with 427 registered participants.",
+      image: "/images/certifications/navigrid-certificate.png",
+      images: [
+        "/images/certifications/navigrid-certificate.png",
+        "/images/certifications/navigrid-simulation-banner.jpg"
+      ],
+      category: "Hackathons, Competitions & Achievements" as const,
+      technologies: ["ROS 2 Jazzy", "Gazebo Harmonic", "AMR Navigation", "C++", "Python", "Colcon", "IIT Madras", "Yantra Robotics"]
+    },
+    {
       title: "AI Fundamentals with IBM SkillsBuild",
       issuer: "IBM SkillsBuild / Cisco Networking Academy",
       date: "2026",
