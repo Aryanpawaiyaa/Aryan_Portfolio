@@ -189,6 +189,7 @@ export default function HomeView({
               <h2 className={`font-sans text-lg sm:text-xl font-semibold tracking-tight ${textAccent} min-h-7 flex items-center`}>
                 <TypedText
                   words={[
+                    "Full-Stack Web & UI/UX Systems Engineer",
                     "Tactical UAV & Autonomous Drone Systems Engineer",
                     "Team Trinetra — SUAS 2026 USA (16th Global Flight Rank)",
                     "Event Head — NaviGrid (IIT Madras BS, 427 Competitors)",
@@ -390,7 +391,7 @@ export default function HomeView({
 
                   <div className={`font-sans text-xs sm:text-sm font-semibold tracking-tight ${textAccent} flex items-center`}>
                     <span className="font-bold text-[9.5pt]">
-                      Robotics, Autonomous Systems & Tactical UAV Engineer
+                      Robotics, Autonomous Systems & Full-Stack Engineer
                     </span>
                   </div>
 
@@ -447,7 +448,7 @@ export default function HomeView({
               {/* Executive Summary */}
               <div className="mt-1.5 font-sans text-[11px] sm:text-xs text-gray-300 font-light leading-relaxed">
                 <strong className="text-white font-semibold">Summary: </strong>
-                Detail-oriented Robotics & Systems Engineering student pursuing dual degrees at <span className="text-white font-medium">IIT Madras</span> (B.S. in Data Science) and <span className="text-white font-medium">MITS Gwalior</span> (B.Tech. in CSBS). Hands-on experience in tactical UAV development, autonomous mobile robotics, and aerial systems with tactical drone tuning. Autonomous AI Drone Engineer for <span className="text-white font-medium">SUAS 2026 USA</span> with Team Trinetra, securing <strong className="text-white font-medium">16th global flight rank</strong> (ahead of IIT Madras at 31st). Event Head of <span className="text-white font-medium">NaviGrid</span> (IIT Madras BS, 427 competitors). Skilled in ArduPilot, MAVLink, Cube Orange, Nvidia Jetson Orin, ROS 2, and custom PCB hardware.
+                Detail-oriented Robotics, Autonomous Systems & Full-Stack Engineer pursuing dual degrees at <span className="text-white font-medium">IIT Madras</span> (B.S. in Data Science) and <span className="text-white font-medium">MITS Gwalior</span> (B.Tech. in CSBS). Proven expertise spanning autonomous AI drone development (<span className="text-white font-medium">SUAS 2026 USA</span>, 16th global rank), AMR simulation gauntlets (<span className="text-white font-medium">NaviGrid</span> Head), full-stack web architectures (React 19, TypeScript, RESTful backends), intuitive UI/UX design, and embedded PCB/avionics hardware.
               </div>
             </header>
 
@@ -503,39 +504,39 @@ export default function HomeView({
                   </div>
                 </section>
 
-                {/* 2. UAV & EMBEDDED HARDWARE SKILLS */}
+                {/* 2. CORE TECHNICAL & ENGINEERING SKILLS */}
                 <section id="resume-skills" className="space-y-1.5">
                   <div className="flex items-center gap-1.5 pb-1 resume-section-divider">
                     <Cpu className="h-3.5 w-3.5 text-emerald-400" />
                     <h4 className="font-sans text-[11px] font-bold uppercase tracking-wider text-white">
-                      UAV & Embedded Hardware Skills
+                      Core Technical & Engineering Skills
                     </h4>
                   </div>
 
                   <div className="space-y-1.5 font-sans text-[9.5px] leading-snug">
                     <div>
-                      <span className="font-semibold text-white">Companion Computers & MCUs: </span>
-                      <span className="text-gray-300">Nvidia Jetson Orin, Radxa Cubie, STM32, ESP32-S3, AT32, Arduino UNO</span>
+                      <span className="font-semibold text-white">Full-Stack Web & UI/UX: </span>
+                      <span className="text-gray-300">React 19, TypeScript, Next.js, Tailwind CSS, Responsive UI/UX Architecture, Frontend State Management, Kinetic Micro-Interactions</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-white">Flight Controllers & Autopilots: </span>
-                      <span className="text-gray-300">Cube Orange, SpeedyBee F405, iFlight BLITZ ATF435, Pixhawk</span>
+                      <span className="font-semibold text-white">Backend, APIs & Cloud: </span>
+                      <span className="text-gray-300">Node.js, Express, RESTful APIs, Database Systems (PostgreSQL, MongoDB), Edge Functions, Cloud Deployment, CI/CD</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-white">Flight Firmware & Avionics: </span>
-                      <span className="text-gray-300">ArduPilot, INAV, Betaflight, Librepilot, Mission Planner, QGC</span>
+                      <span className="font-semibold text-white">Robotics & Autonomy: </span>
+                      <span className="text-gray-300">ROS 2 (Jazzy), Gazebo Harmonic, RViz 2, Colcon, Micro-ROS, Sensor Fusion (LiDAR, IMU, Wheel Odometry)</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-white">Protocols & Telemetry: </span>
-                      <span className="text-gray-300">MAVLink, ExpressLRS (ELRS), UART, I2C, SPI, CAN bus, PWM, Sensor Fusion</span>
+                      <span className="font-semibold text-white">UAV Avionics & Telemetry: </span>
+                      <span className="text-gray-300">Cube Orange, SpeedyBee F405, ArduPilot, INAV, Betaflight, MAVLink, ExpressLRS (ELRS), Mission Planner, QGC</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-white">CAD & Fabrication: </span>
-                      <span className="text-gray-300">Autodesk Fusion 360, 3D Printing & Prototyping (DFM), KiCad 10.0 PCB</span>
+                      <span className="font-semibold text-white">Embedded & Edge Hardware: </span>
+                      <span className="text-gray-300">Nvidia Jetson Orin (Edge AI), STM32, ESP32-S3 (ESP-IDF, FreeRTOS), Radxa Cubie, UART, I2C, SPI, CAN bus, PWM</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-white">Robotics & Software: </span>
-                      <span className="text-gray-300">ROS 2 (Jazzy), Gazebo Harmonic, C, C++, Python, TypeScript, React</span>
+                      <span className="font-semibold text-white">CAD, PCB & Languages: </span>
+                      <span className="text-gray-300">C, C++, Python, Autodesk Fusion 360 (Parametric CAD, DFM 3D Print), KiCad 10.0 (Custom PDBs & Programmatic Routing)</span>
                     </div>
                   </div>
                 </section>
@@ -791,18 +792,18 @@ export default function HomeView({
                       </div>
                     </div>
 
-                    {/* Build 4: Academic Web Platforms */}
+                    {/* Build 4: Full-Stack Web & UI/UX Platforms */}
                     <div>
                       <div className="flex items-baseline justify-between gap-1">
                         <span className="font-bold text-white text-[10.5px]">
-                          Academic Research & Faculty Web Platforms
+                          Full-Stack Research Portals & Dynamic Web Architectures
                         </span>
                         <span className="font-mono text-[8.5px] text-gray-400 shrink-0">
-                          React 19 • TypeScript • Tailwind CSS
+                          React 19 • TypeScript • Node.js • REST APIs • UI/UX
                         </span>
                       </div>
                       <div className="text-[9px] text-gray-300 font-light leading-snug">
-                        Architected high-performance responsive web platforms for college faculty with searchable publication indexes, accessible information architecture, and custom dark-mode design systems.
+                        Architected high-performance full-stack web applications and interactive portals featuring intuitive UI/UX design systems, searchable publication databases, dynamic RESTful backend integrations, and sub-second load times.
                       </div>
                     </div>
                   </div>
@@ -814,7 +815,7 @@ export default function HomeView({
                 FOOTER: AVAILABILITY & VERIFICATION
                 ═════════════════════════════════════════════════════════════ */}
             <footer className="resume-footer pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between text-[9.5px] text-gray-400 font-mono gap-1">
-              <span>Available for summer internships, autonomous robotics contracts, and defense R&D.</span>
+              <span>Available for summer internships, full-stack web engineering, autonomous robotics, and defense R&D.</span>
               <span className="font-semibold text-gray-300">Aryan Narwariya • Gwalior, India</span>
             </footer>
           </div>
