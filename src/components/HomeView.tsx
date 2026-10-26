@@ -461,7 +461,7 @@ export default function HomeView({
               {/* ─────────────────────────────────────────────────────────
                   LEFT COLUMN (md:col-span-5)
                   ───────────────────────────────────────────────────────── */}
-              <div className="md:col-span-5 space-y-3.5">
+              <div className="md:col-span-5 space-y-3">
                 
                 {/* 1. EDUCATION & DUAL DEGREE */}
                 <section id="resume-education" className="space-y-1.5">
@@ -483,7 +483,7 @@ export default function HomeView({
                         B.S. in Data Science and Applications
                       </div>
                       <div className="text-[9px] text-gray-400 leading-tight mt-0.5">
-                        Machine Learning, Cloud Systems, Statistical Modeling, Autonomous Systems.
+                        Machine Learning, Cloud Systems, Statistical Modeling, Autonomous Algorithms.
                       </div>
                     </div>
 
@@ -497,7 +497,7 @@ export default function HomeView({
                         B.Tech. in Computer Science & Business Systems
                       </div>
                       <div className="text-[9px] text-gray-400 leading-tight mt-0.5">
-                        DSA, Algorithms, OOP, Database Systems, Embedded Electronics.
+                        DSA, Algorithms, OOP, Database Systems, Embedded Electronics, Operating Systems.
                       </div>
                     </div>
                   </div>
@@ -515,23 +515,23 @@ export default function HomeView({
                   <div className="space-y-1.5 font-sans text-[9.5px] leading-snug">
                     <div>
                       <span className="font-semibold text-white">Companion Computers & MCUs: </span>
-                      <span className="text-gray-300">Nvidia Jetson Orin, Radxa Cubie, STM32, ESP32, AT32, Arduino UNO</span>
+                      <span className="text-gray-300">Nvidia Jetson Orin, Radxa Cubie, STM32, ESP32-S3, AT32, Arduino UNO</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-white">Flight Controllers: </span>
-                      <span className="text-gray-300">Cube Orange, SpeedyBee F405, iFlight BLITZ ATF435</span>
+                      <span className="font-semibold text-white">Flight Controllers & Autopilots: </span>
+                      <span className="text-gray-300">Cube Orange, SpeedyBee F405, iFlight BLITZ ATF435, Pixhawk</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-white">Flight Firmware & Avionics: </span>
+                      <span className="text-gray-300">ArduPilot, INAV, Betaflight, Librepilot, Mission Planner, QGC</span>
                     </div>
                     <div>
                       <span className="font-semibold text-white">Protocols & Telemetry: </span>
-                      <span className="text-gray-300">MAVLink, ExpressLRS, UART, I2C, PWM, Sensor Fusion</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-white">Flight Control Firmware: </span>
-                      <span className="text-gray-300">ArduPilot, INAV, Betaflight, Librepilot</span>
+                      <span className="text-gray-300">MAVLink, ExpressLRS (ELRS), UART, I2C, SPI, CAN bus, PWM, Sensor Fusion</span>
                     </div>
                     <div>
                       <span className="font-semibold text-white">CAD & Fabrication: </span>
-                      <span className="text-gray-300">Autodesk Fusion 360, 3D Printing & Tactical Prototyping, KiCad 10.0</span>
+                      <span className="text-gray-300">Autodesk Fusion 360, 3D Printing & Prototyping (DFM), KiCad 10.0 PCB</span>
                     </div>
                     <div>
                       <span className="font-semibold text-white">Robotics & Software: </span>
@@ -556,7 +556,7 @@ export default function HomeView({
                         <span className="font-mono text-[9px] text-gray-400">Feb 2026</span>
                       </div>
                       <div className="text-[9px] text-gray-300 font-light leading-snug">
-                        Attached to Indian Army combat units at Babina Military Station; Main Battle Tank (MBT) tactics, combat logistics depot overhauls, and weapon handling.
+                        Attached to Indian Army combat units at Babina Military Station; Main Battle Tank (MBT) tactics, combat logistics depot overhauls, weapon handling protocols, and perimeter defense.
                       </div>
                     </div>
 
@@ -566,7 +566,17 @@ export default function HomeView({
                         <span className="font-mono text-[9px] text-gray-400">2025</span>
                       </div>
                       <div className="text-[9px] text-gray-300 font-light leading-snug">
-                        National-level conditioning under Army Officers; crisis management, tactical decision making, and multi-directorate team leadership.
+                        National-level conditioning under Army Officers; crisis management, tactical decision making under pressure, and multi-directorate team leadership.
+                      </div>
+                    </div>
+
+                    <div className="p-1.5 rounded-lg bg-white/1">
+                      <div className="flex items-baseline justify-between">
+                        <span className="font-semibold text-white text-[10.5px]">Combined Annual Training Camp (CATC)</span>
+                        <span className="font-mono text-[9px] text-gray-400">2025</span>
+                      </div>
+                      <div className="text-[9px] text-gray-300 font-light leading-snug">
+                        Trained in Field Craft & Battle Craft, squad drill precision, prismatic compass navigation, night mobilization drills, and obstacle course endurance.
                       </div>
                     </div>
                   </div>
@@ -598,6 +608,10 @@ export default function HomeView({
                       <CheckCircle2 className="h-3 w-3 text-emerald-400 shrink-0 mt-0.5" />
                       <span><strong className="text-white">AI Fundamentals:</strong> IBM SkillsBuild & Cisco Networking Academy (2026)</span>
                     </div>
+                    <div className="flex items-start gap-1.5">
+                      <CheckCircle2 className="h-3 w-3 text-emerald-400 shrink-0 mt-0.5" />
+                      <span><strong className="text-white">16th Rank Globally:</strong> SUAS 2026 USA Flight Order (Team Trinetra)</span>
+                    </div>
                   </div>
                 </section>
               </div>
@@ -605,7 +619,7 @@ export default function HomeView({
               {/* ─────────────────────────────────────────────────────────
                   RIGHT COLUMN (md:col-span-7)
                   ───────────────────────────────────────────────────────── */}
-              <div className="md:col-span-7 space-y-3.5">
+              <div className="md:col-span-7 space-y-3">
                 
                 {/* 1. WORK & TECHNICAL LEADERSHIP */}
                 <section id="resume-experience" className="space-y-1.5">
@@ -637,7 +651,7 @@ export default function HomeView({
                           Represented India as one of only two teams nationwide, achieving <strong className="text-white font-medium">16th rank globally</strong> on flight order (ahead of IIT Madras at 31st).
                         </li>
                         <li>
-                          Integrated ArduPilot autonomous waypoint navigation, dynamic obstacle avoidance, and computer vision with sponsorship from Vyom Drones Pvt Ltd.
+                          Integrated ArduPilot autonomous waypoint navigation, dynamic obstacle avoidance, and computer vision payloads with sponsorship from Vyom Drones Pvt Ltd.
                         </li>
                       </ul>
                     </div>
@@ -714,7 +728,7 @@ export default function HomeView({
                   </div>
                 </section>
 
-                {/* 2. SELECTED ENGINEERING BUILDS */}
+                {/* 2. SELECTED ENGINEERING BUILDS (DISTINCT & NON-REPETITIVE) */}
                 <section id="resume-builds" className="space-y-1.5">
                   <div className="flex items-center justify-between pb-1 resume-section-divider">
                     <div className="flex items-center gap-1.5">
@@ -732,63 +746,63 @@ export default function HomeView({
                   </div>
 
                   <div className="space-y-2 font-sans text-xs">
-                    {/* Build 1 */}
+                    {/* Build 1: ESP-Drone Micro-UAS */}
                     <div>
                       <div className="flex items-baseline justify-between gap-1">
                         <span className="font-bold text-white text-[10.5px]">
-                          SUAS 2026 Autonomous AI Drone (Team Trinetra)
+                          ESP-Drone Autonomous Flight Firmware & Telemetry
                         </span>
                         <span className="font-mono text-[8.5px] text-gray-400 shrink-0">
-                          ArduPilot • AI Vision • USA
+                          ESP32-S3 • FreeRTOS • C/C++
                         </span>
                       </div>
                       <div className="text-[9px] text-gray-300 font-light leading-snug">
-                        22-inch autonomous UAS engineered for waypoint flight, dynamic collision avoidance, and payload delivery in Oklahoma, USA.
+                        Ported Crazyflie core C logic to ESP-IDF v5.0 on ESP32; engineered 6-DOF IMU sensor fusion, real-time PID attitude estimation loop, and Wi-Fi / ESP-NOW low-latency telemetry streaming.
                       </div>
                     </div>
 
-                    {/* Build 2 */}
+                    {/* Build 2: Advanced KiCad PCB */}
                     <div>
                       <div className="flex items-baseline justify-between gap-1">
                         <span className="font-bold text-white text-[10.5px]">
-                          NaviGrid AMR Autonomous Simulation Gauntlet
+                          Advanced KiCad 10.0 PCB & Drone Power Distribution Boards
                         </span>
                         <span className="font-mono text-[8.5px] text-gray-400 shrink-0">
-                          ROS 2 Jazzy • Gazebo • C++
+                          KiCad 10.0 • High-Current PDB • Python
                         </span>
                       </div>
                       <div className="text-[9px] text-gray-300 font-light leading-snug">
-                        Full-stack simulation platform modeling 2D LiDAR ray-tracing, elevation terrain costing, and safety watchdog overrides for 427 competitors.
+                        Designed custom heavy-current power distribution boards (PDBs) managing up to 60A battery draw for UAV avionics; implemented programmatic Python layout scripts and impedance-matched routing.
                       </div>
                     </div>
 
-                    {/* Build 3 */}
+                    {/* Build 3: Parametric CAD & 3D Printing */}
                     <div>
                       <div className="flex items-baseline justify-between gap-1">
                         <span className="font-bold text-white text-[10.5px]">
-                          ESP-Drone & Advanced KiCad PCB Engineering
+                          3D Modeling, CAD Design & Rapid Prototyping
                         </span>
                         <span className="font-mono text-[8.5px] text-gray-400 shrink-0">
-                          ESP32 • KiCad 10.0 • FreeRTOS
+                          Fusion 360 • 3D Printing DFM • Robotics
                         </span>
                       </div>
                       <div className="text-[9px] text-gray-300 font-light leading-snug">
-                        Engineered open-source micro quadcopter with custom power distribution boards (PDBs) and programmatic KiCad PCB trace routing.
+                        Drafted parametric lightweight drone chassis, aerodynamic avionics canopies, and vibration-isolated flight controller mounts; optimized for FDM/SLA manufacturing with zero support waste.
                       </div>
                     </div>
 
-                    {/* Build 4 */}
+                    {/* Build 4: Academic Web Platforms */}
                     <div>
                       <div className="flex items-baseline justify-between gap-1">
                         <span className="font-bold text-white text-[10.5px]">
-                          3D Modeling & CAD for Robotics
+                          Academic Research & Faculty Web Platforms
                         </span>
                         <span className="font-mono text-[8.5px] text-gray-400 shrink-0">
-                          Fusion 360 • 3D Printing DFM
+                          React 19 • TypeScript • Tailwind CSS
                         </span>
                       </div>
                       <div className="text-[9px] text-gray-300 font-light leading-snug">
-                        Drafted parametric lightweight drone chassis, sensor enclosures, and robotic motor mounts; fabricated through rapid 3D printing workflows.
+                        Architected high-performance responsive web platforms for college faculty with searchable publication indexes, accessible information architecture, and custom dark-mode design systems.
                       </div>
                     </div>
                   </div>
