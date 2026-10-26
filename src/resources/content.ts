@@ -87,6 +87,32 @@ export const workExperiences: WorkExperience[] = [
       label: "Visit Club Website",
       url: "https://www.dronexaerotech.club/"
     }
+  },
+  {
+    company: "Team Trinetra (DroneX Club) — SUAS 2026 USA",
+    role: "Autonomous AI Drone Engineer",
+    location: "Tulsa, Oklahoma, USA / Gwalior",
+    period: "2026",
+    description: [
+      "Engineered a fully autonomous AI-navigating drone for the international Student Unmanned Aerial Systems (SUAS 2026) competition in Tulsa, Oklahoma, USA.",
+      "Represented India as one of only two teams nationwide, achieving 16th rank on the global flight order (ranked ahead of IIT Madras at 31st).",
+      "Integrated ArduPilot autonomous waypoint navigation, dynamic obstacle avoidance, and computer vision payloads with sponsorship from Vyom Drones."
+    ],
+    skills: [
+      "SUAS 2026 USA",
+      "Autonomous AI Drone",
+      "ArduPilot",
+      "MAVLink",
+      "Computer Vision",
+      "AI Navigation",
+      "UAV Avionics",
+      "Telemetry",
+      "Embedded Systems"
+    ],
+    link: {
+      label: "Read SUAS Journey",
+      url: "#"
+    }
   }
 ];
 

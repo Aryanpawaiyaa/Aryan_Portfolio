@@ -77,7 +77,7 @@ export default function AestheticsController({
   const isLight = themeMode === "light";
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 font-sans">
+    <div id="aesthetics-controller" className="fixed bottom-6 right-6 z-50 font-sans print-hidden">
       <AnimatePresence>
         {isOpen ? (
           <motion.div
