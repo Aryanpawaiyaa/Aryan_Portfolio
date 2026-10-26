@@ -391,7 +391,7 @@ export default function HomeView({
 
                   <div className={`font-sans text-xs sm:text-sm font-semibold tracking-tight ${textAccent} flex items-center`}>
                     <span className="font-bold text-[9.5pt]">
-                      Robotics, Autonomous Systems & Full-Stack Engineer
+                      Robotics, Autonomous Systems, Full-Stack & Tactical UAV Engineer
                     </span>
                   </div>
 
