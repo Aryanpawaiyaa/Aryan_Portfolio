@@ -371,8 +371,8 @@ export default function HomeView({
             id="resume-sheet"
             className={`relative rounded-2xl p-5 sm:p-7 transition-all duration-200 space-y-4 print:border-none print:shadow-none print:p-0 print:m-0 print:bg-white print:rounded-none ${
               isLight
-                ? "border border-slate-200 bg-white/70 backdrop-blur-xl shadow-lg"
-                : "border border-white/10 bg-zinc-950/40 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+                ? "bg-white/80 shadow-[0_10px_35px_rgba(15,23,42,0.04)]"
+                : "bg-zinc-950/40 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
             }`}
           >
             {/* Top Accent Ribbon (Screen Only) */}
@@ -381,7 +381,7 @@ export default function HomeView({
             {/* ═════════════════════════════════════════════════════════════
                 HEADER: CANDIDATE IDENTITY & CONTACT STRIP
                 ═════════════════════════════════════════════════════════════ */}
-            <header className="border-b border-white/10 pb-3">
+            <header className="resume-header pb-2.5">
               <div className="flex flex-row items-center justify-between gap-4">
                 <div className="space-y-1.5 min-w-0">
                   <h3 className="font-sans text-2xl sm:text-3xl font-black tracking-tight text-white leading-none">
@@ -445,7 +445,7 @@ export default function HomeView({
               </div>
 
               {/* Executive Summary */}
-              <div className="mt-2 pt-2 border-t border-white/5 font-sans text-[11px] sm:text-xs text-gray-300 font-light leading-relaxed">
+              <div className="mt-1.5 font-sans text-[11px] sm:text-xs text-gray-300 font-light leading-relaxed">
                 <strong className="text-white font-semibold">Summary: </strong>
                 Detail-oriented Robotics & Systems Engineering student pursuing dual degrees at <span className="text-white font-medium">IIT Madras</span> (B.S. in Data Science) and <span className="text-white font-medium">MITS Gwalior</span> (B.Tech. in CSBS). Hands-on experience in tactical UAV development, autonomous mobile robotics, and aerial systems with tactical drone tuning. Autonomous AI Drone Engineer for <span className="text-white font-medium">SUAS 2026 USA</span> with Team Trinetra, securing <strong className="text-white font-medium">16th global flight rank</strong> (ahead of IIT Madras at 31st). Event Head of <span className="text-white font-medium">NaviGrid</span> (IIT Madras BS, 427 competitors). Skilled in ArduPilot, MAVLink, Cube Orange, Nvidia Jetson Orin, ROS 2, and custom PCB hardware.
               </div>
@@ -465,7 +465,7 @@ export default function HomeView({
                 
                 {/* 1. EDUCATION & DUAL DEGREE */}
                 <section id="resume-education" className="space-y-1.5">
-                  <div className="flex items-center gap-1.5 border-b border-white/5 pb-1 resume-section-divider">
+                  <div className="flex items-center gap-1.5 pb-1 resume-section-divider">
                     <GraduationCap className="h-3.5 w-3.5 text-emerald-400" />
                     <h4 className="font-sans text-[11px] font-bold uppercase tracking-wider text-white">
                       Education & Dual Degree
@@ -474,7 +474,7 @@ export default function HomeView({
 
                   <div className="space-y-2 font-sans text-xs">
                     {/* IIT Madras */}
-                    <div className={`p-2 rounded-lg ${isLight ? "bg-slate-50/80" : "bg-white/2"} border border-white/5`}>
+                    <div className={`p-2 rounded-lg ${isLight ? "bg-slate-50/80" : "bg-white/2"}`}>
                       <div className="flex items-baseline justify-between gap-1">
                         <span className="font-bold text-white text-[11px] leading-tight">IIT Madras</span>
                         <span className="font-mono text-[9px] text-gray-400 shrink-0">2025 — Present</span>
@@ -488,7 +488,7 @@ export default function HomeView({
                     </div>
 
                     {/* MITS Gwalior */}
-                    <div className={`p-2 rounded-lg ${isLight ? "bg-slate-50/80" : "bg-white/2"} border border-white/5`}>
+                    <div className={`p-2 rounded-lg ${isLight ? "bg-slate-50/80" : "bg-white/2"}`}>
                       <div className="flex items-baseline justify-between gap-1">
                         <span className="font-bold text-white text-[11px] leading-tight">MITS Gwalior</span>
                         <span className="font-mono text-[9px] text-gray-400 shrink-0">2025 — Present</span>
@@ -505,7 +505,7 @@ export default function HomeView({
 
                 {/* 2. UAV & EMBEDDED HARDWARE SKILLS */}
                 <section id="resume-skills" className="space-y-1.5">
-                  <div className="flex items-center gap-1.5 border-b border-white/10 pb-1 resume-section-divider">
+                  <div className="flex items-center gap-1.5 pb-1 resume-section-divider">
                     <Cpu className="h-3.5 w-3.5 text-emerald-400" />
                     <h4 className="font-sans text-[11px] font-bold uppercase tracking-wider text-white">
                       UAV & Embedded Hardware Skills
@@ -542,7 +542,7 @@ export default function HomeView({
 
                 {/* 3. MILITARY & TACTICAL LEADERSHIP (NCC) */}
                 <section id="resume-military" className="space-y-1.5">
-                  <div className="flex items-center gap-1.5 border-b border-white/10 pb-1 resume-section-divider">
+                  <div className="flex items-center gap-1.5 pb-1 resume-section-divider">
                     <Shield className="h-3.5 w-3.5 text-emerald-400" />
                     <h4 className="font-sans text-[11px] font-bold uppercase tracking-wider text-white">
                       Military Leadership & Training (NCC)
@@ -574,7 +574,7 @@ export default function HomeView({
 
                 {/* 4. KEY HONORS & AWARDS */}
                 <section id="resume-credentials" className="space-y-1.5">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-1 resume-section-divider">
+                  <div className="flex items-center justify-between pb-1 resume-section-divider">
                     <div className="flex items-center gap-1.5">
                       <Award className="h-3.5 w-3.5 text-emerald-400" />
                       <h4 className="font-sans text-[11px] font-bold uppercase tracking-wider text-white">
@@ -609,7 +609,7 @@ export default function HomeView({
                 
                 {/* 1. WORK & TECHNICAL LEADERSHIP */}
                 <section id="resume-experience" className="space-y-1.5">
-                  <div className="flex items-center gap-1.5 border-b border-white/10 pb-1 resume-section-divider">
+                  <div className="flex items-center gap-1.5 pb-1 resume-section-divider">
                     <Briefcase className="h-3.5 w-3.5 text-emerald-400" />
                     <h4 className="font-sans text-[11px] font-bold uppercase tracking-wider text-white">
                       Work & Technical Leadership
@@ -716,7 +716,7 @@ export default function HomeView({
 
                 {/* 2. SELECTED ENGINEERING BUILDS */}
                 <section id="resume-builds" className="space-y-1.5">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-1 resume-section-divider">
+                  <div className="flex items-center justify-between pb-1 resume-section-divider">
                     <div className="flex items-center gap-1.5">
                       <Code className="h-3.5 w-3.5 text-emerald-400" />
                       <h4 className="font-sans text-[11px] font-bold uppercase tracking-wider text-white">
@@ -799,7 +799,7 @@ export default function HomeView({
             {/* ═════════════════════════════════════════════════════════════
                 FOOTER: AVAILABILITY & VERIFICATION
                 ═════════════════════════════════════════════════════════════ */}
-            <footer className="border-t border-white/10 pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between text-[9.5px] text-gray-400 font-mono gap-1">
+            <footer className="resume-footer pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between text-[9.5px] text-gray-400 font-mono gap-1">
               <span>Available for summer internships, autonomous robotics contracts, and defense R&D.</span>
               <span className="font-semibold text-gray-300">Aryan Narwariya • Gwalior, India</span>
             </footer>

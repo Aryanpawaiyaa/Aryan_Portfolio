@@ -181,6 +181,17 @@ body {
   border-color: rgba(255, 255, 255, 0.18);
 }
 
+/* Subtle hairline resume dividers on screen */
+.resume-section-divider,
+.resume-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.light-mode .resume-section-divider,
+.light-mode .resume-header {
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
 /* Custom transitions */
 .transition-base {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -533,28 +544,33 @@ body {
     background: transparent !important;
   }
 
+  /* Remove ALL outer borders, boxes, and rogue outlines from resume in print */
+  #resume-sheet,
+  #resume-sheet * {
+    border: none !important;
+    border-width: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
   #resume-sheet {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
     background: #ffffff !important;
     page-break-after: avoid !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
 
-  /* Candidate photo in print: clean, seamless, borderless portrait */
+  /* Candidate photo in print: strictly borderless, clean portrait */
   #resume-avatar-frame {
     width: 23mm !important;
     height: 29mm !important;
     min-width: 23mm !important;
     max-width: 23mm !important;
     border-radius: 4px !important;
-    border: none !important;
-    box-shadow: none !important;
     overflow: hidden !important;
     display: block !important;
     padding: 0 !important;
@@ -571,7 +587,6 @@ body {
     object-position: center 20% !important;
     display: block !important;
     border-radius: 4px !important;
-    border: none !important;
     filter: none !important;
     -webkit-filter: none !important;
   }
@@ -610,13 +625,6 @@ body {
     font-weight: 600 !important;
   }
 
-  .border-white\/10,
-  .border-white\/5,
-  .border-white\/20,
-  .border-slate-200 {
-    border-color: #e2e8f0 !important;
-  }
-
   .bg-white\/2,
   .bg-white\/3,
   .bg-white\/5,
@@ -624,12 +632,13 @@ body {
   .bg-zinc-900,
   .bg-slate-50 {
     background: transparent !important;
-    border-color: #f1f5f9 !important;
   }
 
-  /* Subtle, delicate section dividers without harsh black borders */
-  .resume-section-divider {
-    border-bottom: 1px solid #e2e8f0 !important;
+  /* Hairline-thin, delicate 0.5px subtle gray dividers (never thick or black) */
+  #resume-sheet header,
+  #resume-sheet .resume-section-divider,
+  #resume-sheet footer {
+    border-bottom: 0.5px solid #e5e7eb !important;
     padding-bottom: 2px !important;
     margin-bottom: 4px !important;
   }
